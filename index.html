@@ -89,6 +89,42 @@
     .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 25px; }
     .hero-tag { padding: 7px 11px; color: #dce9ff; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.16); border-radius: 99px; font-size: 12px; font-weight: 800; }
 
+    .company-overview { display: grid; grid-template-columns: minmax(0, 1.04fr) minmax(0, .96fr); gap: 13px; }
+    .company-card { padding: 21px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 8px 25px rgba(30,61,112,.04); }
+    .company-card.full { grid-column: 1 / -1; }
+    .company-kicker { margin: 0 0 7px; color: var(--blue); font-size: 10px; font-weight: 900; letter-spacing: .12em; }
+    .company-card h3 { margin: 0 0 9px; font-size: 18px; letter-spacing: -.05em; }
+    .company-card p { margin: 0; color: var(--muted); font-size: 12px; }
+    .mission-quote { margin: 3px 0 14px; color: var(--navy); font-size: clamp(19px, 2.3vw, 27px); font-weight: 900; line-height: 1.25; letter-spacing: -.06em; }
+    .company-values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; margin-top: 17px; }
+    .value { padding: 11px; border-radius: 10px; background: #f8faff; }
+    .value strong { display: block; margin-bottom: 3px; color: var(--blue); font-size: 11px; }
+    .value span { color: var(--muted); font-size: 10px; }
+    .company-facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px; margin: 0; }
+    .company-facts div { padding: 9px 10px; background: #f8faff; border-radius: 8px; }
+    .company-facts dt { color: var(--muted); font-size: 9px; font-weight: 900; }
+    .company-facts dd { margin: 2px 0 0; color: var(--ink); font-size: 11px; font-weight: 800; }
+    .business-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 7px; margin-top: 12px; }
+    .business-item { min-height: 65px; padding: 10px; border: 1px solid var(--line); border-radius: 9px; background: #fff; }
+    .business-item b { display: block; margin-bottom: 3px; color: var(--navy); font-size: 11px; }
+    .business-item span { color: var(--muted); font-size: 10px; }
+    .org-strip { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .org-unit { padding: 11px; border-radius: 9px; background: #f8faff; }
+    .org-unit strong { display: block; margin-bottom: 4px; color: var(--navy); font-size: 11px; }
+    .org-unit span { color: var(--muted); font-size: 10px; }
+    .history { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 12px; }
+    .history-item { position: relative; min-height: 115px; padding: 12px; border-top: 3px solid var(--blue); border-radius: 8px; background: #f8faff; }
+    .history-item:nth-child(2) { border-top-color: var(--cyan); }
+    .history-item:nth-child(3) { border-top-color: var(--green); }
+    .history-item:nth-child(4) { border-top-color: var(--amber); }
+    .history-item:nth-child(5) { border-top-color: var(--purple); }
+    .history-item strong { display: block; margin-bottom: 6px; color: var(--blue); font-size: 17px; letter-spacing: -.05em; }
+    .history-item:nth-child(2) strong { color: var(--cyan); }
+    .history-item:nth-child(3) strong { color: var(--green); }
+    .history-item:nth-child(4) strong { color: var(--amber); }
+    .history-item:nth-child(5) strong { color: var(--purple); }
+    .history-item span { color: var(--muted); font-size: 10px; line-height: 1.45; }
+
     .section { margin: 28px 0; }
     .section-head { display: flex; align-items: end; justify-content: space-between; gap: 18px; margin-bottom: 13px; }
     .section-title { display: flex; align-items: center; gap: 10px; margin: 0; font-size: clamp(20px, 2.4vw, 28px); letter-spacing: -.05em; }
@@ -244,6 +280,10 @@
       .principles, .flow-grid, .exception-grid { grid-template-columns: 1fr; }
       .two-col { grid-template-columns: 1fr; }
       .checklist { grid-template-columns: repeat(2, 1fr); }
+      .company-overview { grid-template-columns: 1fr; }
+      .company-card.full { grid-column: auto; }
+      .business-grid { grid-template-columns: repeat(3, 1fr); }
+      .history { grid-template-columns: repeat(3, 1fr); }
     }
     @media (max-width: 650px) {
       .shell { width: min(100% - 22px, 1440px); }
@@ -254,6 +294,10 @@
       .section-head { display: block; }
       .section-note { margin-top: 5px; }
       .panel { padding: 15px; }
+      .company-card { padding: 15px; }
+      .company-values, .org-strip { grid-template-columns: 1fr; }
+      .company-facts { grid-template-columns: 1fr 1fr; }
+      .business-grid, .history { grid-template-columns: 1fr 1fr; }
       .agent-set { grid-template-columns: 1fr; }
       .decision { grid-template-columns: 1fr; grid-template-rows: auto; }
       .decision > * { grid-column: auto !important; grid-row: auto !important; }
@@ -278,6 +322,7 @@
       .section-title { font-size: 20px; }
       .principle, .flow-card, .panel, .swim, .exception, .check { box-shadow: none; }
       .master-flow { padding: 11px; box-shadow: none; }
+      .company-card { box-shadow: none; }
       .swim-wrap { overflow: visible; }
       .swim { min-width: 0; box-shadow: none; }
       .swim-head, .lane { grid-template-columns: 116px repeat(7, minmax(0, 1fr)); }
@@ -300,6 +345,7 @@
       <span>아이언렌트카<small>NEW HIRE PLAYBOOK · 01</small></span>
     </a>
     <nav class="topnav" aria-label="문서 바로가기">
+      <a href="#company">회사소개</a>
       <a href="#overview">전체 조망</a>
       <a href="#swimlane">스윔레인</a>
       <a href="#vehicle">차량 관리</a>
@@ -313,25 +359,91 @@
     <section class="hero" aria-labelledby="page-title">
       <div class="eyebrow">COMPANY-WIDE WORKFLOW</div>
       <h1 id="page-title">고객이 문의한 순간부터<br />차량이 다시 자산이 될 때까지</h1>
-      <p>아이언렌트카의 신차·중고차 장기렌트와 월렌트 업무를 고객 흐름, 차량 흐름, 금액 흐름으로 나누어 한눈에 이해하는 신규입사자용 전사 업무흐름도입니다.</p>
+      <p>“이동의 자유를 넘어, 새로운 모빌리티 경험을 디자인합니다.” 아이언렌트카의 신차·중고차 장기렌트와 월렌트 업무를 고객 흐름, 차량 흐름, 금액 흐름으로 나누어 한눈에 이해하는 신규입사자용 전사 업무흐름도입니다.</p>
       <div class="hero-tags">
+        <span class="hero-tag">당신의 여정이 시작되는 곳</span>
         <span class="hero-tag">신차 장기렌트</span>
         <span class="hero-tag">중고차 장기렌트</span>
         <span class="hero-tag">월렌트</span>
+        <span class="hero-tag">리스렌탈 · 사고대차</span>
+        <span class="hero-tag">차량관리 · 주차장 · 중고차 수출</span>
         <span class="hero-tag">에이전트 채널</span>
         <span class="hero-tag">연장 / 매각 의사결정</span>
       </div>
     </section>
 
+    <section id="company" class="section" aria-labelledby="company-title">
+      <div class="section-head">
+        <h2 id="company-title" class="section-title">회사소개서로 이해하는 아이언렌트카</h2>
+        <p class="section-note">전사 흐름을 보기 전에, 우리가 어떤 회사인지 먼저 확인합니다.</p>
+      </div>
+      <div class="company-overview">
+        <article class="company-card">
+          <p class="company-kicker">MISSION & VALUES</p>
+          <h3>이동의 자유를 넘어, 새로운 모빌리티 경험을 디자인합니다.</h3>
+          <p class="mission-quote">“당신의 여정이 시작되는 곳”</p>
+          <p>아이언렌트카는 단순히 차량을 빌려주는 서비스를 넘어 고객의 소중한 여정을 안전하게 지탱하는 모빌리티 파트너를 지향합니다. 변치 않는 신뢰, 철저한 차량관리, 정직한 서비스를 업무의 기준으로 삼습니다.</p>
+          <div class="company-values">
+            <div class="value"><strong>신뢰경영</strong><span>정직한 가격과 철저한 차량관리</span></div>
+            <div class="value"><strong>합리적 기준</strong><span>누구나 부담 없이 이용하는 렌터카</span></div>
+            <div class="value"><strong>고객감동</strong><span>이동을 넘어 감동적인 서비스 경험</span></div>
+          </div>
+        </article>
+        <article class="company-card">
+          <p class="company-kicker">COMPANY PROFILE</p>
+          <h3>회사 기본정보</h3>
+          <dl class="company-facts">
+            <div><dt>회사명</dt><dd>㈜ 아이언렌트카</dd></div>
+            <div><dt>대표자</dt><dd>김기문</dd></div>
+            <div><dt>설립일</dt><dd>2015년 6월 1일</dd></div>
+            <div><dt>자본금</dt><dd>3억원</dd></div>
+            <div><dt>본사</dt><dd>서울 강남구 테헤란로 113길 15, 3층</dd></div>
+            <div><dt>대표번호</dt><dd>02-568-8320</dd></div>
+            <div><dt>조직</dt><dd>본사 + 강북지점 + 용인지점</dd></div>
+            <div><dt>영업·관리</dt><dd>이상엽 이사</dd></div>
+          </dl>
+          <div class="callout"><strong>신규입사자 포인트</strong> 본사 업무는 영업·고객관리·차량관리·경영지원·법무·채권이 연결되고, 강북·용인 지점은 차량과 고객 접점을 확장합니다.</div>
+        </article>
+        <article class="company-card full">
+          <p class="company-kicker">BUSINESS PORTFOLIO</p>
+          <h3>주요 사업영역</h3>
+          <div class="business-grid">
+            <div class="business-item"><b>장·단기렌트</b><span>신차·중고차 장기렌트와 월렌트</span></div>
+            <div class="business-item"><b>리스렌탈</b><span>차량 이용 목적에 맞춘 렌탈</span></div>
+            <div class="business-item"><b>사고대차</b><span>사고관리·대차·수리 연계</span></div>
+            <div class="business-item"><b>차량관리</b><span>정비·소모품 교체·순회정비</span></div>
+            <div class="business-item"><b>주차장 운영</b><span>차량 보관과 운영 기반</span></div>
+            <div class="business-item"><b>중고차 수출</b><span>반납차량의 경매·수출·매각</span></div>
+          </div>
+          <div class="org-strip">
+            <div class="org-unit"><strong>경영지원·경리</strong><span>자금·수납·정산·회계·자산관리</span></div>
+            <div class="org-unit"><strong>고객관리·차량관리</strong><span>고객 접점·출고·이용관리·정비·반납</span></div>
+            <div class="org-unit"><strong>영업·지점·법무</strong><span>영업1·2팀·강북·용인·소송·채권관리</span></div>
+          </div>
+        </article>
+        <article class="company-card full">
+          <p class="company-kicker">MILESTONES</p>
+          <h3>주요 연혁</h3>
+          <div class="history">
+            <div class="history-item"><strong>2015</strong><span>㈜ 아이언렌트카 설립</span></div>
+            <div class="history-item"><strong>2017-19</strong><span>사고대차 협약 및 렉서스 차량 출고 조건 확보<br />강북·종로지점 설치, 무심사 장기렌트·전자상거래 신고</span></div>
+            <div class="history-item"><strong>2021-22</strong><span>한국형 무공해차 전환 100 기업 승인<br />부산·청주·용인 주차장 확보</span></div>
+            <div class="history-item"><strong>2023</strong><span>경찰청·강남·송파·마포경찰서 등 공공기관 차량납품<br />용인지점 설치</span></div>
+            <div class="history-item"><strong>2025</strong><span>서울시 자동차대여사업조합 이사 취임<br />우수기업 표창·중고자동차 수출업 허가</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <section id="overview" class="section">
       <div class="section-head">
-        <h2 class="section-title">먼저 기억할 3가지</h2>
-        <p class="section-note">업무를 이어받을 때 가장 먼저 확인하는 기준입니다.</p>
+        <h2 class="section-title">회사 가치가 업무로 이어지는 3가지 기준</h2>
+        <p class="section-note">회사소개서의 핵심가치를 신규입사자의 실제 업무 기준으로 연결합니다.</p>
       </div>
       <div class="principles">
-        <article class="principle"><div class="num">01 · CUSTOMER</div><h3>문의는 계약정보가 된다</h3><p>고객·에이전트 문의를 상품유형, 견적, 고객정보, 특약으로 정리해 다음 부서가 바로 움직일 수 있게 공유합니다.</p></article>
-        <article class="principle"><div class="num">02 · VEHICLE</div><h3>차량은 상태가 바뀌는 자산이다</h3><p>확보부터 출고, 반납, 재상품화까지 차량의 위치·상태·사진·이력을 끊김 없이 관리합니다.</p></article>
-        <article class="principle"><div class="num">03 · MONEY</div><h3>금액은 계약과 회수를 따라간다</h3><p>월 대여료·보증금·수수료·매입비·정산금의 발생과 회수를 계약상태와 함께 확인합니다.</p></article>
+        <article class="principle"><div class="num">01 · 신뢰경영</div><h3>정직한 정보가 신뢰를 만든다</h3><p>고객·에이전트에게 실제 차량상태, 조건, 사고·수리이력을 정확히 공유하고 다음 부서에도 같은 정보를 전달합니다.</p></article>
+        <article class="principle"><div class="num">02 · 합리적 기준</div><h3>차량과 금액을 기준으로 판단한다</h3><p>차량의 상태·차령·수익성, 계약의 조건·수납·정산을 기준으로 배정·연장·매각 결정을 내립니다.</p></article>
+        <article class="principle"><div class="num">03 · 고객감동</div><h3>고객의 여정을 끝까지 관리한다</h3><p>상담·출고·이용 중 문의·사고·반납·연체까지 고객이 불편을 겪는 지점을 미리 확인하고 연결합니다.</p></article>
       </div>
     </section>
 

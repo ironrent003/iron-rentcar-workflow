@@ -279,7 +279,23 @@
     .exception { padding: 17px; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; }
     .exception h3 { display: flex; align-items: center; gap: 8px; margin: 0 0 8px; font-size: 14px; letter-spacing: -.04em; }
     .exception h3 span { display: grid; place-items: center; width: 23px; height: 23px; color: var(--red); background: var(--red-soft); border-radius: 7px; font-size: 11px; }
-    .exception p { margin: 0; color: var(--muted); font-size: 11px; }
+    .exception p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.65; }
+    .delinq-panel { margin-top: 12px; padding: 21px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 8px 25px rgba(30,61,112,.04); }
+    .delinq-head { display: flex; align-items: end; justify-content: space-between; gap: 15px; margin-bottom: 13px; }
+    .delinq-head h3 { margin: 0; font-size: 17px; letter-spacing: -.04em; }
+    .delinq-head p { margin: 0; color: var(--muted); font-size: 11px; }
+    .delinq-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 9px; }
+    .delinq-step { position: relative; min-height: 130px; padding: 14px; border: 1px solid var(--line); border-radius: 12px; background: #fbfcfe; }
+    .delinq-step strong { display: block; margin: 5px 0 5px; color: var(--navy); font-size: 13px; }
+    .delinq-step span { display: inline-block; padding: 3px 7px; color: var(--blue); background: var(--blue-soft); border-radius: 99px; font-size: 9px; font-weight: 900; }
+    .delinq-step p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.6; }
+    .delinq-step.action { border-color: #f1c5c5; background: var(--red-soft); }
+    .delinq-step.action span { color: var(--red); background: #fff; }
+    .delinq-step.termination { border-color: #efd8a9; background: var(--amber-soft); }
+    .delinq-step.termination span { color: var(--amber); background: #fff; }
+    .delinq-note { margin-top: 12px; padding: 10px 12px; color: #365073; background: var(--blue-soft); border-left: 3px solid var(--blue); border-radius: 7px; font-size: 11px; line-height: 1.6; }
+    .delinq-note strong { color: var(--navy); }
+    .delinq-rules { display: grid; gap: 6px; margin: 12px 0 0; padding-left: 18px; color: var(--muted); font-size: 11px; line-height: 1.55; }
 
     .checklist { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
     .check { padding: 15px; background: #fff; border: 1px solid var(--line); border-radius: 12px; }
@@ -294,6 +310,7 @@
       .topnav { order: 3; width: 100%; overflow-x: auto; padding-top: 2px; }
       .submenu { position: fixed; top: auto; margin-top: 4px; }
       .principles, .flow-grid, .exception-grid { grid-template-columns: 1fr; }
+      .delinq-grid { grid-template-columns: repeat(2, 1fr); }
       .two-col { grid-template-columns: 1fr; }
       .checklist { grid-template-columns: repeat(2, 1fr); }
       .company-overview { grid-template-columns: 1fr; }
@@ -313,6 +330,9 @@
       .company-card { padding: 15px; }
       .company-values, .org-strip { grid-template-columns: 1fr; }
       .company-facts { grid-template-columns: 1fr 1fr; }
+      .delinq-grid { grid-template-columns: 1fr; }
+      .delinq-head { display: block; }
+      .delinq-head p { margin-top: 6px; }
       .business-grid, .history { grid-template-columns: 1fr 1fr; }
       .agent-set { grid-template-columns: 1fr; }
       .decision { grid-template-columns: 1fr; grid-template-rows: auto; }
@@ -393,6 +413,7 @@
           <a href="#swimlane" role="menuitem">부서별 스윔레인</a>
           <a href="#roles" role="menuitem">역할·공유정보</a>
           <a href="#exceptions" role="menuitem">협업 참고</a>
+          <a href="#delinquency" role="menuitem">연체 조치 기준</a>
         </div>
       </div>
     </nav>
@@ -592,7 +613,7 @@
             <div class="lane-cell"><div class="mini-card vehicle"><strong>출고 처리</strong>인도증·보험·등록 확인</div></div>
             <div class="lane-cell"><div class="mini-card"><strong>정상 대여관리</strong>문의·사고·과태료·민원</div></div>
             <div class="lane-cell"><div class="mini-card vehicle"><strong>만기 관리</strong>연장 의사·반납예약·회수</div></div>
-            <div class="lane-cell"><div class="mini-card alert"><strong>초기 연체관리</strong>독촉·분할협의·이관</div></div>
+            <div class="lane-cell"><div class="mini-card alert"><strong>약정 기준 연체관리</strong>기준 확인·초과 조치·이관</div></div>
           </div>
           <div class="lane legal" role="row">
             <div class="lane-name" role="rowheader"><i></i>법무팀<br /><small>(협업 참고·채권관리)</small></div>
@@ -690,11 +711,45 @@
     </section>
 
     <section id="exceptions" class="section" aria-labelledby="exception-title">
-      <div class="section-head"><h2 id="exception-title" class="section-title">협업 참고 · 정상 흐름에서 벗어날 때</h2><p class="section-note">신규입사자는 상황을 기록하고 담당 협업부서로 정확히 이관합니다.</p></div>
+      <div class="section-head"><h2 id="exception-title" class="section-title">협업 참고 · 정상 흐름에서 벗어날 때</h2><p class="section-note">연체는 약정 기준을 확인하고, 기준 초과 시 담당 협업부서로 정확히 이관합니다.</p></div>
       <div class="exception-grid">
-        <article class="exception"><h3><span>₩</span> 연체 발생</h3><p>경영관리 수납 확인 → 고객관리팀 초기 연락·납부협의 → 장기·반복 연체는 법무팀/채권관리 이관 → 미수금·연락이력·약속일 기록</p></article>
+        <article class="exception"><h3><span>₩</span> 연체 발생</h3><p>경영관리 수납 확인 → 약정서·계약서와 에이전트별 연체 조건 확인 → 정해진 기간 초과 여부 판단 → 초과 시 해당 조치 실행 → 연락·조치·약속일 기록</p></article>
         <article class="exception"><h3><span>↗</span> 사고·민원</h3><p>고객관리팀이 사실관계·사진·수리견적을 접수 → 경영관리 비용 확인 → 계약·특약·손해 범위가 쟁점이면 법무팀 자문</p></article>
         <article class="exception"><h3><span>↺</span> 미반납·계약해지</h3><p>고객관리팀이 만기·반납·연락내역을 확인 → 영업팀 고객 협조 → 회수 지연·불응 시 법무팀이 내용증명 등 대응 검토</p></article>
+      </div>
+      <div id="delinquency" class="delinq-panel">
+        <div class="delinq-head">
+          <h3>연체 발생 시 약정 기준에 따른 단계별 조치</h3>
+          <p>일수와 조치 기준은 계약·약정서 및 에이전트별 조건을 우선 적용합니다.</p>
+        </div>
+        <div class="delinq-grid">
+          <div class="delinq-step">
+            <span>연체 발생</span>
+            <strong>약정 조건 확인</strong>
+            <p>입금 미확인 시 계약번호·에이전트·약정서·연체일수와 기준일을 확인합니다.</p>
+          </div>
+          <div class="delinq-step action">
+            <span>예: 약정 기준 3일 초과</span>
+            <strong>시동제어</strong>
+            <p>해당 계약에 시동제어 조항이 있고 기준일을 초과한 경우 정해진 절차에 따라 조치합니다.</p>
+          </div>
+          <div class="delinq-step termination">
+            <span>예: 약정 기준 7일 초과</span>
+            <strong>계약해지 가능 검토</strong>
+            <p>해지 조건·통지·회수·정산 기준을 확인한 뒤 계약해지 가능 여부와 후속 조치를 검토합니다.</p>
+          </div>
+          <div class="delinq-step">
+            <span>에이전트별 조건 상이</span>
+            <strong>해당 약정 우선 적용</strong>
+            <p>3일·7일을 일률적으로 적용하지 않고 에이전트별 계약조건과 내부 승인 기준을 적용합니다.</p>
+          </div>
+        </div>
+        <div class="delinq-note"><strong>중요</strong> 3일·7일은 예시 기준입니다. 실제 시동제어·계약해지·차량회수 조치는 해당 계약서/약정서와 에이전트별 조건을 확인한 뒤 정해진 기간을 초과한 경우에만 실행합니다.</div>
+        <ol class="delinq-rules">
+          <li>연체일수의 기준일(납부기한, 영업일/달력일 등)을 약정서에서 확인합니다.</li>
+          <li>조치 전 고객·에이전트 연락, 납부 약속, 안내·통지 이력을 남깁니다.</li>
+          <li>조치 후에도 미수금·차량 상태·회수·법무 이관 여부를 계약번호 기준으로 기록합니다.</li>
+        </ol>
       </div>
     </section>
 

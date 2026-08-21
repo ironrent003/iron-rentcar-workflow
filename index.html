@@ -92,6 +92,10 @@
     .company-overview { display: grid; grid-template-columns: minmax(0, 1.04fr) minmax(0, .96fr); gap: 13px; }
     .company-card { padding: 21px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 8px 25px rgba(30,61,112,.04); }
     .company-card.full { grid-column: 1 / -1; }
+    .scope-banner { display: flex; align-items: center; flex-wrap: wrap; gap: 9px 14px; margin-bottom: 13px; padding: 14px 17px; color: #24426d; background: linear-gradient(100deg, #eaf2ff, #f5f9ff); border: 1px solid #c9dbf6; border-left: 4px solid var(--blue); border-radius: 12px; }
+    .scope-banner strong { color: var(--navy); font-size: 13px; }
+    .scope-banner b { padding: 5px 9px; color: #fff; background: var(--blue); border-radius: 99px; font-size: 11px; }
+    .scope-banner span { color: var(--muted); font-size: 11px; }
     .company-kicker { margin: 0 0 7px; color: var(--blue); font-size: 10px; font-weight: 900; letter-spacing: .12em; }
     .company-card h3 { margin: 0 0 9px; font-size: 18px; letter-spacing: -.05em; }
     .company-card p { margin: 0; color: var(--muted); font-size: 12px; }
@@ -104,8 +108,11 @@
     .company-facts div { padding: 9px 10px; background: #f8faff; border-radius: 8px; }
     .company-facts dt { color: var(--muted); font-size: 9px; font-weight: 900; }
     .company-facts dd { margin: 2px 0 0; color: var(--ink); font-size: 11px; font-weight: 800; }
-    .business-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 7px; margin-top: 12px; }
+    .business-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 7px; margin-top: 12px; }
     .business-item { min-height: 65px; padding: 10px; border: 1px solid var(--line); border-radius: 9px; background: #fff; }
+    .business-item.core { border-color: #bcd4fa; background: #f5f9ff; }
+    .business-item.core b { color: var(--blue); }
+    .business-item.reference { opacity: .75; background: #fbfcfe; }
     .business-item b { display: block; margin-bottom: 3px; color: var(--navy); font-size: 11px; }
     .business-item span { color: var(--muted); font-size: 10px; }
     .org-strip { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 12px; }
@@ -359,14 +366,14 @@
     <section class="hero" aria-labelledby="page-title">
       <div class="eyebrow">COMPANY-WIDE WORKFLOW</div>
       <h1 id="page-title">고객이 문의한 순간부터<br />차량이 다시 자산이 될 때까지</h1>
-      <p>“이동의 자유를 넘어, 새로운 모빌리티 경험을 디자인합니다.” 아이언렌트카의 신차·중고차 장기렌트와 월렌트 업무를 고객 흐름, 차량 흐름, 금액 흐름으로 나누어 한눈에 이해하는 신규입사자용 전사 업무흐름도입니다.</p>
+      <p>“이동의 자유를 넘어, 새로운 모빌리티 경험을 디자인합니다.” 신규입사자 교육의 실제 업무인 구독·렌탈·차량관리를 고객 흐름, 차량 흐름, 금액 흐름으로 나누어 이해하는 교육용 업무흐름도입니다.</p>
       <div class="hero-tags">
         <span class="hero-tag">당신의 여정이 시작되는 곳</span>
-        <span class="hero-tag">신차 장기렌트</span>
-        <span class="hero-tag">중고차 장기렌트</span>
-        <span class="hero-tag">월렌트</span>
-        <span class="hero-tag">리스렌탈 · 사고대차</span>
-        <span class="hero-tag">차량관리 · 주차장 · 중고차 수출</span>
+        <span class="hero-tag">교육 핵심 · 구독(중고차 한정)</span>
+        <span class="hero-tag">교육 핵심 · 렌탈(신차·중고차)</span>
+        <span class="hero-tag">교육 핵심 · 차량관리(주차장)</span>
+        <span class="hero-tag">회사 참고 · 사고대차(강북지점 한정)</span>
+        <span class="hero-tag">회사 참고 · 중고차 수출</span>
         <span class="hero-tag">에이전트 채널</span>
         <span class="hero-tag">연장 / 매각 의사결정</span>
       </div>
@@ -375,8 +382,9 @@
     <section id="company" class="section" aria-labelledby="company-title">
       <div class="section-head">
         <h2 id="company-title" class="section-title">회사소개서로 이해하는 아이언렌트카</h2>
-        <p class="section-note">전사 흐름을 보기 전에, 우리가 어떤 회사인지 먼저 확인합니다.</p>
+        <p class="section-note">회사 전체 사업영역과 신규입사자 교육 범위를 구분해 확인합니다.</p>
       </div>
+      <div class="scope-banner"><strong>신규입사자 교육 핵심 범위</strong><b>구독</b><b>렌탈</b><b>차량관리</b><span>사고대차·중고차 수출·법무·채권은 회사 및 협업 참고 영역입니다.</span></div>
       <div class="company-overview">
         <article class="company-card">
           <p class="company-kicker">MISSION & VALUES</p>
@@ -400,21 +408,20 @@
             <div><dt>본사</dt><dd>서울 강남구 테헤란로 113길 15, 3층</dd></div>
             <div><dt>대표번호</dt><dd>02-568-8320</dd></div>
             <div><dt>조직</dt><dd>본사 + 강북지점 + 용인지점</dd></div>
-            <div><dt>영업·관리</dt><dd>이상엽 이사</dd></div>
           </dl>
           <div class="callout"><strong>신규입사자 포인트</strong> 본사 업무는 영업·고객관리·차량관리·경영지원·법무·채권이 연결되고, 강북·용인 지점은 차량과 고객 접점을 확장합니다.</div>
         </article>
         <article class="company-card full">
           <p class="company-kicker">BUSINESS PORTFOLIO</p>
-          <h3>주요 사업영역</h3>
+          <h3>회사 전체 사업영역 · 교육 핵심 표시</h3>
           <div class="business-grid">
-            <div class="business-item"><b>장·단기렌트</b><span>신차·중고차 장기렌트와 월렌트</span></div>
-            <div class="business-item"><b>리스렌탈</b><span>차량 이용 목적에 맞춘 렌탈</span></div>
-            <div class="business-item"><b>사고대차</b><span>사고관리·대차·수리 연계</span></div>
-            <div class="business-item"><b>차량관리</b><span>정비·소모품 교체·순회정비</span></div>
-            <div class="business-item"><b>주차장 운영</b><span>차량 보관과 운영 기반</span></div>
-            <div class="business-item"><b>중고차 수출</b><span>반납차량의 경매·수출·매각</span></div>
+            <div class="business-item core"><b>구독</b><span>중고차 한정 구독 상품</span></div>
+            <div class="business-item core"><b>렌탈</b><span>신차·중고차 렌탈</span></div>
+            <div class="business-item core"><b>차량관리</b><span>주차장 중심 차량 보관·관리</span></div>
+            <div class="business-item reference"><b>사고대차</b><span>강북지점 한정 사고대차</span></div>
+            <div class="business-item reference"><b>중고차 수출</b><span>반납차량의 경매·수출·매각</span></div>
           </div>
+          <div class="callout"><strong>교육 범위 구분</strong> 신규입사자가 실제로 배우고 수행할 핵심 업무는 구독·렌탈·차량관리입니다. 사고대차·중고차 수출은 회사 전체 사업 이해와 부서 협업을 위한 참고 영역으로만 표시합니다.</div>
           <div class="org-strip">
             <div class="org-unit"><strong>경영지원·경리</strong><span>자금·수납·정산·회계·자산관리</span></div>
             <div class="org-unit"><strong>고객관리·차량관리</strong><span>고객 접점·출고·이용관리·정비·반납</span></div>
@@ -449,8 +456,8 @@
 
     <section class="section" aria-labelledby="master-title">
       <div class="section-head">
-        <h2 id="master-title" class="section-title">전체 흐름 한눈에 보기</h2>
-        <p class="section-note">각 단계의 담당 부서와 상세 카드는 아래에서 연결됩니다.</p>
+        <h2 id="master-title" class="section-title">교육 업무 흐름 한눈에 보기</h2>
+        <p class="section-note">핵심 업무는 구독·렌탈·차량관리이며, 협업부서는 참고로 연결됩니다.</p>
       </div>
       <div class="legend" aria-label="흐름 범례">
         <span class="legend-label">FLOW LEGEND</span>
@@ -466,7 +473,7 @@
         <article class="master-step"><div class="step-no">04</div><h3>출고·대여 개시</h3><p>보험·등록·인도<br /><strong>대여 시작</strong></p></article>
         <article class="master-step"><div class="step-no">05</div><h3>이용 중 관리</h3><p>납부·문의·사고<br />변경·연장</p></article>
         <article class="master-step"><div class="step-no">06</div><h3>만기·반납·정산</h3><p>차량 회수<br />금액 마감·재상품화</p></article>
-        <article class="master-step"><div class="step-no">07</div><h3>연체·법무·채권</h3><p>초기관리 → 회수<br />법적 절차</p></article>
+        <article class="master-step"><div class="step-no">07</div><h3>협업 참고</h3><p>연체·법무·채권<br />이관 및 회수</p></article>
       </div>
     </section>
 
@@ -504,7 +511,7 @@
     </section>
 
     <section id="swimlane" class="section section-break" aria-labelledby="swim-title">
-      <div class="section-head"><h2 id="swim-title" class="section-title">부서별 전사 업무흐름 · 스윔레인</h2><p class="section-note">가로로 스크롤하면 단계별 인수인계 지점을 확인할 수 있습니다.</p></div>
+      <div class="section-head"><h2 id="swim-title" class="section-title">부서별 업무흐름 · 스윔레인</h2><p class="section-note">구독·렌탈·차량관리 업무와 협업부서의 인수인계 지점을 확인합니다.</p></div>
       <div class="swim-wrap">
         <div class="swim" role="table" aria-label="부서별 전사 업무흐름">
           <div class="swim-head" role="row">
@@ -551,7 +558,7 @@
             <div class="lane-cell"><div class="mini-card alert"><strong>초기 연체관리</strong>독촉·분할협의·이관</div></div>
           </div>
           <div class="lane legal" role="row">
-            <div class="lane-name" role="rowheader"><i></i>법무팀<br /><small>(채권관리 포함)</small></div>
+            <div class="lane-name" role="rowheader"><i></i>법무팀<br /><small>(협업 참고·채권관리)</small></div>
             <div class="lane-cell"><div class="mini-card dim">특이계약 자문</div></div>
             <div class="lane-cell"><div class="mini-card dim">계약 리스크 검토</div></div>
             <div class="lane-cell"><div class="mini-card dim">채권보전 기준</div></div>
@@ -639,14 +646,14 @@
             <tr><td><span class="role-pill">영업팀</span></td><td>고객·에이전트 상담, 견적·조건 협의, 계약 진행, 즉시출고 차량의 에이전트 배포</td><td>고객정보 · 계약조건 · 차량정보 · 출고예정일 · 특약 · 에이전트 수수료</td><td>문의 접수 / 계약 확정 / 차량 배정 / 출고 전</td></tr>
             <tr><td><span class="role-pill amber">경영관리</span></td><td>자금·수익성 검토, 차량 매입·등록·보험, 자산·차령·수납·정산·회계처리</td><td>계약금액 · 보증금·선납금 · 월 대여료 · 매입비 · 매각대금 · 채권잔액</td><td>차량 확보 / 월 수납 / 만기 정산 / 차령연한 도래</td></tr>
             <tr><td><span class="role-pill green">고객관리팀</span></td><td>출고·대여 중 고객관리, 납부·사고·과태료·민원, 만기·반납·초기 연체관리</td><td>차량번호 · 출고일 · 계약 만기일 · 고객 연장 의사 · 반납일정 · 차량상태 · 문의이력</td><td>출고 완료 / 이용 중 이슈 / 만기 90·60·30일 전 / 연체 발생</td></tr>
-            <tr><td><span class="role-pill red">법무팀<br />채권관리</span></td><td>장기연체·미반납·계약해지·분쟁 대응, 채권 회수 및 법적 절차 검토</td><td>계약서·특약 · 미수금·연체일수 · 연락이력 · 차량위치·상태 · 회수 시도 내역</td><td>고객관리팀 이관 / 회수 불응 / 분쟁·손해 발생 / 법적 조치 검토</td></tr>
+            <tr><td><span class="role-pill red">법무팀<br />협업 참고</span></td><td>장기연체·미반납·계약해지·분쟁 대응, 채권 회수 및 법적 절차 검토</td><td>계약서·특약 · 미수금·연체일수 · 연락이력 · 차량위치·상태 · 회수 시도 내역</td><td>고객관리팀 이관 / 회수 불응 / 분쟁·손해 발생 / 법적 조치 검토</td></tr>
           </tbody>
         </table>
       </div>
     </section>
 
     <section id="exceptions" class="section" aria-labelledby="exception-title">
-      <div class="section-head"><h2 id="exception-title" class="section-title">정상 흐름에서 벗어날 때</h2><p class="section-note">초기에 기록하고, 기준을 정해 이관하면 문제를 줄일 수 있습니다.</p></div>
+      <div class="section-head"><h2 id="exception-title" class="section-title">협업 참고 · 정상 흐름에서 벗어날 때</h2><p class="section-note">신규입사자는 상황을 기록하고 담당 협업부서로 정확히 이관합니다.</p></div>
       <div class="exception-grid">
         <article class="exception"><h3><span>₩</span> 연체 발생</h3><p>경영관리 수납 확인 → 고객관리팀 초기 연락·납부협의 → 장기·반복 연체는 법무팀/채권관리 이관 → 미수금·연락이력·약속일 기록</p></article>
         <article class="exception"><h3><span>↗</span> 사고·민원</h3><p>고객관리팀이 사실관계·사진·수리견적을 접수 → 경영관리 비용 확인 → 계약·특약·손해 범위가 쟁점이면 법무팀 자문</p></article>

@@ -64,9 +64,16 @@
       color: var(--navy); background: #fff; font-size: 17px; font-weight: 900;
     }
     .brand small { display: block; margin-top: -2px; color: #aebcda; font-size: 10px; font-weight: 500; letter-spacing: .08em; }
-    .topnav { display: flex; align-items: center; gap: 5px; overflow: auto; white-space: nowrap; }
-    .topnav a { padding: 7px 10px; color: #cfdaef; border-radius: 8px; font-size: 12px; font-weight: 700; }
-    .topnav a:hover, .topnav a:focus { color: #fff; background: rgba(255,255,255,.11); }
+    .topnav { display: flex; align-items: center; gap: 5px; white-space: nowrap; }
+    .nav-group { position: relative; }
+    .tab-button { display: inline-flex; align-items: center; gap: 6px; border: 0; padding: 7px 10px; color: #cfdaef; background: transparent; border-radius: 8px; font-size: 12px; font-weight: 700; }
+    .tab-button span { color: #8ea4c8; font-size: 11px; transition: transform .18s ease; }
+    .tab-button:hover, .tab-button:focus-visible, .nav-group.open .tab-button { color: #fff; background: rgba(255,255,255,.12); outline: none; }
+    .nav-group.open .tab-button span { transform: rotate(180deg); }
+    .submenu { position: absolute; top: calc(100% + 8px); left: 0; z-index: 30; display: none; min-width: 170px; padding: 7px; background: #fff; border: 1px solid #dbe5f3; border-radius: 11px; box-shadow: 0 16px 32px rgba(7, 30, 73, .2); }
+    .nav-group.open .submenu { display: grid; gap: 2px; }
+    .submenu a { display: block; padding: 8px 10px; color: var(--ink); border-radius: 7px; font-size: 11px; font-weight: 800; }
+    .submenu a:hover, .submenu a:focus-visible { color: var(--blue); background: var(--blue-soft); outline: none; }
     .print-btn {
       border: 1px solid rgba(255,255,255,.27); border-radius: 9px; padding: 8px 12px;
       color: #fff; background: transparent; font-size: 12px; font-weight: 800; white-space: nowrap;
@@ -283,7 +290,9 @@
     .footer strong { color: var(--navy); }
 
     @media (max-width: 950px) {
-      .topnav { display: none; }
+      .topbar { flex-wrap: wrap; }
+      .topnav { order: 3; width: 100%; overflow-x: auto; padding-top: 2px; }
+      .submenu { position: fixed; top: auto; margin-top: 4px; }
       .principles, .flow-grid, .exception-grid { grid-template-columns: 1fr; }
       .two-col { grid-template-columns: 1fr; }
       .checklist { grid-template-columns: repeat(2, 1fr); }
@@ -321,7 +330,7 @@
       .topbar { position: static; padding: 0 0 8px; background: #fff; color: var(--navy); border: 0; }
       .brand-mark { color: #fff; background: var(--navy); }
       .brand small { color: var(--muted); }
-      .topnav, .print-btn { display: none; }
+      .topnav, .print-btn, .submenu { display: none !important; }
       .shell { width: 100%; }
       .hero { margin: 8px 0 12px; padding: 22px 28px; color: #fff; box-shadow: none; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
       .hero h1 { font-size: 32px; }
@@ -352,12 +361,40 @@
       <span>아이언렌트카<small>NEW HIRE PLAYBOOK · 01</small></span>
     </a>
     <nav class="topnav" aria-label="문서 바로가기">
-      <a href="#company">회사소개</a>
-      <a href="#overview">전체 조망</a>
-      <a href="#swimlane">스윔레인</a>
-      <a href="#vehicle">차량 관리</a>
-      <a href="#roles">역할·공유정보</a>
-      <a href="#exceptions">예외 처리</a>
+      <div class="nav-group">
+        <button class="tab-button" type="button" aria-expanded="false">회사소개 <span aria-hidden="true">⌄</span></button>
+        <div class="submenu" role="menu">
+          <a href="#company" role="menuitem">회사 개요</a>
+          <a href="#profile" role="menuitem">회사 기본정보</a>
+          <a href="#business" role="menuitem">사업영역</a>
+          <a href="#history" role="menuitem">주요 연혁</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button class="tab-button" type="button" aria-expanded="false">교육 흐름 <span aria-hidden="true">⌄</span></button>
+        <div class="submenu" role="menu">
+          <a href="#overview" role="menuitem">교육 기준</a>
+          <a href="#master-title" role="menuitem">전체 흐름</a>
+          <a href="#three-flow-title" role="menuitem">고객·차량·금액 흐름</a>
+          <a href="#check-title" role="menuitem">인수 체크</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button class="tab-button" type="button" aria-expanded="false">차량관리 <span aria-hidden="true">⌄</span></button>
+        <div class="submenu" role="menu">
+          <a href="#vehicle" role="menuitem">차량정보·사진</a>
+          <a href="#vehicle" role="menuitem">차량 상태값</a>
+          <a href="#age-title" role="menuitem">차령연한</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button class="tab-button" type="button" aria-expanded="false">역할·협업 <span aria-hidden="true">⌄</span></button>
+        <div class="submenu" role="menu">
+          <a href="#swimlane" role="menuitem">부서별 스윔레인</a>
+          <a href="#roles" role="menuitem">역할·공유정보</a>
+          <a href="#exceptions" role="menuitem">협업 참고</a>
+        </div>
+      </div>
     </nav>
     <button class="print-btn" onclick="window.print()">인쇄 / PDF 저장</button>
   </header>
@@ -386,7 +423,7 @@
       </div>
       <div class="scope-banner"><strong>신규입사자 교육 핵심 범위</strong><b>구독</b><b>렌탈</b><b>차량관리</b><span>사고대차·중고차 수출·법무·채권은 회사 및 협업 참고 영역입니다.</span></div>
       <div class="company-overview">
-        <article class="company-card">
+        <article id="profile" class="company-card">
           <p class="company-kicker">MISSION & VALUES</p>
           <h3>이동의 자유를 넘어, 새로운 모빌리티 경험을 디자인합니다.</h3>
           <p class="mission-quote">“당신의 여정이 시작되는 곳”</p>
@@ -411,7 +448,7 @@
           </dl>
           <div class="callout"><strong>신규입사자 포인트</strong> 본사 업무는 영업·고객관리·차량관리·경영지원·법무·채권이 연결되고, 강북·용인 지점은 차량과 고객 접점을 확장합니다.</div>
         </article>
-        <article class="company-card full">
+        <article id="business" class="company-card full">
           <p class="company-kicker">BUSINESS PORTFOLIO</p>
           <h3>회사 전체 사업영역 · 교육 핵심 표시</h3>
           <div class="business-grid">
@@ -428,7 +465,7 @@
             <div class="org-unit"><strong>영업·지점·법무</strong><span>영업1·2팀·강북·용인·소송·채권관리</span></div>
           </div>
         </article>
-        <article class="company-card full">
+        <article id="history" class="company-card full">
           <p class="company-kicker">MILESTONES</p>
           <h3>주요 연혁</h3>
           <div class="history">
@@ -675,15 +712,36 @@
   </main>
 
   <script>
-    // 현재 문서에서 인쇄 버튼을 바로 사용할 수 있도록 단순한 동작만 제공합니다.
-    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    // 상단 탭의 서브 메뉴를 열고 닫습니다.
+    var navGroups = document.querySelectorAll('.nav-group');
+    function closeMenus() {
+      navGroups.forEach(function (group) {
+        group.classList.remove('open');
+        var button = group.querySelector('.tab-button');
+        if (button) button.setAttribute('aria-expanded', 'false');
+      });
+    }
+    navGroups.forEach(function (group) {
+      var button = group.querySelector('.tab-button');
+      button.addEventListener('click', function (event) {
+        event.stopPropagation();
+        var shouldOpen = !group.classList.contains('open');
+        closeMenus();
+        group.classList.toggle('open', shouldOpen);
+        button.setAttribute('aria-expanded', String(shouldOpen));
+      });
+    });
+
+    document.querySelectorAll('.submenu a[href^="#"], .brand[href^="#"]').forEach(function (link) {
       link.addEventListener('click', function (event) {
         var target = document.querySelector(link.getAttribute('href'));
         if (!target) return;
         event.preventDefault();
+        closeMenus();
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
+    document.addEventListener('click', closeMenus);
   </script>
 </body>
 </html>

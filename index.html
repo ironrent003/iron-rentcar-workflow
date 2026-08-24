@@ -95,6 +95,14 @@
     .hero p { max-width: 710px; margin: 0; color: #c5d3eb; font-size: 15px; }
     .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 25px; }
     .hero-tag { padding: 7px 11px; color: #dce9ff; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.16); border-radius: 99px; font-size: 12px; font-weight: 800; }
+    .hero-friends { display: flex; align-items: center; flex-wrap: wrap; gap: 13px; margin-top: 18px; }
+    .hero-friend { display: flex; align-items: center; gap: 7px; color: #dce9ff; font-size: 10px; font-weight: 800; }
+    .hero-friend small { display: block; color: #9fb6da; font-size: 9px; font-weight: 500; }
+    .teacher-mascot { position: absolute; right: clamp(28px, 7vw, 105px); bottom: -12px; z-index: 1; width: min(250px, 22vw); max-height: 410px; object-fit: contain; object-position: bottom; filter: drop-shadow(0 16px 18px rgba(0,0,0,.22)); pointer-events: none; }
+    .teacher-bubble { position: absolute; right: clamp(18px, 5vw, 76px); top: 34px; z-index: 3; padding: 9px 13px; color: var(--navy); background: #fff; border-radius: 13px 13px 4px 13px; box-shadow: 0 9px 20px rgba(0,0,0,.17); font-size: 11px; font-weight: 900; transform: rotate(2deg); }
+    .teacher-bubble::after { content: ""; position: absolute; right: 18px; bottom: -7px; width: 12px; height: 12px; background: #fff; transform: skewY(-28deg) rotate(18deg); }
+    .teacher-bubble small { display: block; margin-top: 2px; color: var(--blue); font-size: 9px; font-weight: 700; }
+    .hero > .eyebrow, .hero > h1, .hero > p, .hero > .hero-tags, .hero > .hero-friends { position: relative; z-index: 2; }
 
     .company-overview { display: grid; grid-template-columns: minmax(0, 1.04fr) minmax(0, .96fr); gap: 13px; }
     .company-card { padding: 21px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 8px 25px rgba(30,61,112,.04); }
@@ -145,6 +153,22 @@
     .section-title::before { content: ""; width: 7px; height: 26px; border-radius: 99px; background: var(--blue); }
     .section-note { margin: 0; color: var(--muted); font-size: 12px; }
 
+    .mascot { position: relative; display: inline-grid; place-items: center; flex: 0 0 auto; width: 37px; height: 37px; color: var(--navy); background: #fff; border: 2px solid #fff; border-radius: 13px 13px 13px 5px; box-shadow: 0 5px 12px rgba(30,61,112,.12); font-size: 20px; line-height: 1; transform: rotate(-4deg); }
+    .mascot::after { content: ""; position: absolute; right: -3px; bottom: -3px; width: 8px; height: 8px; background: inherit; border-right: 2px solid #fff; border-bottom: 2px solid #fff; transform: skewY(-28deg); }
+    .mascot.small { width: 29px; height: 29px; border-radius: 10px 10px 10px 4px; font-size: 15px; }
+    .mascot.blue { background: #eaf2ff; }
+    .mascot.cyan { background: #e9fbfd; }
+    .mascot.green { background: #eaf9f2; }
+    .mascot.amber { background: #fff7e8; }
+    .mascot.purple { background: #f2edff; }
+    .mascot.red { background: #fff0f0; }
+    .card-kicker { display: flex; align-items: center; gap: 9px; min-height: 37px; }
+    .card-kicker .num { margin: 0; }
+    .step-mascot { position: absolute; top: 0; right: 9px; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 10px 10px 10px 4px; background: #f8faff; font-size: 16px; transform: rotate(4deg); }
+    .item-mascot { display: grid; place-items: center; width: 27px; height: 27px; margin-bottom: 7px; color: var(--navy) !important; background: #fff !important; border-radius: 9px; font-size: 15px !important; line-height: 1; }
+    .check-mascot { display: block; width: max-content; margin-bottom: 6px; font-size: 20px; transform: rotate(-5deg); }
+    .hero-friend .mascot { width: 31px; height: 31px; border-color: rgba(255,255,255,.2); box-shadow: 0 4px 12px rgba(0,0,0,.2); font-size: 16px; }
+
     .principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
     .principle { min-height: 136px; padding: 20px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 8px 25px rgba(30,61,112,.04); }
     .principle .num { color: var(--blue); font-size: 12px; font-weight: 900; }
@@ -179,10 +203,10 @@
     .flow-card.vehicle-flow { border-top: 4px solid var(--green); }
     .flow-card.money-flow { border-top: 4px solid var(--amber); }
     .flow-card h3 { display: flex; align-items: center; gap: 8px; margin: 0 0 13px; font-size: 16px; letter-spacing: -.04em; }
-    .flow-card h3 span { display: inline-grid; place-items: center; width: 25px; height: 25px; border-radius: 8px; font-size: 12px; }
-    .customer-flow h3 span { color: var(--cyan); background: var(--cyan-soft); }
-    .vehicle-flow h3 span { color: var(--green); background: var(--green-soft); }
-    .money-flow h3 span { color: var(--amber); background: var(--amber-soft); }
+    .flow-card h3 .flow-icon { display: inline-grid; place-items: center; width: 25px; height: 25px; border-radius: 8px; font-size: 12px; }
+    .customer-flow h3 .flow-icon { color: var(--cyan); background: var(--cyan-soft); }
+    .vehicle-flow h3 .flow-icon { color: var(--green); background: var(--green-soft); }
+    .money-flow h3 .flow-icon { color: var(--amber); background: var(--amber-soft); }
     .v-flow { display: flex; flex-direction: column; gap: 7px; }
     .v-node { padding: 9px 11px; border: 1px solid var(--line); border-radius: 10px; background: #fbfcfe; font-size: 12px; font-weight: 800; }
     .v-node small { display: block; margin-top: 2px; color: var(--muted); font-size: 10px; font-weight: 500; }
@@ -280,6 +304,7 @@
     .exception h3 { display: flex; align-items: center; gap: 8px; margin: 0 0 8px; font-size: 14px; letter-spacing: -.04em; }
     .exception h3 span { display: grid; place-items: center; width: 23px; height: 23px; color: var(--red); background: var(--red-soft); border-radius: 7px; font-size: 11px; }
     .exception p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.65; }
+    .exception h3 .mascot { width: 29px; height: 29px; color: var(--navy); border-radius: 10px 10px 10px 4px; font-size: 15px; }
     .delinq-panel { margin-top: 12px; padding: 21px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 8px 25px rgba(30,61,112,.04); }
     .delinq-head { display: flex; align-items: end; justify-content: space-between; gap: 15px; margin-bottom: 13px; }
     .delinq-head h3 { margin: 0; font-size: 17px; letter-spacing: -.04em; }
@@ -293,6 +318,8 @@
     .delinq-step.action span { color: var(--red); background: #fff; }
     .delinq-step.termination { border-color: #efd8a9; background: var(--amber-soft); }
     .delinq-step.termination span { color: var(--amber); background: #fff; }
+    .delinq-step .step-mascot { display: grid; padding: 0; color: var(--navy); background: #f8faff; border-radius: 10px 10px 10px 4px; font-size: 16px; }
+    .delinq-step.action .step-mascot, .delinq-step.termination .step-mascot { background: #fff; }
     .delinq-note { margin-top: 12px; padding: 10px 12px; color: #365073; background: var(--blue-soft); border-left: 3px solid var(--blue); border-radius: 7px; font-size: 11px; line-height: 1.6; }
     .delinq-note strong { color: var(--navy); }
     .delinq-rules { display: grid; gap: 6px; margin: 12px 0 0; padding-left: 18px; color: var(--muted); font-size: 11px; line-height: 1.55; }
@@ -311,6 +338,9 @@
       .submenu { position: fixed; top: auto; margin-top: 4px; }
       .principles, .flow-grid, .exception-grid { grid-template-columns: 1fr; }
       .delinq-grid { grid-template-columns: repeat(2, 1fr); }
+      .teacher-mascot { right: 16px; width: 175px; }
+      .teacher-bubble { right: 16px; top: 24px; }
+      .hero h1, .hero p { max-width: 68%; }
       .two-col { grid-template-columns: 1fr; }
       .checklist { grid-template-columns: repeat(2, 1fr); }
       .company-overview { grid-template-columns: 1fr; }
@@ -323,6 +353,10 @@
       .topbar { padding-inline: 13px; }
       .hero { margin-top: 14px; border-radius: 18px; padding: 25px 20px; }
       .hero h1 { font-size: 31px; }
+      .hero { padding-bottom: 155px; }
+      .hero h1, .hero p { max-width: 100%; }
+      .teacher-mascot { right: calc(50% - 66px); bottom: -9px; width: 132px; }
+      .teacher-bubble { top: auto; right: 14px; bottom: 132px; font-size: 10px; }
       .section { margin: 22px 0; }
       .section-head { display: block; }
       .section-note { margin-top: 5px; }
@@ -422,6 +456,8 @@
 
   <main id="top" class="shell">
     <section class="hero" aria-labelledby="page-title">
+      <img class="teacher-mascot" src="iron-rentcar-teacher-female.png" alt="업무 흐름을 안내하는 귀여운 여자 선생님 캐릭터" />
+      <div class="teacher-bubble">선생님이 알려드려요!<small>업무 흐름을 함께 따라가 보세요</small></div>
       <div class="eyebrow">COMPANY-WIDE WORKFLOW</div>
       <h1 id="page-title">고객이 문의한 순간부터<br />차량이 다시 자산이 될 때까지</h1>
       <p>“이동의 자유를 넘어, 새로운 모빌리티 경험을 디자인합니다.” 신규입사자 교육의 실제 업무인 구독·렌탈·차량관리를 고객 흐름, 차량 흐름, 금액 흐름으로 나누어 이해하는 교육용 업무흐름도입니다.</p>
@@ -434,6 +470,11 @@
         <span class="hero-tag">회사 참고 · 중고차 수출</span>
         <span class="hero-tag">에이전트 채널</span>
         <span class="hero-tag">연장 / 매각 의사결정</span>
+      </div>
+      <div class="hero-friends" aria-label="업무 도우미 캐릭터">
+        <div class="hero-friend"><span class="mascot cyan" aria-hidden="true">🧸</span><span>몽이<small>고객 흐름 도우미</small></span></div>
+        <div class="hero-friend"><span class="mascot green" aria-hidden="true">🚙</span><span>카롱<small>차량 흐름 도우미</small></span></div>
+        <div class="hero-friend"><span class="mascot amber" aria-hidden="true">💰</span><span>토리<small>금액 흐름 도우미</small></span></div>
       </div>
     </section>
 
@@ -473,17 +514,17 @@
           <p class="company-kicker">BUSINESS PORTFOLIO</p>
           <h3>회사 전체 사업영역 · 교육 핵심 표시</h3>
           <div class="business-grid">
-            <div class="business-item core"><b>구독</b><span>중고차 한정 구독 상품</span></div>
-            <div class="business-item core"><b>렌탈</b><span>신차·중고차 렌탈</span></div>
-            <div class="business-item core"><b>차량관리</b><span>주차장 중심 차량 보관·관리</span></div>
-            <div class="business-item reference"><b>사고대차</b><span>강북지점 한정 사고대차</span></div>
-            <div class="business-item reference"><b>중고차 수출</b><span>반납차량의 경매·수출·매각</span></div>
+            <div class="business-item core"><span class="item-mascot" aria-hidden="true">🚗</span><b>구독</b><span>중고차 한정 구독 상품</span></div>
+            <div class="business-item core"><span class="item-mascot" aria-hidden="true">🔑</span><b>렌탈</b><span>신차·중고차 렌탈</span></div>
+            <div class="business-item core"><span class="item-mascot" aria-hidden="true">🧽</span><b>차량관리</b><span>주차장 중심 차량 보관·관리</span></div>
+            <div class="business-item reference"><span class="item-mascot" aria-hidden="true">🆘</span><b>사고대차</b><span>강북지점 한정 사고대차</span></div>
+            <div class="business-item reference"><span class="item-mascot" aria-hidden="true">🌏</span><b>중고차 수출</b><span>반납차량의 경매·수출·매각</span></div>
           </div>
           <div class="callout"><strong>교육 범위 구분</strong> 신규입사자가 실제로 배우고 수행할 핵심 업무는 구독·렌탈·차량관리입니다. 사고대차·중고차 수출은 회사 전체 사업 이해와 부서 협업을 위한 참고 영역으로만 표시합니다.</div>
           <div class="org-strip">
-            <div class="org-unit"><strong>경영지원·경리</strong><span>자금·수납·정산·회계·자산관리</span></div>
-            <div class="org-unit"><strong>고객관리·차량관리</strong><span>고객 접점·출고·이용관리·정비·반납</span></div>
-            <div class="org-unit"><strong>영업·지점·법무</strong><span>영업1·2팀·강북·용인·소송·채권관리</span></div>
+            <div class="org-unit"><strong>🧮 경영지원·경리</strong><span>자금·수납·정산·회계·자산관리</span></div>
+            <div class="org-unit"><strong>🧸 고객관리·차량관리</strong><span>고객 접점·출고·이용관리·정비·반납</span></div>
+            <div class="org-unit"><strong>📣 영업·지점·법무</strong><span>영업1·2팀·강북·용인·소송·채권관리</span></div>
           </div>
         </article>
         <article id="history" class="company-card full">
@@ -506,9 +547,9 @@
         <p class="section-note">회사소개서의 핵심가치를 신규입사자의 실제 업무 기준으로 연결합니다.</p>
       </div>
       <div class="principles">
-        <article class="principle"><div class="num">01 · 신뢰경영</div><h3>정직한 정보가 신뢰를 만든다</h3><p>고객·에이전트에게 실제 차량상태, 조건, 사고·수리이력을 정확히 공유하고 다음 부서에도 같은 정보를 전달합니다.</p></article>
-        <article class="principle"><div class="num">02 · 합리적 기준</div><h3>차량과 금액을 기준으로 판단한다</h3><p>차량의 상태·차령·수익성, 계약의 조건·수납·정산을 기준으로 배정·연장·매각 결정을 내립니다.</p></article>
-        <article class="principle"><div class="num">03 · 고객감동</div><h3>고객의 여정을 끝까지 관리한다</h3><p>상담·출고·이용 중 문의·사고·반납·연체까지 고객이 불편을 겪는 지점을 미리 확인하고 연결합니다.</p></article>
+        <article class="principle"><div class="card-kicker"><span class="mascot blue" aria-hidden="true">🤝</span><div class="num">01 · 신뢰경영</div></div><h3>정직한 정보가 신뢰를 만든다</h3><p>고객·에이전트에게 실제 차량상태, 조건, 사고·수리이력을 정확히 공유하고 다음 부서에도 같은 정보를 전달합니다.</p></article>
+        <article class="principle"><div class="card-kicker"><span class="mascot amber" aria-hidden="true">🧭</span><div class="num">02 · 합리적 기준</div></div><h3>차량과 금액을 기준으로 판단한다</h3><p>차량의 상태·차령·수익성, 계약의 조건·수납·정산을 기준으로 배정·연장·매각 결정을 내립니다.</p></article>
+        <article class="principle"><div class="card-kicker"><span class="mascot cyan" aria-hidden="true">💙</span><div class="num">03 · 고객감동</div></div><h3>고객의 여정을 끝까지 관리한다</h3><p>상담·출고·이용 중 문의·사고·반납·연체까지 고객이 불편을 겪는 지점을 미리 확인하고 연결합니다.</p></article>
       </div>
     </section>
 
@@ -525,13 +566,13 @@
         <span class="chip exception">연체·법무·채권 예외</span>
       </div>
       <div class="master-flow">
-        <article class="master-step"><div class="step-no">01</div><h3>문의·리드 접수</h3><p>고객 / 에이전트<br />상품유형 확인</p></article>
-        <article class="master-step"><div class="step-no">02</div><h3>견적·계약 심사</h3><p>조건 협의<br />필요서류·심사</p></article>
-        <article class="master-step"><div class="step-no">03</div><h3>차량 확보·배정</h3><p>보유차량 또는<br />신규 매입·발주</p></article>
-        <article class="master-step"><div class="step-no">04</div><h3>출고·대여 개시</h3><p>보험·등록·인도<br /><strong>대여 시작</strong></p></article>
-        <article class="master-step"><div class="step-no">05</div><h3>이용 중 관리</h3><p>납부·문의·사고<br />변경·연장</p></article>
-        <article class="master-step"><div class="step-no">06</div><h3>만기·반납·정산</h3><p>차량 회수<br />금액 마감·재상품화</p></article>
-        <article class="master-step"><div class="step-no">07</div><h3>협업 참고</h3><p>연체·법무·채권<br />이관 및 회수</p></article>
+        <article class="master-step"><span class="step-mascot" aria-hidden="true">💬</span><div class="step-no">01</div><h3>문의·리드 접수</h3><p>고객 / 에이전트<br />상품유형 확인</p></article>
+        <article class="master-step"><span class="step-mascot" aria-hidden="true">📝</span><div class="step-no">02</div><h3>견적·계약 심사</h3><p>조건 협의<br />필요서류·심사</p></article>
+        <article class="master-step"><span class="step-mascot" aria-hidden="true">🚙</span><div class="step-no">03</div><h3>차량 확보·배정</h3><p>보유차량 또는<br />신규 매입·발주</p></article>
+        <article class="master-step"><span class="step-mascot" aria-hidden="true">🎉</span><div class="step-no">04</div><h3>출고·대여 개시</h3><p>보험·등록·인도<br /><strong>대여 시작</strong></p></article>
+        <article class="master-step"><span class="step-mascot" aria-hidden="true">🧰</span><div class="step-no">05</div><h3>이용 중 관리</h3><p>납부·문의·사고<br />변경·연장</p></article>
+        <article class="master-step"><span class="step-mascot" aria-hidden="true">🔄</span><div class="step-no">06</div><h3>만기·반납·정산</h3><p>차량 회수<br />금액 마감·재상품화</p></article>
+        <article class="master-step"><span class="step-mascot" aria-hidden="true">🛡️</span><div class="step-no">07</div><h3>협업 참고</h3><p>연체·법무·채권<br />이관 및 회수</p></article>
       </div>
     </section>
 
@@ -539,7 +580,7 @@
       <div class="section-head"><h2 id="three-flow-title" class="section-title">3개의 흐름으로 읽기</h2><p class="section-note">세 흐름은 계약번호·차량번호·고객정보로 연결됩니다.</p></div>
       <div class="flow-grid">
         <article class="flow-card customer-flow">
-          <h3><span>人</span> 고객 흐름</h3>
+          <h3><span class="mascot small cyan" aria-hidden="true">🧸</span><span class="flow-icon">人</span> 고객 흐름</h3>
           <div class="v-flow">
             <div class="v-node">고객 / 에이전트 문의<small>니즈·예산·희망차량·출고일</small></div><div class="v-arrow">↓</div>
             <div class="v-node">상담·견적·심사<small>상품구분·조건·필요서류</small></div><div class="v-arrow">↓</div>
@@ -548,7 +589,7 @@
           </div>
         </article>
         <article class="flow-card vehicle-flow">
-          <h3><span>▣</span> 차량 흐름</h3>
+          <h3><span class="mascot small green" aria-hidden="true">🚙</span><span class="flow-icon">▣</span> 차량 흐름</h3>
           <div class="v-flow">
             <div class="v-node">보유 / 신규 확보<small>즉시출고 차량 또는 발주·매입</small></div><div class="v-arrow">↓</div>
             <div class="v-node">배정·등록·상품화<small>차량상태·사진·출고조건 확인</small></div><div class="v-arrow">↓</div>
@@ -557,7 +598,7 @@
           </div>
         </article>
         <article class="flow-card money-flow">
-          <h3><span>₩</span> 금액 흐름</h3>
+          <h3><span class="mascot small amber" aria-hidden="true">💰</span><span class="flow-icon">₩</span> 금액 흐름</h3>
           <div class="v-flow">
             <div class="v-node">견적·계약금액 확정<small>월 대여료·보증금·선납금·수수료</small></div><div class="v-arrow">↓</div>
             <div class="v-node">차량 확보 비용<small>매입·등록·보험·정비·상품화</small></div><div class="v-arrow">↓</div>
@@ -713,9 +754,9 @@
     <section id="exceptions" class="section" aria-labelledby="exception-title">
       <div class="section-head"><h2 id="exception-title" class="section-title">협업 참고 · 정상 흐름에서 벗어날 때</h2><p class="section-note">연체는 약정 기준을 확인하고, 기준 초과 시 담당 협업부서로 정확히 이관합니다.</p></div>
       <div class="exception-grid">
-        <article class="exception"><h3><span>₩</span> 연체 발생</h3><p>경영관리 수납 확인 → 약정서·계약서와 에이전트별 연체 조건 확인 → 정해진 기간 초과 여부 판단 → 초과 시 해당 조치 실행 → 연락·조치·약속일 기록</p></article>
-        <article class="exception"><h3><span>↗</span> 사고·민원</h3><p>고객관리팀이 사실관계·사진·수리견적을 접수 → 경영관리 비용 확인 → 계약·특약·손해 범위가 쟁점이면 법무팀 자문</p></article>
-        <article class="exception"><h3><span>↺</span> 미반납·계약해지</h3><p>고객관리팀이 만기·반납·연락내역을 확인 → 영업팀 고객 협조 → 회수 지연·불응 시 법무팀이 내용증명 등 대응 검토</p></article>
+        <article class="exception"><h3><span>₩</span><span class="mascot small red" aria-hidden="true">🧾</span> 연체 발생</h3><p>경영관리 수납 확인 → 약정서·계약서와 에이전트별 연체 조건 확인 → 정해진 기간 초과 여부 판단 → 초과 시 해당 조치 실행 → 연락·조치·약속일 기록</p></article>
+        <article class="exception"><h3><span>↗</span><span class="mascot small amber" aria-hidden="true">🛠️</span> 사고·민원</h3><p>고객관리팀이 사실관계·사진·수리견적을 접수 → 경영관리 비용 확인 → 계약·특약·손해 범위가 쟁점이면 법무팀 자문</p></article>
+        <article class="exception"><h3><span>↺</span><span class="mascot small purple" aria-hidden="true">🚪</span> 미반납·계약해지</h3><p>고객관리팀이 만기·반납·연락내역을 확인 → 영업팀 고객 협조 → 회수 지연·불응 시 법무팀이 내용증명 등 대응 검토</p></article>
       </div>
       <div id="delinquency" class="delinq-panel">
         <div class="delinq-head">
@@ -724,21 +765,25 @@
         </div>
         <div class="delinq-grid">
           <div class="delinq-step">
+            <span class="step-mascot" aria-hidden="true">🔎</span>
             <span>연체 발생</span>
             <strong>약정 조건 확인</strong>
             <p>입금 미확인 시 계약번호·에이전트·약정서·연체일수와 기준일을 확인합니다.</p>
           </div>
           <div class="delinq-step action">
+            <span class="step-mascot" aria-hidden="true">🔒</span>
             <span>예: 약정 기준 3일 초과</span>
             <strong>시동제어</strong>
             <p>해당 계약에 시동제어 조항이 있고 기준일을 초과한 경우 정해진 절차에 따라 조치합니다.</p>
           </div>
           <div class="delinq-step termination">
+            <span class="step-mascot" aria-hidden="true">📄</span>
             <span>예: 약정 기준 7일 초과</span>
             <strong>계약해지 가능 검토</strong>
             <p>해지 조건·통지·회수·정산 기준을 확인한 뒤 계약해지 가능 여부와 후속 조치를 검토합니다.</p>
           </div>
           <div class="delinq-step">
+            <span class="step-mascot" aria-hidden="true">🤝</span>
             <span>에이전트별 조건 상이</span>
             <strong>해당 약정 우선 적용</strong>
             <p>3일·7일을 일률적으로 적용하지 않고 에이전트별 계약조건과 내부 승인 기준을 적용합니다.</p>
@@ -756,10 +801,10 @@
     <section class="section" aria-labelledby="check-title">
       <div class="section-head"><h2 id="check-title" class="section-title">신규입사자 업무 인수 체크</h2><p class="section-note">어떤 문의를 받든 아래 네 가지를 먼저 연결해 보세요.</p></div>
       <div class="checklist">
-        <article class="check"><strong>① 누구의 건인가?</strong><p>고객·에이전트·계약번호·담당자를 확인합니다.</p></article>
-        <article class="check"><strong>② 어떤 차량인가?</strong><p>차량번호·상태값·출고일·현재 위치를 확인합니다.</p></article>
-        <article class="check"><strong>③ 어떤 금액인가?</strong><p>월 대여료·보증금·미수금·정산금의 기준일을 확인합니다.</p></article>
-        <article class="check"><strong>④ 누구에게 넘길 건가?</strong><p>다음 담당 부서와 공유할 정보·기한·기록을 남깁니다.</p></article>
+        <article class="check"><span class="check-mascot" aria-hidden="true">🧑‍🤝‍🧑</span><strong>① 누구의 건인가?</strong><p>고객·에이전트·계약번호·담당자를 확인합니다.</p></article>
+        <article class="check"><span class="check-mascot" aria-hidden="true">🚘</span><strong>② 어떤 차량인가?</strong><p>차량번호·상태값·출고일·현재 위치를 확인합니다.</p></article>
+        <article class="check"><span class="check-mascot" aria-hidden="true">🪙</span><strong>③ 어떤 금액인가?</strong><p>월 대여료·보증금·미수금·정산금의 기준일을 확인합니다.</p></article>
+        <article class="check"><span class="check-mascot" aria-hidden="true">📮</span><strong>④ 누구에게 넘길 건가?</strong><p>다음 담당 부서와 공유할 정보·기한·기록을 남깁니다.</p></article>
       </div>
     </section>
 

@@ -1,1 +1,1014 @@
-@outputs/iron-rentcar-workflow.html
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="아이언렌트카 신규입사자 교육용 전사 업무흐름도" />
+  <title>아이언렌트카 | 신규입사자 전사 업무흐름도</title>
+  <style>
+    :root {
+      --ink: #13233f;
+      --muted: #66758c;
+      --line: #dfe6f1;
+      --paper: #ffffff;
+      --canvas: #f4f7fb;
+      --navy: #102448;
+      --blue: #1e6df0;
+      --blue-soft: #eaf2ff;
+      --cyan: #13a9c6;
+      --cyan-soft: #e8fbff;
+      --green: #1f9c6b;
+      --green-soft: #eaf9f2;
+      --amber: #c78218;
+      --amber-soft: #fff6e5;
+      --red: #d75555;
+      --red-soft: #fff0f0;
+      --purple: #7555cf;
+      --purple-soft: #f2efff;
+      --shadow: 0 16px 40px rgba(30, 61, 112, .09);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--canvas);
+      font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", Arial, sans-serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    button, a { font: inherit; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      min-height: 66px;
+      padding: 12px clamp(18px, 4vw, 64px);
+      color: #fff;
+      background: rgba(16, 36, 72, .95);
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(14px);
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -.04em; }
+    .brand-mark {
+      display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px;
+      color: var(--navy); background: #fff; font-size: 17px; font-weight: 900;
+    }
+    .brand small { display: block; margin-top: -2px; color: #aebcda; font-size: 10px; font-weight: 500; letter-spacing: .08em; }
+    .topnav { display: flex; align-items: center; gap: 5px; white-space: nowrap; }
+    .nav-group { position: relative; }
+    .tab-button { display: inline-flex; align-items: center; gap: 6px; border: 0; padding: 7px 10px; color: #cfdaef; background: transparent; border-radius: 8px; font-size: 12px; font-weight: 700; }
+    .tab-button span { color: #8ea4c8; font-size: 11px; transition: transform .18s ease; }
+    .tab-button:hover, .tab-button:focus-visible, .nav-group.open .tab-button { color: #fff; background: rgba(255,255,255,.12); outline: none; }
+    .nav-group.open .tab-button span { transform: rotate(180deg); }
+    .submenu { position: absolute; top: calc(100% + 8px); left: 0; z-index: 30; display: none; min-width: 170px; padding: 7px; background: #fff; border: 1px solid #dbe5f3; border-radius: 11px; box-shadow: 0 16px 32px rgba(7, 30, 73, .2); }
+    .nav-group.open .submenu { display: grid; gap: 2px; }
+    .submenu a { display: block; padding: 8px 10px; color: var(--ink); border-radius: 7px; font-size: 11px; font-weight: 800; }
+    .submenu a:hover, .submenu a:focus-visible { color: var(--blue); background: var(--blue-soft); outline: none; }
+    .print-btn {
+      border: 1px solid rgba(255,255,255,.27); border-radius: 9px; padding: 8px 12px;
+      color: #fff; background: transparent; font-size: 12px; font-weight: 800; white-space: nowrap;
+    }
+    .print-btn:hover { background: rgba(255,255,255,.12); }
+
+    .shell { width: min(1440px, calc(100% - 36px)); margin: 0 auto; }
+    .hero {
+      position: relative; overflow: hidden; margin: 30px 0 22px; padding: clamp(26px, 5vw, 58px);
+      color: #fff; background:
+        radial-gradient(circle at 82% 16%, rgba(42, 129, 255, .38), transparent 28%),
+        radial-gradient(circle at 16% 115%, rgba(19, 169, 198, .25), transparent 37%),
+        var(--navy);
+      border-radius: 26px; box-shadow: var(--shadow);
+    }
+    .hero::after { content: ""; position: absolute; width: 330px; height: 330px; right: -90px; bottom: -180px; border: 1px solid rgba(255,255,255,.12); border-radius: 50%; box-shadow: 0 0 0 26px rgba(255,255,255,.025), 0 0 0 55px rgba(255,255,255,.02); }
+    .eyebrow { color: #73d4e7; font-size: 12px; font-weight: 900; letter-spacing: .16em; }
+    .hero h1 { max-width: 820px; margin: 12px 0 12px; font-size: clamp(28px, 4vw, 54px); line-height: 1.08; letter-spacing: -.065em; }
+    .hero p { max-width: 710px; margin: 0; color: #c5d3eb; font-size: 15px; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 25px; }
+    .hero-tag { padding: 7px 11px; color: #dce9ff; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.16); border-radius: 99px; font-size: 12px; font-weight: 800; }
+    .hero-friends { display: flex; align-items: center; flex-wrap: wrap; gap: 13px; margin-top: 18px; }
+    .hero-friend { display: flex; align-items: center; gap: 7px; color: #dce9ff; font-size: 10px; font-weight: 800; }
+    .hero-friend small { display: block; color: #9fb6da; font-size: 9px; font-weight: 500; }
+    .teacher-mascot { position: absolute; right: clamp(28px, 7vw, 105px); bottom: -12px; z-index: 1; width: min(250px, 22vw); max-height: 410px; object-fit: contain; object-position: bottom; filter: drop-shadow(0 16px 18px rgba(0,0,0,.22)); pointer-events: none; }
+    .teacher-bubble { position: absolute; right: clamp(18px, 5vw, 76px); top: 34px; z-index: 3; padding: 9px 13px; color: var(--navy); background: #fff; border-radius: 13px 13px 4px 13px; box-shadow: 0 9px 20px rgba(0,0,0,.17); font-size: 11px; font-weight: 900; transform: rotate(2deg); }
+    .teacher-bubble::after { content: ""; position: absolute; right: 18px; bottom: -7px; width: 12px; height: 12px; background: #fff; transform: skewY(-28deg) rotate(18deg); }
+    .teacher-bubble small { display: block; margin-top: 2px; color: var(--blue); font-size: 9px; font-weight: 700; }
+    .hero > .eyebrow, .hero > h1, .hero > p, .hero > .hero-tags, .hero > .hero-friends { position: relative; z-index: 2; }
+
+    .company-overview { display: grid; grid-template-columns: minmax(0, 1.04fr) minmax(0, .96fr); gap: 13px; }
+    .company-card { padding: 21px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 8px 25px rgba(30,61,112,.04); }
+    .company-card.full { grid-column: 1 / -1; }
+    .scope-banner { display: flex; align-items: center; flex-wrap: wrap; gap: 9px 14px; margin-bottom: 13px; padding: 14px 17px; color: #24426d; background: linear-gradient(100deg, #eaf2ff, #f5f9ff); border: 1px solid #c9dbf6; border-left: 4px solid var(--blue); border-radius: 12px; }
+    .scope-banner strong { color: var(--navy); font-size: 13px; }
+    .scope-banner b { padding: 5px 9px; color: #fff; background: var(--blue); border-radius: 99px; font-size: 11px; }
+    .scope-banner span { color: var(--muted); font-size: 11px; }
+    .company-kicker { margin: 0 0 7px; color: var(--blue); font-size: 10px; font-weight: 900; letter-spacing: .12em; }
+    .company-card h3 { margin: 0 0 9px; font-size: 18px; letter-spacing: -.05em; }
+    .company-card p { margin: 0; color: var(--muted); font-size: 12px; }
+    .mission-quote { margin: 3px 0 14px; color: var(--navy); font-size: clamp(19px, 2.3vw, 27px); font-weight: 900; line-height: 1.25; letter-spacing: -.06em; }
+    .company-values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; margin-top: 17px; }
+    .value { padding: 11px; border-radius: 10px; background: #f8faff; }
+    .value strong { display: block; margin-bottom: 3px; color: var(--blue); font-size: 11px; }
+    .value span { color: var(--muted); font-size: 10px; }
+    .company-facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px; margin: 0; }
+    .company-facts div { padding: 9px 10px; background: #f8faff; border-radius: 8px; }
+    .company-facts dt { color: var(--muted); font-size: 9px; font-weight: 900; }
+    .company-facts dd { margin: 2px 0 0; color: var(--ink); font-size: 11px; font-weight: 800; }
+    .business-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 7px; margin-top: 12px; }
+    .business-item { min-height: 65px; padding: 10px; border: 1px solid var(--line); border-radius: 9px; background: #fff; }
+    .business-item.core { border-color: #bcd4fa; background: #f5f9ff; }
+    .business-item.core b { color: var(--blue); }
+    .business-item.reference { opacity: .75; background: #fbfcfe; }
+    .business-item b { display: block; margin-bottom: 3px; color: var(--navy); font-size: 11px; }
+    .business-item span { color: var(--muted); font-size: 10px; }
+    .org-strip { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .org-unit { padding: 11px; border-radius: 9px; background: #f8faff; }
+    .org-unit strong { display: block; margin-bottom: 4px; color: var(--navy); font-size: 11px; }
+    .org-unit span { color: var(--muted); font-size: 10px; }
+    .history { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 12px; }
+    .history-item { position: relative; min-height: 115px; padding: 12px; border-top: 3px solid var(--blue); border-radius: 8px; background: #f8faff; }
+    .history-item:nth-child(2) { border-top-color: var(--cyan); }
+    .history-item:nth-child(3) { border-top-color: var(--green); }
+    .history-item:nth-child(4) { border-top-color: var(--amber); }
+    .history-item:nth-child(5) { border-top-color: var(--purple); }
+    .history-item strong { display: block; margin-bottom: 6px; color: var(--blue); font-size: 17px; letter-spacing: -.05em; }
+    .history-item:nth-child(2) strong { color: var(--cyan); }
+    .history-item:nth-child(3) strong { color: var(--green); }
+    .history-item:nth-child(4) strong { color: var(--amber); }
+    .history-item:nth-child(5) strong { color: var(--purple); }
+    .history-item span { color: var(--muted); font-size: 10px; line-height: 1.45; }
+
+    .manual-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+    .manual-card { min-height: 270px; padding: 16px; background: var(--paper); border: 1px solid var(--line); border-top: 4px solid var(--blue); border-radius: var(--radius); box-shadow: 0 8px 25px rgba(30,61,112,.04); }
+    .manual-card.sales { border-top-color: var(--cyan); }
+    .manual-card.cs { border-top-color: var(--green); }
+    .manual-card.admin { border-top-color: var(--amber); }
+    .manual-card.debt { border-top-color: var(--red); }
+    .manual-badge { display: inline-block; margin-bottom: 8px; padding: 4px 7px; color: var(--blue); background: var(--blue-soft); border-radius: 99px; font-size: 9px; font-weight: 900; }
+    .manual-card.sales .manual-badge { color: var(--cyan); background: var(--cyan-soft); }
+    .manual-card.cs .manual-badge { color: var(--green); background: var(--green-soft); }
+    .manual-card.admin .manual-badge { color: var(--amber); background: var(--amber-soft); }
+    .manual-card.debt .manual-badge { color: var(--red); background: var(--red-soft); }
+    .manual-card h3 { display: flex; align-items: center; gap: 8px; margin: 0 0 8px; font-size: 14px; letter-spacing: -.04em; }
+    .manual-card p { margin: 0 0 9px; color: var(--muted); font-size: 11px; line-height: 1.55; }
+    .manual-card ul { display: grid; gap: 5px; margin: 0; padding-left: 16px; color: var(--muted); font-size: 10px; line-height: 1.45; }
+    .manual-rule-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px; }
+    .manual-rule { padding: 15px 17px; background: #fff; border: 1px solid var(--line); border-radius: 13px; }
+    .manual-rule h3 { display: flex; align-items: center; gap: 7px; margin: 0 0 6px; color: var(--navy); font-size: 13px; }
+    .manual-rule h3 span { display: grid; place-items: center; width: 25px; height: 25px; background: var(--blue-soft); border-radius: 8px; font-size: 14px; }
+    .manual-rule p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.6; }
+    .manual-flowline { margin-top: 12px; padding: 13px 15px; color: #365073; background: linear-gradient(100deg, #f5f9ff, #fff); border: 1px solid #c9dbf6; border-left: 3px solid var(--blue); border-radius: 9px; font-size: 11px; line-height: 1.65; }
+    .manual-flowline strong { color: var(--navy); }
+    .driver-check { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, .9fr); gap: 12px; margin-top: 12px; padding: 16px 17px; background: linear-gradient(110deg, #fff8ec, #fff); border: 1px solid #efd8a9; border-left: 4px solid var(--amber); border-radius: 13px; }
+    .driver-check h3 { margin: 0 0 5px; color: var(--navy); font-size: 15px; letter-spacing: -.04em; }
+    .driver-check p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.55; }
+    .driver-check-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px; }
+    .driver-check-item { padding: 10px; background: #fff; border: 1px solid #f1dfbc; border-radius: 9px; }
+    .driver-check-item b { display: block; margin-bottom: 3px; color: var(--amber); font-size: 11px; }
+    .driver-check-item span { color: #6d604d; font-size: 10px; line-height: 1.45; }
+    .driver-check-warning { grid-column: 1 / -1; margin-top: 2px !important; padding: 9px 10px; color: #8b4d2d !important; background: #fff1e8; border-radius: 7px; font-size: 10px !important; font-weight: 800; }
+
+    .section { margin: 28px 0; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 18px; margin-bottom: 13px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 0; font-size: clamp(20px, 2.4vw, 28px); letter-spacing: -.05em; }
+    .section-title::before { content: ""; width: 7px; height: 26px; border-radius: 99px; background: var(--blue); }
+    .section-note { margin: 0; color: var(--muted); font-size: 12px; }
+
+    .mascot { position: relative; display: inline-grid; place-items: center; flex: 0 0 auto; width: 37px; height: 37px; color: var(--navy); background: #fff; border: 2px solid #fff; border-radius: 13px 13px 13px 5px; box-shadow: 0 5px 12px rgba(30,61,112,.12); font-size: 20px; line-height: 1; transform: rotate(-4deg); }
+    .mascot::after { content: ""; position: absolute; right: -3px; bottom: -3px; width: 8px; height: 8px; background: inherit; border-right: 2px solid #fff; border-bottom: 2px solid #fff; transform: skewY(-28deg); }
+    .mascot.small { width: 29px; height: 29px; border-radius: 10px 10px 10px 4px; font-size: 15px; }
+    .mascot.blue { background: #eaf2ff; }
+    .mascot.cyan { background: #e9fbfd; }
+    .mascot.green { background: #eaf9f2; }
+    .mascot.amber { background: #fff7e8; }
+    .mascot.purple { background: #f2edff; }
+    .mascot.red { background: #fff0f0; }
+    .card-kicker { display: flex; align-items: center; gap: 9px; min-height: 37px; }
+    .card-kicker .num { margin: 0; }
+    .step-mascot { position: absolute; top: 0; right: 9px; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 10px 10px 10px 4px; background: #f8faff; font-size: 16px; transform: rotate(4deg); }
+    .item-mascot { display: grid; place-items: center; width: 27px; height: 27px; margin-bottom: 7px; color: var(--navy) !important; background: #fff !important; border-radius: 9px; font-size: 15px !important; line-height: 1; }
+    .check-mascot { display: block; width: max-content; margin-bottom: 6px; font-size: 20px; transform: rotate(-5deg); }
+    .hero-friend .mascot { width: 31px; height: 31px; border-color: rgba(255,255,255,.2); box-shadow: 0 4px 12px rgba(0,0,0,.2); font-size: 16px; }
+
+    .principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .principle { min-height: 136px; padding: 20px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 8px 25px rgba(30,61,112,.04); }
+    .principle .num { color: var(--blue); font-size: 12px; font-weight: 900; }
+    .principle h3 { margin: 8px 0 5px; font-size: 17px; letter-spacing: -.04em; }
+    .principle p { margin: 0; color: var(--muted); font-size: 13px; }
+
+    .legend { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 13px; padding: 12px 14px; background: #fff; border: 1px solid var(--line); border-radius: 12px; }
+    .legend-label { margin-right: 4px; color: var(--muted); font-size: 11px; font-weight: 800; }
+    .chip { display: inline-flex; align-items: center; gap: 6px; padding: 5px 9px; border-radius: 99px; font-size: 11px; font-weight: 900; }
+    .chip::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+    .chip.customer { color: var(--cyan); background: var(--cyan-soft); }
+    .chip.vehicle { color: var(--green); background: var(--green-soft); }
+    .chip.money { color: var(--amber); background: var(--amber-soft); }
+    .chip.exception { color: var(--red); background: var(--red-soft); }
+
+    .master-flow { display: grid; grid-template-columns: repeat(7, minmax(130px, 1fr)); gap: 0; padding: 19px; overflow-x: auto; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .master-step { position: relative; min-width: 132px; padding: 6px 16px 7px; }
+    .master-step:not(:last-child)::after { content: "→"; position: absolute; z-index: 1; top: 30px; right: -7px; color: #9bb3da; font-size: 22px; font-weight: 300; }
+    .step-no { display: grid; place-items: center; width: 28px; height: 28px; margin-bottom: 10px; color: #fff; background: var(--blue); border-radius: 9px; font-size: 12px; font-weight: 900; }
+    .master-step:nth-child(2) .step-no { background: #287fda; }
+    .master-step:nth-child(3) .step-no { background: #159fae; }
+    .master-step:nth-child(4) .step-no { background: #1f9c6b; }
+    .master-step:nth-child(5) .step-no { background: #c78218; }
+    .master-step:nth-child(6) .step-no { background: #7555cf; }
+    .master-step:nth-child(7) .step-no { background: #d75555; }
+    .master-step h3 { margin: 0 0 4px; font-size: 13px; line-height: 1.3; letter-spacing: -.04em; }
+    .master-step p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.45; }
+
+    .flow-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; }
+    .flow-card { padding: 19px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); }
+    .flow-card.customer-flow { border-top: 4px solid var(--cyan); }
+    .flow-card.vehicle-flow { border-top: 4px solid var(--green); }
+    .flow-card.money-flow { border-top: 4px solid var(--amber); }
+    .flow-card h3 { display: flex; align-items: center; gap: 8px; margin: 0 0 13px; font-size: 16px; letter-spacing: -.04em; }
+    .flow-card h3 .flow-icon { display: inline-grid; place-items: center; width: 25px; height: 25px; border-radius: 8px; font-size: 12px; }
+    .customer-flow h3 .flow-icon { color: var(--cyan); background: var(--cyan-soft); }
+    .vehicle-flow h3 .flow-icon { color: var(--green); background: var(--green-soft); }
+    .money-flow h3 .flow-icon { color: var(--amber); background: var(--amber-soft); }
+    .v-flow { display: flex; flex-direction: column; gap: 7px; }
+    .v-node { padding: 9px 11px; border: 1px solid var(--line); border-radius: 10px; background: #fbfcfe; font-size: 12px; font-weight: 800; }
+    .v-node small { display: block; margin-top: 2px; color: var(--muted); font-size: 10px; font-weight: 500; }
+    .v-arrow { height: 11px; color: #9aabc3; font-size: 15px; line-height: 7px; text-align: center; }
+
+    .swim-wrap { overflow-x: auto; padding-bottom: 3px; }
+    .swim { min-width: 1070px; overflow: hidden; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .swim-head, .lane { display: grid; grid-template-columns: 146px repeat(7, minmax(132px, 1fr)); }
+    .swim-head { background: #f8faff; border-bottom: 1px solid var(--line); }
+    .swim-head > div { padding: 12px 8px; color: var(--muted); border-right: 1px solid var(--line); font-size: 11px; font-weight: 900; text-align: center; }
+    .swim-head > div:first-child { color: var(--ink); text-align: left; }
+    .lane { min-height: 99px; border-bottom: 1px solid var(--line); }
+    .lane:last-child { border-bottom: 0; }
+    .lane-name { display: flex; align-items: start; gap: 7px; padding: 15px 12px; color: var(--navy); background: #f8faff; border-right: 1px solid var(--line); font-size: 12px; font-weight: 900; }
+    .lane-name small { display: block; margin-top: 2px; color: var(--muted); font-size: 9px; font-weight: 700; }
+    .lane-name i { display: block; width: 5px; height: 21px; margin-top: 1px; border-radius: 4px; background: var(--blue); }
+    .lane.agent .lane-name i { background: var(--cyan); }
+    .lane.sales .lane-name i { background: var(--blue); }
+    .lane.admin .lane-name i { background: var(--amber); }
+    .lane.cs .lane-name i { background: var(--green); }
+    .lane.legal .lane-name i { background: var(--red); }
+    .lane-cell { position: relative; padding: 9px 8px; border-right: 1px dashed #e5ebf4; }
+    .lane-cell:last-child { border-right: 0; }
+    .mini-card { min-height: 61px; padding: 9px 9px; border: 1px solid #d8e1ef; border-radius: 10px; background: #fff; font-size: 11px; line-height: 1.38; }
+    .mini-card strong { display: block; margin-bottom: 2px; font-size: 11px; letter-spacing: -.03em; }
+    .mini-card em { display: inline-block; margin-top: 4px; padding: 2px 5px; color: var(--blue); background: var(--blue-soft); border-radius: 4px; font-size: 9px; font-style: normal; font-weight: 900; }
+    .mini-card.dim { color: #a0adbf; background: #fbfcfe; border-style: dashed; }
+    .mini-card.vehicle { border-color: #bfe7d4; background: #f5fcf8; }
+    .mini-card.money { border-color: #f3ddb3; background: #fffaf1; }
+    .mini-card.alert { border-color: #f1c5c5; background: #fff7f7; }
+
+    .two-col { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 14px; }
+    .panel { padding: 21px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 8px 25px rgba(30,61,112,.04); }
+    .panel-title { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin: 0 0 15px; font-size: 17px; letter-spacing: -.04em; }
+    .panel-title small { color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: 0; }
+    .agent-set { display: grid; grid-template-columns: 1fr 1.1fr; gap: 13px; }
+    .photo-board { display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 56px); gap: 5px; }
+    .photo { display: grid; place-items: center; color: #6c87aa; background: linear-gradient(140deg, #e9f1fc, #f6f9fe); border: 1px solid #d5e1f0; border-radius: 8px; font-size: 10px; font-weight: 900; }
+    .photo.main { grid-column: span 2; background: linear-gradient(135deg, #dbeaff, #eff6ff); color: #4c78af; }
+    .photo.danger { color: var(--red); background: var(--red-soft); border-color: #f2cccc; }
+    .data-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px 8px; margin: 0; }
+    .data-list div { padding: 7px 8px; background: #f8faff; border-radius: 7px; }
+    .data-list dt { color: var(--muted); font-size: 9px; font-weight: 800; }
+    .data-list dd { margin: 1px 0 0; color: var(--ink); font-size: 11px; font-weight: 800; }
+    .callout { margin-top: 12px; padding: 10px 12px; color: #365073; background: var(--blue-soft); border-left: 3px solid var(--blue); border-radius: 7px; font-size: 11px; }
+    .callout strong { color: var(--navy); }
+
+    .status-track { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; margin: 17px 0 14px; }
+    .status { position: relative; padding: 10px 6px; color: #fff; background: #9fb1cb; text-align: center; font-size: 10px; font-weight: 900; }
+    .status:first-child { border-radius: 8px 0 0 8px; background: #1f9c6b; }
+    .status:nth-child(2) { background: #379fc0; }
+    .status:nth-child(3) { background: #287fda; }
+    .status:nth-child(4) { background: #7555cf; }
+    .status:last-child { border-radius: 0 8px 8px 0; background: #425a80; }
+    .status:not(:last-child)::after { content: ""; position: absolute; top: 0; right: -9px; z-index: 1; border-top: 18px solid transparent; border-bottom: 18px solid transparent; border-left: 9px solid currentColor; color: inherit; }
+    .status:first-child::after { border-left-color: #1f9c6b; }
+    .status:nth-child(2)::after { border-left-color: #379fc0; }
+    .status:nth-child(3)::after { border-left-color: #287fda; }
+    .status:nth-child(4)::after { border-left-color: #7555cf; }
+    .status span { display: block; color: rgba(255,255,255,.72); font-size: 9px; font-weight: 600; }
+    .rules { display: grid; gap: 7px; margin: 0; padding: 0; list-style: none; }
+    .rules li { display: flex; gap: 8px; align-items: flex-start; color: var(--muted); font-size: 12px; }
+    .rules li::before { content: "✓"; flex: 0 0 17px; display: grid; place-items: center; width: 17px; height: 17px; color: var(--green); background: var(--green-soft); border-radius: 5px; font-size: 10px; font-weight: 900; }
+
+    .decision { display: grid; grid-template-columns: minmax(0, 1fr) 38px minmax(0, 1fr); grid-template-rows: auto auto; align-items: stretch; gap: 10px; }
+    .decision-box { padding: 16px; border: 1px solid var(--line); border-radius: 13px; }
+    .decision > .decision-box.check { grid-column: 1; grid-row: 1 / span 2; }
+    .decision > .decision-arrow:nth-child(2) { grid-column: 2; grid-row: 1; }
+    .decision > .decision-box.yes { grid-column: 3; grid-row: 1; }
+    .decision > .branch-label { grid-column: 2; grid-row: 2; align-self: start; padding-top: 4px; }
+    .decision > .decision-arrow:nth-child(5) { grid-column: 2; grid-row: 2; align-self: end; }
+    .decision > .decision-box.no { grid-column: 3; grid-row: 2; }
+    .decision-box.check { background: #f8faff; }
+    .decision-box.yes { background: var(--green-soft); border-color: #bce3cf; }
+    .decision-box.no { background: var(--amber-soft); border-color: #efd8a9; }
+    .decision-box h4 { margin: 0 0 8px; font-size: 13px; letter-spacing: -.03em; }
+    .decision-box p { margin: 0 0 9px; color: var(--muted); font-size: 11px; }
+    .decision-box ul { margin: 0; padding-left: 16px; color: #4e617c; font-size: 10px; }
+    .decision-arrow { display: grid; place-items: center; color: #9aaecb; font-size: 25px; }
+    .decision-branches { display: contents; }
+    .branch-label { align-self: center; color: var(--muted); font-size: 10px; font-weight: 900; text-align: center; }
+    .age-legal { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(270px, .85fr); gap: 13px; margin-bottom: 12px; padding: 17px; background: linear-gradient(120deg, #f5f9ff, #ffffff); border: 1px solid #c9dbf6; border-left: 4px solid var(--blue); border-radius: var(--radius); }
+    .age-legal-kicker { margin: 0 0 5px; color: var(--blue); font-size: 9px; font-weight: 900; letter-spacing: .08em; }
+    .age-legal h3 { margin: 0 0 5px; color: var(--navy); font-size: 16px; letter-spacing: -.04em; }
+    .age-legal p { margin: 0; color: var(--muted); font-size: 11px; }
+    .age-legal-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; margin-top: 11px; }
+    .age-legal-item { padding: 10px; background: #fff; border: 1px solid var(--line); border-radius: 9px; }
+    .age-legal-item span { display: block; color: var(--muted); font-size: 9px; font-weight: 800; }
+    .age-legal-item strong { display: block; margin: 2px 0 1px; color: var(--blue); font-size: 23px; line-height: 1.1; letter-spacing: -.06em; }
+    .age-legal-item small { color: #55708f; font-size: 9px; }
+    .age-legal-side { padding: 13px 15px; background: var(--green-soft); border: 1px solid #bce3cf; border-radius: 12px; }
+    .age-legal-side h4 { margin: 0 0 2px; color: var(--navy); font-size: 13px; }
+    .age-extension { display: block; margin-bottom: 7px; color: var(--green); font-size: 22px; letter-spacing: -.05em; }
+    .age-legal-side ul { display: grid; gap: 4px; margin: 0; padding-left: 16px; color: #426b5a; font-size: 10px; line-height: 1.45; }
+    .age-legal-note { margin-top: 9px; padding-top: 8px; color: #5a6e82; border-top: 1px solid #cfe9da; font-size: 10px; line-height: 1.45; }
+    .age-legal-note b { color: var(--navy); }
+    .age-legal-source { margin-top: 9px !important; font-size: 9px !important; }
+    .age-legal-source a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+
+    .role-table-wrap { overflow-x: auto; }
+    table { width: 100%; min-width: 720px; border-collapse: collapse; font-size: 12px; }
+    th, td { padding: 11px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { color: var(--muted); background: #f8faff; font-size: 11px; font-weight: 900; }
+    tr:last-child td { border-bottom: 0; }
+    td:first-child { width: 132px; color: var(--navy); font-weight: 900; }
+    .role-pill { display: inline-block; margin-right: 5px; padding: 3px 7px; color: var(--blue); background: var(--blue-soft); border-radius: 5px; font-size: 10px; font-weight: 900; }
+    .role-pill.amber { color: var(--amber); background: var(--amber-soft); }
+    .role-pill.green { color: var(--green); background: var(--green-soft); }
+    .role-pill.red { color: var(--red); background: var(--red-soft); }
+    .role-pill small { display: block; margin-top: 1px; font-size: 8px; font-weight: 700; }
+
+    .exception-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .exception { padding: 17px; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; }
+    .exception h3 { display: flex; align-items: center; gap: 8px; margin: 0 0 8px; font-size: 14px; letter-spacing: -.04em; }
+    .exception h3 span { display: grid; place-items: center; width: 23px; height: 23px; color: var(--red); background: var(--red-soft); border-radius: 7px; font-size: 11px; }
+    .exception p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.65; }
+    .exception h3 .mascot { width: 29px; height: 29px; color: var(--navy); border-radius: 10px 10px 10px 4px; font-size: 15px; }
+    .delinq-panel { margin-top: 12px; padding: 21px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 8px 25px rgba(30,61,112,.04); }
+    .delinq-head { display: flex; align-items: end; justify-content: space-between; gap: 15px; margin-bottom: 13px; }
+    .delinq-head h3 { margin: 0; font-size: 17px; letter-spacing: -.04em; }
+    .delinq-head p { margin: 0; color: var(--muted); font-size: 11px; }
+    .delinq-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 9px; }
+    .delinq-step { position: relative; min-height: 130px; padding: 14px; border: 1px solid var(--line); border-radius: 12px; background: #fbfcfe; }
+    .delinq-step strong { display: block; margin: 5px 0 5px; color: var(--navy); font-size: 13px; }
+    .delinq-step span { display: inline-block; padding: 3px 7px; color: var(--blue); background: var(--blue-soft); border-radius: 99px; font-size: 9px; font-weight: 900; }
+    .delinq-step p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.6; }
+    .delinq-step.action { border-color: #f1c5c5; background: var(--red-soft); }
+    .delinq-step.action span { color: var(--red); background: #fff; }
+    .delinq-step.termination { border-color: #efd8a9; background: var(--amber-soft); }
+    .delinq-step.termination span { color: var(--amber); background: #fff; }
+    .delinq-step .step-mascot { display: grid; padding: 0; color: var(--navy); background: #f8faff; border-radius: 10px 10px 10px 4px; font-size: 16px; }
+    .delinq-step.action .step-mascot, .delinq-step.termination .step-mascot { background: #fff; }
+    .delinq-note { margin-top: 12px; padding: 10px 12px; color: #365073; background: var(--blue-soft); border-left: 3px solid var(--blue); border-radius: 7px; font-size: 11px; line-height: 1.6; }
+    .delinq-note strong { color: var(--navy); }
+    .delinq-rules { display: grid; gap: 6px; margin: 12px 0 0; padding-left: 18px; color: var(--muted); font-size: 11px; line-height: 1.55; }
+
+    .checklist { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .check { padding: 15px; background: #fff; border: 1px solid var(--line); border-radius: 12px; }
+    .check strong { display: block; margin-bottom: 5px; color: var(--blue); font-size: 11px; }
+    .check p { margin: 0; color: var(--muted); font-size: 11px; }
+
+    .footer { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin: 36px 0 18px; padding: 17px 0 0; color: #8190a5; border-top: 1px solid var(--line); font-size: 10px; }
+    .footer strong { color: var(--navy); }
+
+    @media (max-width: 950px) {
+      .topbar { flex-wrap: wrap; }
+      .topnav { order: 3; width: 100%; overflow-x: auto; padding-top: 2px; }
+      .submenu { position: fixed; top: auto; margin-top: 4px; }
+      .principles, .flow-grid, .exception-grid { grid-template-columns: 1fr; }
+      .manual-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .manual-rule-grid { grid-template-columns: 1fr; }
+      .delinq-grid { grid-template-columns: repeat(2, 1fr); }
+      .teacher-mascot { right: 16px; width: 175px; }
+      .teacher-bubble { right: 16px; top: 24px; }
+      .hero h1, .hero p { max-width: 68%; }
+      .two-col { grid-template-columns: 1fr; }
+      .checklist { grid-template-columns: repeat(2, 1fr); }
+      .company-overview { grid-template-columns: 1fr; }
+      .company-card.full { grid-column: auto; }
+      .business-grid { grid-template-columns: repeat(3, 1fr); }
+      .history { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 650px) {
+      .shell { width: min(100% - 22px, 1440px); }
+      .topbar { padding-inline: 13px; }
+      .hero { margin-top: 14px; border-radius: 18px; padding: 25px 20px; }
+      .hero h1 { font-size: 31px; }
+      .hero { padding-bottom: 155px; }
+      .hero h1, .hero p { max-width: 100%; }
+      .teacher-mascot { right: calc(50% - 66px); bottom: -9px; width: 132px; }
+      .teacher-bubble { top: auto; right: 14px; bottom: 132px; font-size: 10px; }
+      .section { margin: 22px 0; }
+      .section-head { display: block; }
+      .section-note { margin-top: 5px; }
+      .panel { padding: 15px; }
+      .company-card { padding: 15px; }
+      .company-values, .org-strip { grid-template-columns: 1fr; }
+      .company-facts { grid-template-columns: 1fr 1fr; }
+      .delinq-grid { grid-template-columns: 1fr; }
+      .delinq-head { display: block; }
+      .delinq-head p { margin-top: 6px; }
+      .business-grid, .history { grid-template-columns: 1fr 1fr; }
+      .manual-grid { grid-template-columns: 1fr; }
+      .agent-set { grid-template-columns: 1fr; }
+      .age-legal { grid-template-columns: 1fr; }
+      .age-legal-grid { grid-template-columns: 1fr 1fr; }
+      .driver-check { grid-template-columns: 1fr; }
+      .decision { grid-template-columns: 1fr; grid-template-rows: auto; }
+      .decision > * { grid-column: auto !important; grid-row: auto !important; }
+      .decision-arrow { transform: rotate(90deg); min-height: 24px; }
+      .status-track { grid-template-columns: 1fr; gap: 3px; }
+      .status, .status:first-child, .status:last-child { border-radius: 7px; }
+      .status:not(:last-child)::after { display: none; }
+      .checklist { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      @page { size: A4 landscape; margin: 10mm; }
+      body { background: #fff; color: #13233f; font-size: 10px; }
+      .topbar { position: static; padding: 0 0 8px; background: #fff; color: var(--navy); border: 0; }
+      .brand-mark { color: #fff; background: var(--navy); }
+      .brand small { color: var(--muted); }
+      .topnav, .print-btn, .submenu { display: none !important; }
+      .shell { width: 100%; }
+      .hero { margin: 8px 0 12px; padding: 22px 28px; color: #fff; box-shadow: none; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .hero h1 { font-size: 32px; }
+      .section { margin: 15px 0; break-inside: avoid; }
+      .section-title { font-size: 20px; }
+      .principle, .flow-card, .panel, .swim, .exception, .check { box-shadow: none; }
+      .master-flow { padding: 11px; box-shadow: none; }
+      .company-card { box-shadow: none; }
+      .swim-wrap { overflow: visible; }
+      .swim { min-width: 0; box-shadow: none; }
+      .swim-head, .lane { grid-template-columns: 116px repeat(7, minmax(0, 1fr)); }
+      .swim-head > div { padding: 7px 4px; font-size: 9px; }
+      .lane { min-height: 76px; }
+      .lane-name { padding: 9px 7px; font-size: 9px; }
+      .lane-cell { padding: 5px 4px; }
+      .mini-card { min-height: 48px; padding: 5px; font-size: 8px; }
+      .mini-card strong { font-size: 8px; }
+      .mini-card em { font-size: 7px; }
+      .section-break { break-before: page; }
+      .footer { margin-top: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="처음으로">
+      <span class="brand-mark">IR</span>
+      <span>아이언렌트카<small>NEW HIRE PLAYBOOK · 01</small></span>
+    </a>
+    <nav class="topnav" aria-label="문서 바로가기">
+      <div class="nav-group">
+        <button class="tab-button" type="button" aria-expanded="false">회사소개 <span aria-hidden="true">⌄</span></button>
+        <div class="submenu" role="menu">
+          <a href="#company" role="menuitem">회사 개요</a>
+          <a href="#profile" role="menuitem">회사 기본정보</a>
+          <a href="#business" role="menuitem">사업영역</a>
+          <a href="#history" role="menuitem">주요 연혁</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button class="tab-button" type="button" aria-expanded="false">교육 흐름 <span aria-hidden="true">⌄</span></button>
+        <div class="submenu" role="menu">
+          <a href="#overview" role="menuitem">교육 기준</a>
+          <a href="#manual-baseline" role="menuitem">업무기준</a>
+          <a href="#master-title" role="menuitem">전체 흐름</a>
+          <a href="#three-flow-title" role="menuitem">고객·차량·금액 흐름</a>
+          <a href="#check-title" role="menuitem">인수 체크</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button class="tab-button" type="button" aria-expanded="false">차량관리 <span aria-hidden="true">⌄</span></button>
+        <div class="submenu" role="menu">
+          <a href="#vehicle" role="menuitem">차량정보·사진</a>
+          <a href="#vehicle" role="menuitem">차량 상태값</a>
+          <a href="#age-title" role="menuitem">차령연한</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button class="tab-button" type="button" aria-expanded="false">역할·협업 <span aria-hidden="true">⌄</span></button>
+        <div class="submenu" role="menu">
+          <a href="#swimlane" role="menuitem">부서별 스윔레인</a>
+          <a href="#roles" role="menuitem">역할·공유정보</a>
+          <a href="#exceptions" role="menuitem">협업 참고</a>
+          <a href="#delinquency" role="menuitem">연체 조치 기준</a>
+        </div>
+      </div>
+    </nav>
+    <button class="print-btn" onclick="window.print()">인쇄 / PDF 저장</button>
+  </header>
+
+  <main id="top" class="shell">
+    <section class="hero" aria-labelledby="page-title">
+      <img class="teacher-mascot" src="iron-rentcar-teacher-female.png" alt="업무 흐름을 안내하는 귀여운 여자 선생님 캐릭터" />
+      <div class="teacher-bubble">선생님이 알려드려요!<small>업무 흐름을 함께 따라가 보세요</small></div>
+      <div class="eyebrow">COMPANY-WIDE WORKFLOW</div>
+      <h1 id="page-title">고객이 문의한 순간부터<br />차량이 다시 자산이 될 때까지</h1>
+      <p>“이동의 자유를 넘어, 새로운 모빌리티 경험을 디자인합니다.” 장기렌터카 공통·부서별 운영기준을 바탕으로 신규입사자 교육의 실제 업무인 구독·렌탈·차량관리를 고객 흐름, 차량 흐름, 금액 흐름으로 나누어 이해하는 교육용 업무흐름도입니다.</p>
+      <div class="hero-tags">
+        <span class="hero-tag">당신의 여정이 시작되는 곳</span>
+        <span class="hero-tag">교육 핵심 · 구독(중고차 한정)</span>
+        <span class="hero-tag">교육 핵심 · 렌탈(신차·중고차)</span>
+        <span class="hero-tag">교육 핵심 · 차량관리(주차장)</span>
+        <span class="hero-tag">회사 참고 · 사고대차(강북지점 한정)</span>
+        <span class="hero-tag">회사 참고 · 중고차 수출</span>
+        <span class="hero-tag">장기렌터카 운영기준</span>
+        <span class="hero-tag">에이전트 채널</span>
+        <span class="hero-tag">연장 / 매각 의사결정</span>
+      </div>
+      <div class="hero-friends" aria-label="업무 도우미 캐릭터">
+        <div class="hero-friend"><span class="mascot cyan" aria-hidden="true">🧸</span><span>몽이<small>고객 흐름 도우미</small></span></div>
+        <div class="hero-friend"><span class="mascot green" aria-hidden="true">🚙</span><span>카롱<small>차량 흐름 도우미</small></span></div>
+        <div class="hero-friend"><span class="mascot amber" aria-hidden="true">💰</span><span>토리<small>금액 흐름 도우미</small></span></div>
+      </div>
+    </section>
+
+    <section id="company" class="section" aria-labelledby="company-title">
+      <div class="section-head">
+        <h2 id="company-title" class="section-title">회사소개서로 이해하는 아이언렌트카</h2>
+        <p class="section-note">회사 전체 사업영역과 신규입사자 교육 범위를 구분해 확인합니다.</p>
+      </div>
+      <div class="scope-banner"><strong>신규입사자 교육 핵심 범위</strong><b>구독</b><b>렌탈</b><b>차량관리</b><span>장기렌터카 운영기준은 렌탈 업무의 공통·부서별 기준으로 반영했습니다. 사고대차·중고차 수출·법무·채권은 회사 및 협업 참고 영역입니다.</span></div>
+      <div class="company-overview">
+        <article id="profile" class="company-card">
+          <p class="company-kicker">MISSION & VALUES</p>
+          <h3>이동의 자유를 넘어, 새로운 모빌리티 경험을 디자인합니다.</h3>
+          <p class="mission-quote">“당신의 여정이 시작되는 곳”</p>
+          <p>아이언렌트카는 단순히 차량을 빌려주는 서비스를 넘어 고객의 소중한 여정을 안전하게 지탱하는 모빌리티 파트너를 지향합니다. 변치 않는 신뢰, 철저한 차량관리, 정직한 서비스를 업무의 기준으로 삼습니다.</p>
+          <div class="company-values">
+            <div class="value"><strong>신뢰경영</strong><span>정직한 가격과 철저한 차량관리</span></div>
+            <div class="value"><strong>합리적 기준</strong><span>누구나 부담 없이 이용하는 렌터카</span></div>
+            <div class="value"><strong>고객감동</strong><span>이동을 넘어 감동적인 서비스 경험</span></div>
+          </div>
+        </article>
+        <article class="company-card">
+          <p class="company-kicker">COMPANY PROFILE</p>
+          <h3>회사 기본정보</h3>
+          <dl class="company-facts">
+            <div><dt>회사명</dt><dd>㈜ 아이언렌트카</dd></div>
+            <div><dt>대표자</dt><dd>김기문</dd></div>
+            <div><dt>설립일</dt><dd>2015년 6월 1일</dd></div>
+            <div><dt>자본금</dt><dd>3억원</dd></div>
+            <div><dt>본사</dt><dd>서울 강남구 테헤란로 113길 15, 3층</dd></div>
+            <div><dt>대표번호</dt><dd>02-568-8320</dd></div>
+            <div><dt>조직</dt><dd>본사 + 강북지점 + 용인지점</dd></div>
+          </dl>
+          <div class="callout"><strong>신규입사자 포인트</strong> 본사 업무는 영업·고객관리·차량관리·경영지원·법무·채권이 연결되고, 강북·용인 지점은 차량과 고객 접점을 확장합니다.</div>
+        </article>
+        <article id="business" class="company-card full">
+          <p class="company-kicker">BUSINESS PORTFOLIO</p>
+          <h3>회사 전체 사업영역 · 교육 핵심 표시</h3>
+          <div class="business-grid">
+            <div class="business-item core"><span class="item-mascot" aria-hidden="true">🚗</span><b>구독</b><span>중고차 한정 구독 상품</span></div>
+            <div class="business-item core"><span class="item-mascot" aria-hidden="true">🔑</span><b>렌탈</b><span>신차·중고차 렌탈</span></div>
+            <div class="business-item core"><span class="item-mascot" aria-hidden="true">🧽</span><b>차량관리</b><span>주차장 중심 차량 보관·관리</span></div>
+            <div class="business-item reference"><span class="item-mascot" aria-hidden="true">🆘</span><b>사고대차</b><span>강북지점 한정 사고대차</span></div>
+            <div class="business-item reference"><span class="item-mascot" aria-hidden="true">🌏</span><b>중고차 수출</b><span>반납차량의 경매·수출·매각</span></div>
+          </div>
+          <div class="callout"><strong>교육 범위 구분</strong> 신규입사자가 실제로 배우고 수행할 핵심 업무는 구독·렌탈·차량관리입니다. 사고대차·중고차 수출은 회사 전체 사업 이해와 부서 협업을 위한 참고 영역으로만 표시합니다.</div>
+          <div class="org-strip">
+            <div class="org-unit"><strong>🧮 경영지원·경리</strong><span>자금·수납·정산·회계·자산관리</span></div>
+            <div class="org-unit"><strong>🧸 고객관리·차량관리</strong><span>고객 접점·출고·이용관리·정비·반납</span></div>
+            <div class="org-unit"><strong>📣 영업·지점·법무</strong><span>영업1·2팀·강북·용인·소송·채권관리</span></div>
+          </div>
+        </article>
+        <article id="history" class="company-card full">
+          <p class="company-kicker">MILESTONES</p>
+          <h3>주요 연혁</h3>
+          <div class="history">
+            <div class="history-item"><strong>2015</strong><span>㈜ 아이언렌트카 설립</span></div>
+            <div class="history-item"><strong>2017-19</strong><span>사고대차 협약 및 렉서스 차량 출고 조건 확보<br />강북·종로지점 설치, 무심사 장기렌트·전자상거래 신고</span></div>
+            <div class="history-item"><strong>2021-22</strong><span>한국형 무공해차 전환 100 기업 승인<br />부산·청주·용인 주차장 확보</span></div>
+            <div class="history-item"><strong>2023</strong><span>경찰청·강남·송파·마포경찰서 등 공공기관 차량납품<br />용인지점 설치</span></div>
+            <div class="history-item"><strong>2025</strong><span>서울시 자동차대여사업조합 이사 취임<br />우수기업 표창·중고자동차 수출업 허가</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="manual-baseline" class="section" aria-labelledby="manual-title">
+      <div class="section-head">
+        <h2 id="manual-title" class="section-title">장기렌터카 표준 업무 운영</h2>
+        <p class="section-note">공통·영업·CS·경영관리·채권관리 업무기준을 신규입사자 흐름에 연결합니다.</p>
+      </div>
+      <div class="manual-grid">
+        <article class="manual-card common">
+          <span class="manual-badge">전사 공통기준</span>
+          <h3><span class="mascot small blue" aria-hidden="true">🧭</span>전사 공통 기준</h3>
+          <p>신차·중고차 장기렌터카의 상담부터 계약 종료 후 채권 종결까지를 하나의 계약번호로 관리합니다.</p>
+          <ul>
+            <li>상담·견적·납부약속·민원·회수·채권협의를 확인 가능한 방식으로 기록</li>
+            <li>예외사항은 지정 승인자 승인 후 진행</li>
+            <li>부서 간 인수인계 자료와 처리 결과를 누락 없이 전달</li>
+          </ul>
+        </article>
+        <article class="manual-card sales">
+          <span class="manual-badge">영업부 · 영업팀</span>
+          <h3><span class="mascot small cyan" aria-hidden="true">📣</span>상담·견적·출고</h3>
+          <p>고객 또는 에이전트의 요구를 확인하고 심사·수익성·차량 조건을 검토해 계약과 출고까지 연결합니다.</p>
+          <ul>
+            <li>고객 기본정보·실제 운전자·차량 희망조건·계약조건 기록</li>
+            <li>계약서 작성 전 운전자격 확인: 운전면허 취득 후 1년 이상 여부</li>
+            <li>운전자 연령과 보험 적용 기준(21세·26세 등)을 반드시 확인하고 계약서·모렌에 기록</li>
+            <li>견적 변경 이력, 최종 견적과 계약조건 일치 여부 확인</li>
+            <li>심사 승인·초기 납부금·전자약정·발주·출고·수수료 요청 인계</li>
+          </ul>
+        </article>
+        <article class="manual-card cs">
+          <span class="manual-badge">CS부 · 고객관리팀</span>
+          <h3><span class="mascot small green" aria-hidden="true">🧸</span>유지관리·연체·회수</h3>
+          <p>출고 후 고객 문의와 민원을 처리하고 계약변경·연장·연체·해지·반납·회수를 관리합니다.</p>
+          <ul>
+            <li>상담 유형·긴급도·협조부서·후속 일정·처리 결과 기록</li>
+            <li>장기렌트 계약서와 월렌트 계약서 작성 및 모렌 등록</li>
+            <li>계약서 작성 시 운전면허 취득 후 1년 이상 여부와 운전자 연령 확인</li>
+            <li>운전자 연령별 보험 적용 기준(21세·26세 등)을 확인하고 사고 시 보험 적용 여부에 영향을 주는 조건으로 반드시 기록·인계</li>
+            <li>고객정보 변경·제2운전자 관리, 월렌트·장기렌트 반납예정 고객의 연장여부 모렌 등록</li>
+            <li>장기미납 고객 안내문자, 위약금·고객 청구내역 정산, 수리내역 정리 및 모렌 등록</li>
+            <li>검사차량 확인 후 위탁업체 헥토 담당자에게 차량정보 공유</li>
+            <li>연체 단계별 안내, 약정 확인, 시동제어·해지·회수 승인 및 결과 기록</li>
+          </ul>
+        </article>
+        <article class="manual-card admin">
+          <span class="manual-badge">경영관리부 · 경영관리</span>
+          <h3><span class="mascot small amber" aria-hidden="true">🧮</span>자금·수납·정산</h3>
+          <p>차량 구매자금과 대여료 수납을 관리하고 과태료·수수료·회계·세무 자료를 계약별로 정리합니다.</p>
+          <ul>
+            <li>차량 매입·등록·보험 서류와 차량별 취득원가 관리</li>
+            <li>입금자·계약번호·금액·미확인 입금 대조 및 연체대장 기록</li>
+            <li>연체자료를 CS부에 전달하고 최종 정산·채권 잔액을 공유</li>
+          </ul>
+        </article>
+        <article class="manual-card debt">
+          <span class="manual-badge">채권관리부 · 법무·채권 참고</span>
+          <h3><span class="mascot small red" aria-hidden="true">🛡️</span>채권 확정·회수·종결</h3>
+          <p>계약해지 또는 반납·회수 후에도 남은 미수금을 검수해 적법한 절차로 회수하고 종결합니다.</p>
+          <ul>
+            <li>계약서·해지통지·반납·회수·정산·보증금 상계 자료 검수</li>
+            <li>채권금액을 원금·이자·손해·비용·과태료·소송비용으로 구분</li>
+            <li>자진변제·분할납부·내용증명·지급명령·소송·집행·대손 검토</li>
+          </ul>
+        </article>
+      </div>
+      <div class="manual-rule-grid">
+        <article class="manual-rule"><h3><span>🗂️</span>기록 기준</h3><p>상담, 견적 변경, 계약조건 협의, 납부약속, 민원, 연체 독촉, 시동제어, 차량회수 및 채권 협의는 확인 가능한 방식으로 남기고 계약번호를 기준으로 관리합니다.</p></article>
+        <article class="manual-rule"><h3><span>✅</span>승인 기준</h3><p>특별할인·비표준 조건·선발주·초기 납부금 미입금 출고·위약금 감면·채권 감면·시동제어·계약해지·강제회수는 정해진 승인체계를 확인합니다.</p></article>
+        <article class="manual-rule"><h3><span>🔐</span>보호·인수 기준</h3><p>신분·연락처·계좌·신용·면허·차량 위치·계약자료는 업무 목적 범위에서만 이용하고, 인수자료가 부족하면 보완 전 법적 조치를 보류합니다.</p></article>
+      </div>
+      <div class="manual-flowline"><strong>표준 13단계:</strong> 상담 접수 → 차량·조건 확인 → 견적·심사 → 재고·발주 → 전자약정·계약 → 초기 납부·등록·보험 → 출고·인도 → 에이전트 수수료 요청 → 수납·유지관리 → 연체·민원 → 연장·해지 → 반납·회수 → 최종 정산·채권 인계·추심·종결</div>
+      <div class="driver-check" aria-label="계약서 작성 시 운전자격 및 연령 필수 확인">
+        <div>
+          <h3>계약서 작성 시 운전자격·연령 필수 확인</h3>
+          <p>영업팀과 고객관리팀은 계약서 작성 및 모렌 등록 전에 아래 항목을 모두 확인하고, 확인 결과를 계약자료에 남겨야 합니다.</p>
+        </div>
+        <div class="driver-check-grid">
+          <div class="driver-check-item"><b>운전자격</b><span>운전면허 취득 후 1년 이상인지 확인</span></div>
+          <div class="driver-check-item"><b>운전자 연령</b><span>보험 적용 연령 기준이 21세인지 26세인지 등 해당 조건 확인</span></div>
+          <p class="driver-check-warning">특히 운전자 연령은 사고 발생 시 보험 적용 여부가 결정될 수 있으므로, 추정하지 말고 보험조건·계약조건·에이전트별 조건을 반드시 대조한 뒤 계약을 진행합니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="overview" class="section">
+      <div class="section-head">
+        <h2 class="section-title">회사 가치가 업무로 이어지는 3가지 기준</h2>
+        <p class="section-note">회사소개서의 핵심가치를 신규입사자의 실제 업무 기준으로 연결합니다.</p>
+      </div>
+      <div class="principles">
+        <article class="principle"><div class="card-kicker"><span class="mascot blue" aria-hidden="true">🤝</span><div class="num">01 · 신뢰경영</div></div><h3>정직한 정보가 신뢰를 만든다</h3><p>고객·에이전트에게 실제 차량상태, 조건, 사고·수리이력을 정확히 공유하고 다음 부서에도 같은 정보를 전달합니다.</p></article>
+        <article class="principle"><div class="card-kicker"><span class="mascot amber" aria-hidden="true">🧭</span><div class="num">02 · 합리적 기준</div></div><h3>차량과 금액을 기준으로 판단한다</h3><p>차량의 상태·차령·수익성, 계약의 조건·수납·정산을 기준으로 배정·연장·매각 결정을 내립니다.</p></article>
+        <article class="principle"><div class="card-kicker"><span class="mascot cyan" aria-hidden="true">💙</span><div class="num">03 · 고객감동</div></div><h3>고객의 여정을 끝까지 관리한다</h3><p>상담·출고·이용 중 문의·사고·반납·연체까지 고객이 불편을 겪는 지점을 미리 확인하고 연결합니다.</p></article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="master-title">
+      <div class="section-head">
+        <h2 id="master-title" class="section-title">교육 업무 흐름 한눈에 보기</h2>
+        <p class="section-note">핵심 업무는 구독·렌탈·차량관리이며, 협업부서는 참고로 연결됩니다.</p>
+      </div>
+      <div class="legend" aria-label="흐름 범례">
+        <span class="legend-label">FLOW LEGEND</span>
+        <span class="chip customer">고객 흐름</span>
+        <span class="chip vehicle">차량 흐름</span>
+        <span class="chip money">금액 흐름</span>
+        <span class="chip exception">연체·법무·채권 예외</span>
+      </div>
+      <div class="master-flow">
+        <article class="master-step"><span class="step-mascot" aria-hidden="true">💬</span><div class="step-no">01</div><h3>문의·리드 접수</h3><p>고객 / 에이전트<br />상품유형 확인</p></article>
+        <article class="master-step"><span class="step-mascot" aria-hidden="true">📝</span><div class="step-no">02</div><h3>견적·계약 심사</h3><p>조건 협의<br />운전자격·연령·보험조건 확인</p></article>
+        <article class="master-step"><span class="step-mascot" aria-hidden="true">🚙</span><div class="step-no">03</div><h3>차량 확보·배정</h3><p>보유차량 또는<br />신규 매입·발주</p></article>
+        <article class="master-step"><span class="step-mascot" aria-hidden="true">🎉</span><div class="step-no">04</div><h3>출고·대여 개시</h3><p>보험·등록·인도<br /><strong>대여 시작</strong></p></article>
+        <article class="master-step"><span class="step-mascot" aria-hidden="true">🧰</span><div class="step-no">05</div><h3>이용 중 관리</h3><p>납부·문의·사고<br />변경·연장</p></article>
+        <article class="master-step"><span class="step-mascot" aria-hidden="true">🔄</span><div class="step-no">06</div><h3>만기·반납·정산</h3><p>차량 회수<br />금액 마감·재상품화</p></article>
+        <article class="master-step"><span class="step-mascot" aria-hidden="true">🛡️</span><div class="step-no">07</div><h3>협업 참고</h3><p>연체·법무·채권<br />이관 및 회수</p></article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="three-flow-title">
+      <div class="section-head"><h2 id="three-flow-title" class="section-title">3개의 흐름으로 읽기</h2><p class="section-note">세 흐름은 계약번호·차량번호·고객정보로 연결됩니다.</p></div>
+      <div class="flow-grid">
+        <article class="flow-card customer-flow">
+          <h3><span class="mascot small cyan" aria-hidden="true">🧸</span><span class="flow-icon">人</span> 고객 흐름</h3>
+          <div class="v-flow">
+            <div class="v-node">고객 / 에이전트 문의<small>니즈·예산·희망차량·출고일</small></div><div class="v-arrow">↓</div>
+            <div class="v-node">상담·견적·심사<small>상품구분·조건·필요서류</small></div><div class="v-arrow">↓</div>
+            <div class="v-node">계약·출고·이용관리<small>납부·사고·변경·민원</small></div><div class="v-arrow">↓</div>
+            <div class="v-node">만기·연장·반납<small>종료 또는 재계약·재대여</small></div>
+          </div>
+        </article>
+        <article class="flow-card vehicle-flow">
+          <h3><span class="mascot small green" aria-hidden="true">🚙</span><span class="flow-icon">▣</span> 차량 흐름</h3>
+          <div class="v-flow">
+            <div class="v-node">보유 / 신규 확보<small>즉시출고 차량 또는 발주·매입</small></div><div class="v-arrow">↓</div>
+            <div class="v-node">배정·등록·상품화<small>차량상태·사진·출고조건 확인</small></div><div class="v-arrow">↓</div>
+            <div class="v-node">출고·대여 중<small>차량번호와 계약상태 연결</small></div><div class="v-arrow">↓</div>
+            <div class="v-node">반납 → 재대여 / 매각<small>차령연한·수익성 검토</small></div>
+          </div>
+        </article>
+        <article class="flow-card money-flow">
+          <h3><span class="mascot small amber" aria-hidden="true">💰</span><span class="flow-icon">₩</span> 금액 흐름</h3>
+          <div class="v-flow">
+            <div class="v-node">견적·계약금액 확정<small>월 대여료·보증금·선납금·수수료</small></div><div class="v-arrow">↓</div>
+            <div class="v-node">차량 확보 비용<small>매입·등록·보험·정비·상품화</small></div><div class="v-arrow">↓</div>
+            <div class="v-node">월 대여료 청구·수납<small>연체 여부와 미수금 관리</small></div><div class="v-arrow">↓</div>
+            <div class="v-node">만기 정산·매각대금<small>환급·추가금·회계처리</small></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="swimlane" class="section section-break" aria-labelledby="swim-title">
+      <div class="section-head"><h2 id="swim-title" class="section-title">부서별 업무흐름 · 스윔레인</h2><p class="section-note">구독·렌탈·차량관리 업무와 협업부서의 인수인계 지점을 확인합니다.</p></div>
+      <div class="swim-wrap">
+        <div class="swim" role="table" aria-label="부서별 전사 업무흐름">
+          <div class="swim-head" role="row">
+            <div role="columnheader">담당 / 단계</div><div role="columnheader">① 문의</div><div role="columnheader">② 견적·계약</div><div role="columnheader">③ 확보·배정</div><div role="columnheader">④ 출고</div><div role="columnheader">⑤ 이용 중</div><div role="columnheader">⑥ 만기·반납</div><div role="columnheader">⑦ 연체·법무</div>
+          </div>
+          <div class="lane agent" role="row">
+            <div class="lane-name" role="rowheader"><i></i>고객 / 에이전트</div>
+            <div class="lane-cell"><div class="mini-card"><strong>문의 전달</strong>희망 차종·조건·출고일</div></div>
+            <div class="lane-cell"><div class="mini-card"><strong>서류 제출</strong>계약조건 확인·서명</div></div>
+            <div class="lane-cell"><div class="mini-card dim">배정차량 안내</div></div>
+            <div class="lane-cell"><div class="mini-card"><strong>차량 인수</strong>인도확인·대여 개시</div></div>
+            <div class="lane-cell"><div class="mini-card"><strong>이용·납부</strong>문의·사고·변경 접수</div></div>
+            <div class="lane-cell"><div class="mini-card"><strong>연장 또는 반납</strong>희망일정 확인</div></div>
+            <div class="lane-cell"><div class="mini-card alert"><strong>미납·미반납</strong>연락·협의</div></div>
+          </div>
+          <div class="lane sales" role="row">
+            <div class="lane-name" role="rowheader"><i></i>영업팀<br /><small>(영업부)</small></div>
+            <div class="lane-cell"><div class="mini-card"><strong>리드 등록</strong>고객·에이전트 문의 접수</div></div>
+            <div class="lane-cell"><div class="mini-card"><strong>견적·조건 협의</strong>상품구분·수익성 검토<em>운전자격·연령·보험조건 확인</em><em>계약정보 공유</em></div></div>
+            <div class="lane-cell"><div class="mini-card vehicle"><strong>차량 배정</strong>보유차량 우선 확인<em>에이전트 리스트 배포</em></div></div>
+            <div class="lane-cell"><div class="mini-card vehicle"><strong>출고 협의</strong>일정·옵션·특약 확인</div></div>
+            <div class="lane-cell"><div class="mini-card"><strong>관계 관리</strong>추가 영업·변경 요청 전달</div></div>
+            <div class="lane-cell"><div class="mini-card vehicle"><strong>재대여 영업</strong>연장·신규 고객 매칭</div></div>
+            <div class="lane-cell"><div class="mini-card alert"><strong>회수 협조</strong>고객 연락·상황 공유</div></div>
+          </div>
+          <div class="lane admin" role="row">
+            <div class="lane-name" role="rowheader"><i></i>경영관리<br /><small>(경영관리부)</small></div>
+            <div class="lane-cell"><div class="mini-card dim">자금·수익 기준 안내</div></div>
+            <div class="lane-cell"><div class="mini-card money"><strong>계약금액 검토</strong>보증금·수수료·매입 필요</div></div>
+            <div class="lane-cell"><div class="mini-card vehicle"><strong>매입·등록·보험</strong>자금 집행·자산 등록</div></div>
+            <div class="lane-cell"><div class="mini-card money"><strong>비용 확정</strong>취득·등록·보험비 정리</div></div>
+            <div class="lane-cell"><div class="mini-card money"><strong>수납·미수금</strong>월 대여료·입금 확인</div></div>
+            <div class="lane-cell"><div class="mini-card money"><strong>정산·자산상태</strong>환급·추가금·회계 처리</div></div>
+            <div class="lane-cell"><div class="mini-card alert"><strong>채권잔액 관리</strong>손실·충당·법무 이관</div></div>
+          </div>
+          <div class="lane cs" role="row">
+            <div class="lane-name" role="rowheader"><i></i>고객관리팀<br /><small>(CS부)</small></div>
+            <div class="lane-cell"><div class="mini-card"><strong>고객정보 정리</strong>상담 이력·요청사항</div></div>
+            <div class="lane-cell"><div class="mini-card"><strong>계약서 등록</strong>장기·월렌트 계약서 작성·모렌 등록<em>면허 취득 1년 이상·운전자 연령·보험조건 확인</em></div></div>
+            <div class="lane-cell"><div class="mini-card vehicle"><strong>배정정보 수신</strong>차량번호·출고예정일</div></div>
+            <div class="lane-cell"><div class="mini-card vehicle"><strong>출고 처리</strong>인도증·보험·등록 확인</div></div>
+            <div class="lane-cell"><div class="mini-card"><strong>정상 대여관리</strong>정보변경·제2운전자·문의·사고·민원</div></div>
+            <div class="lane-cell"><div class="mini-card vehicle"><strong>반납·연장 관리</strong>반납·연장여부 모렌 등록<br />검사차량·헥토 담당자 공유</div></div>
+            <div class="lane-cell"><div class="mini-card alert"><strong>약정 기준 연체관리</strong>장기미납 안내문자·기준 초과 조치·이관</div></div>
+          </div>
+          <div class="lane legal" role="row">
+            <div class="lane-name" role="rowheader"><i></i>법무팀<br /><small>(채권관리부·협업 참고)</small></div>
+            <div class="lane-cell"><div class="mini-card dim">특이계약 자문</div></div>
+            <div class="lane-cell"><div class="mini-card dim">계약 리스크 검토</div></div>
+            <div class="lane-cell"><div class="mini-card dim">채권보전 기준</div></div>
+            <div class="lane-cell"><div class="mini-card dim">분쟁 예방 기록</div></div>
+            <div class="lane-cell"><div class="mini-card alert"><strong>분쟁·사고 대응</strong>해지·손해·민원 자문</div></div>
+            <div class="lane-cell"><div class="mini-card alert"><strong>미반납 대응</strong>회수 협의·내용증명</div></div>
+            <div class="lane-cell"><div class="mini-card alert"><strong>채권 회수</strong>법적 절차·강제집행 검토</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="vehicle" class="section" aria-labelledby="vehicle-title">
+      <div class="section-head"><h2 id="vehicle-title" class="section-title">차량 운영의 핵심 프로세스</h2><p class="section-note">즉시출고 차량은 영업기회이자, 정확한 상태관리가 필요한 자산입니다.</p></div>
+      <div class="two-col">
+        <article class="panel">
+          <h3 class="panel-title">에이전트 배포용 차량정보 세트 <small>실제 차량사진 + 조건 + 상태</small></h3>
+          <div class="agent-set">
+            <div>
+              <div class="photo-board" aria-label="차량사진 항목 예시">
+                <div class="photo main">실차 전면 사진</div><div class="photo">후면</div><div class="photo">좌측면</div><div class="photo">우측면</div><div class="photo">실내 전면</div><div class="photo">운전석·계기판</div><div class="photo danger">흠집·특이사항<br />필요시 추가</div>
+              </div>
+            </div>
+            <dl class="data-list">
+              <div><dt>차량 기본</dt><dd>차종 · 트림 · 연식</dd></div>
+              <div><dt>등록 / 구분</dt><dd>최초등록일 · 신차/중고차</dd></div>
+              <div><dt>색상 / 옵션</dt><dd>외장·내장 · 주요 옵션</dd></div>
+              <div><dt>운행 상태</dt><dd>주행거리 · 차량번호</dd></div>
+              <div><dt>대여 조건</dt><dd>대여가능기간 · 월대여료</dd></div>
+              <div><dt>계약 조건</dt><dd>보증금 · 선납금</dd></div>
+              <div><dt>출고 정보</dt><dd>출고가능일 · 차량소재지</dd></div>
+              <div><dt>고지 사항</dt><dd>사고·수리이력 · 특이사항</dd></div>
+            </dl>
+          </div>
+          <div class="callout"><strong>배포 원칙</strong> 차량 입고·반납 → 상태확인·정비·세차·상품화 → 실제 사진 촬영 → 정보 세트 등록 → 영업팀 검수 → 각 에이전트 공유. 계약·출고 확정 즉시 배포 상태를 변경합니다.</div>
+        </article>
+        <article class="panel">
+          <h3 class="panel-title">차량 상태값과 공유 규칙 <small>중복 영업 방지</small></h3>
+          <div class="status-track" aria-label="차량 상태값">
+            <div class="status">출고가능<span>에이전트 공유 가능</span></div><div class="status">상담중<span>고객 문의 접수</span></div><div class="status">계약진행<span>서류·심사·조건 협의</span></div><div class="status">계약완료<span>배정·출고 준비</span></div><div class="status">출고완료<span>대여 중</span></div>
+          </div>
+          <ul class="rules">
+            <li>실제 차량사진은 가능한 한 최근 촬영본을 사용하고, 흠집·파손·특이사항은 계약 전 고지합니다.</li>
+            <li>차량번호·차량상태·출고가능일은 고객관리팀과 영업팀이 동일하게 확인합니다.</li>
+            <li>계약 또는 출고가 확정되면 즉시 상태를 변경해 다른 에이전트의 중복 영업을 막습니다.</li>
+            <li>차량 반납 후에는 정비·세차·상품화와 사진 갱신을 거쳐 다시 출고가능 목록에 올립니다.</li>
+          </ul>
+          <div class="callout"><strong>즉시출고 가능차량 공유 담당</strong> 영업팀이 회사 보유차량 현황을 정리해 각 에이전트에 정기 또는 수시로 배포합니다. 경영관리·고객관리팀은 가격·상태·계약정보가 최신인지 확인합니다.</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="age-title">
+      <div class="section-head"><h2 id="age-title" class="section-title">차령연한 도래 차량 · 연장 또는 매각</h2><p class="section-note">렌터카는 계약 만기와 별도로 차량별 차령연한을 선제적으로 확인합니다.</p></div>
+      <div class="age-legal" aria-label="법령상 렌터카 차령 기준">
+        <div>
+          <p class="age-legal-kicker">LAW CHECK · 여객자동차 운수사업법 시행령 제40조·별표 2</p>
+          <h3>렌터카 차량의 기본 차령</h3>
+          <p>차량 종류와 규모에 따른 기본 차령을 먼저 확인한 뒤, 연장 가능 여부와 매각 여부를 검토합니다.</p>
+          <div class="age-legal-grid">
+            <div class="age-legal-item"><span>자동차대여사업용 승용</span><strong>5년</strong><small>경형·소형·중형</small></div>
+            <div class="age-legal-item"><span>자동차대여사업용 승용</span><strong>8년</strong><small>대형</small></div>
+            <div class="age-legal-item"><span>자동차대여사업용 특수</span><strong>9년</strong><small>캠핑용자동차</small></div>
+          </div>
+          <p class="age-legal-source">근거: <a href="https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&amp;joBrNo=00&amp;joNo=0040&amp;lsiSeq=288007&amp;urlMode=lsScJoRltInfoR" target="_blank" rel="noopener">시행령 제40조</a> · <a href="https://www.law.go.kr/flDownload.do?bylClsCd=110201&amp;flSeq=150832231&amp;gubun=" target="_blank" rel="noopener">별표 2</a></p>
+        </div>
+        <div class="age-legal-side">
+          <h4>차령 연장 가능 범위</h4>
+          <strong class="age-extension">최대 +2년</strong>
+          <ul>
+            <li>시·도지사의 차령 연장 관련 고시가 있는 경우</li>
+            <li>차량 검사 등 별표 2의 요건을 모두 충족한 경우</li>
+            <li>승용자동차는 연장기간 중 1년마다 검사</li>
+          </ul>
+          <div class="age-legal-note"><b>주의:</b> 연장은 자동으로 적용되지 않습니다. 지역별 고시와 차량별 검사·상태를 확인한 후 연장 또는 매각을 결정합니다.</div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="decision">
+          <div class="decision-box check">
+            <h4>① 대상차량 추출</h4>
+            <p>경영관리와 고객관리팀이 법정 기준과 도래 예정 차량을 함께 확인합니다.</p>
+            <ul><li>최초등록일·현재 차령·차종별 기본 차령</li><li>지역별 연장 고시·검사요건·최대 연장기간</li><li>계약 만기일·고객 연장 의사</li><li>주행거리·사고·수리이력·현재 상태</li><li>예상 매각가격·향후 수익·연장 비용</li></ul>
+          </div>
+          <div class="decision-arrow">→</div>
+          <div class="decision-box yes">
+            <h4>② 계속 운용 가치가 있는 경우</h4>
+            <p>연장 가능 여부와 필요한 절차를 확인하고 보유차량으로 계속 운영합니다.</p>
+            <ul><li>차령연한 연장 절차 확인·진행</li><li>기존 고객 계약연장 협의</li><li>또는 새로운 고객에게 재대여</li><li>차량정보·사진·상태값 갱신</li></ul>
+          </div>
+          <div class="branch-label">또는</div>
+          <div class="decision-arrow">→</div>
+          <div class="decision-box no">
+            <h4>③ 계속 운용 가치가 낮은 경우</h4>
+            <p>계약 종료와 차량 회수 일정을 맞춘 뒤 자산을 매각합니다.</p>
+            <ul><li>현재 계약 종료일·반납일 확인</li><li>회수 → 정비·상품화 → 매각처 선정</li><li>매각대금 정산·회계처리</li><li>보유차량 목록에서 제외</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="roles" class="section section-break" aria-labelledby="roles-title">
+      <div class="section-head"><h2 id="roles-title" class="section-title">부서별 역할과 인수인계 정보</h2><p class="section-note">업무를 넘길 때는 ‘무엇을 했는지’보다 ‘다음 부서가 무엇을 해야 하는지’가 보이게 합니다.</p></div>
+      <div class="panel role-table-wrap">
+        <table>
+          <thead><tr><th>부서</th><th>핵심 역할</th><th>다음 부서로 공유할 정보</th><th>주요 확인 시점</th></tr></thead>
+          <tbody>
+            <tr><td><span class="role-pill">영업팀<br /><small>(영업부)</small></span></td><td>고객·에이전트 상담, 운전자격·연령·보험조건 확인, 견적·심사·발주, 전자약정·계약·출고, 즉시출고 차량 배포 및 수수료 지급요청</td><td>고객·실제 운전자 · 면허 취득기간 · 운전자 연령 · 보험 적용조건 · 차량·계약조건 · 최종견적 · 심사결과 · 발주서 · 출고확인 · 수수료 산정</td><td>상담 접수 / 견적 확정 / 계약서 작성 전 / 발주 전 / 출고 완료 / 부서 인계</td></tr>
+            <tr><td><span class="role-pill amber">경영관리<br /><small>(경영관리부)</small></span></td><td>차량구매 자금, 등록서류, 대여료 청구·수납, 연체자료, 과태료·수수료·회계·정산</td><td>발주·계약·차량매입자료 · 초기 납부금 · 입금·미수금 · 연체대장 · 과태료 · 수수료 · 채권잔액</td><td>차량대금 지급 / 월 수납 / 납부일 다음 영업일 / 월·최종 마감</td></tr>
+            <tr><td><span class="role-pill green">고객관리팀<br /><small>(CS부)</small></span></td><td>장기·월렌트 계약서 작성 및 모렌 등록, 운전자격·연령·보험조건 확인, 고객정보·제2운전자 관리, 연장·반납·연체·정산·수리·위탁업체 공유</td><td>계약서·고객정보·제2운전자 · 면허 취득기간 · 운전자 연령 · 보험 적용조건 · 연장여부·반납예정 · 장기미납 문자 · 위약금·청구내역 · 수리내역·검사차량 정보</td><td>계약 체결 전 / 고객정보 변경 / 제2운전자 등록 / 이용 중 이슈 / 반납·연장 예정 / 장기미납 / 검사차량 확인</td></tr>
+            <tr><td><span class="role-pill red">법무팀<br /><small>(채권관리부·협업)</small></span></td><td>계약 종료 후 채권 인수·검수·금액 확정, 변제협의·내용증명, 지급명령·소송·집행 및 종결 검토</td><td>계약·약관·특약 · 해지통지 · 반납·회수기록 · 최종정산 · 보증금상계 · 증빙·연락이력</td><td>해지·반납·회수 완료 / 정산 확정 / 정상 회수 곤란 / 법적 조치 검토</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="exceptions" class="section" aria-labelledby="exception-title">
+      <div class="section-head"><h2 id="exception-title" class="section-title">협업 참고 · 정상 흐름에서 벗어날 때</h2><p class="section-note">연체는 약정 기준을 확인하고, 기준 초과 시 담당 협업부서로 정확히 이관합니다.</p></div>
+      <div class="exception-grid">
+        <article class="exception"><h3><span>₩</span><span class="mascot small red" aria-hidden="true">🧾</span> 연체 발생</h3><p>경영관리 수납 확인 → 약정서·계약서와 에이전트별 연체 조건 확인 → 정해진 기간 초과 여부 판단 → 초과 시 해당 조치 실행 → 연락·조치·약속일 기록</p></article>
+        <article class="exception"><h3><span>↗</span><span class="mascot small amber" aria-hidden="true">🛠️</span> 사고·민원</h3><p>고객관리팀이 사실관계·사진·수리견적을 접수 → 경영관리 비용 확인 → 계약·특약·손해 범위가 쟁점이면 법무팀 자문</p></article>
+        <article class="exception"><h3><span>↺</span><span class="mascot small purple" aria-hidden="true">🚪</span> 미반납·계약해지</h3><p>고객관리팀이 해지근거·반납기한·차량위치·회수승인을 확인 → 차량 검수·최종정산 → 미수금 발생 시 채권관리부에 해지통지·반납·회수·정산 증빙과 함께 인계</p></article>
+      </div>
+      <div id="delinquency" class="delinq-panel">
+        <div class="delinq-head">
+          <h3>연체 발생 시 약정 기준에 따른 단계별 조치</h3>
+          <p>공통 운영기준상 고정 일수는 없으며, 계약·약정서·약관 및 에이전트별 조건을 우선 적용합니다.</p>
+        </div>
+        <div class="delinq-grid">
+          <div class="delinq-step">
+            <span class="step-mascot" aria-hidden="true">🔎</span>
+            <span>연체 발생</span>
+            <strong>약정 조건 확인</strong>
+            <p>입금 미확인 시 계약번호·에이전트·약정서·연체일수와 기준일을 확인합니다.</p>
+          </div>
+          <div class="delinq-step action">
+            <span class="step-mascot" aria-hidden="true">🔒</span>
+            <span>예: 약정 기준 3일 초과</span>
+            <strong>시동제어</strong>
+            <p>해당 계약에 시동제어 조항이 있고 기준일을 초과한 경우 정해진 절차에 따라 조치합니다.</p>
+          </div>
+          <div class="delinq-step termination">
+            <span class="step-mascot" aria-hidden="true">📄</span>
+            <span>예: 약정 기준 7일 초과</span>
+            <strong>계약해지 가능 검토</strong>
+            <p>해지 조건·통지·회수·정산 기준을 확인한 뒤 계약해지 가능 여부와 후속 조치를 검토합니다.</p>
+          </div>
+          <div class="delinq-step">
+            <span class="step-mascot" aria-hidden="true">🤝</span>
+            <span>에이전트별 조건 상이</span>
+            <strong>해당 약정 우선 적용</strong>
+            <p>3일·7일을 일률적으로 적용하지 않고 에이전트별 계약조건과 내부 승인 기준을 적용합니다.</p>
+          </div>
+        </div>
+        <div class="delinq-note"><strong>중요</strong> 공통 운영기준에는 모든 계약에 동일하게 적용하는 연체 일수가 정해져 있지 않습니다. 3일·7일은 예시 기준이며, 실제 시동제어·계약해지·차량회수 조치는 해당 계약서·약관·에이전트별 조건과 내부 승인을 확인한 뒤 정해진 기간을 초과한 경우에만 실행합니다.</div>
+        <ol class="delinq-rules">
+          <li>연체일수의 기준일(납부기한, 영업일/달력일 등)과 계약상 불이익 조건을 약정서에서 확인합니다.</li>
+          <li>조치 전 고객·에이전트 연락, 납부 약속, 안내·통지 및 내부 승인 이력을 남깁니다.</li>
+          <li>시동제어 전 계약·약관 근거, 연체금액·기간, 차량 위치·운행상태, 안전한 장소 여부를 확인합니다.</li>
+          <li>운행 중·위험지역·응급상황·납부완료 미확인·내부 승인 없는 경우에는 시동제어를 진행하지 않습니다.</li>
+          <li>조치 후에도 미수금·차량 상태·회수·법무 이관 여부를 계약번호 기준으로 기록합니다.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="check-title">
+      <div class="section-head"><h2 id="check-title" class="section-title">신규입사자 업무 인수·마감 체크</h2><p class="section-note">어떤 문의를 받든 아래 항목을 계약번호 기준으로 확인하고 기록하세요.</p></div>
+      <div class="checklist">
+        <article class="check"><span class="check-mascot" aria-hidden="true">🧑‍🤝‍🧑</span><strong>① 누구의 건인가?</strong><p>고객·에이전트·계약번호·담당자를 확인합니다.</p></article>
+        <article class="check"><span class="check-mascot" aria-hidden="true">🚘</span><strong>② 어떤 차량인가?</strong><p>차량번호·상태값·출고일·현재 위치를 확인합니다.</p></article>
+        <article class="check"><span class="check-mascot" aria-hidden="true">🪙</span><strong>③ 어떤 금액인가?</strong><p>월 대여료·보증금·미수금·정산금의 기준일을 확인합니다.</p></article>
+        <article class="check"><span class="check-mascot" aria-hidden="true">🗒️</span><strong>④ 무엇을 기록했나?</strong><p>상담·견적변경·납부약속·민원·조치·통지 이력을 남깁니다.</p></article>
+        <article class="check"><span class="check-mascot" aria-hidden="true">✅</span><strong>⑤ 승인이 필요한가?</strong><p>특별할인·비표준 조건·감면·시동제어·해지·회수 승인 여부를 확인합니다.</p></article>
+        <article class="check"><span class="check-mascot" aria-hidden="true">📮</span><strong>⑥ 누구에게 넘길 건가?</strong><p>다음 부서와 공유할 자료·기한·후속 조치·인계 결과를 남깁니다.</p></article>
+      </div>
+    </section>
+
+    <footer class="footer"><span><strong>아이언렌트카</strong> · 신규입사자 교육용 전사 업무흐름도</span><span>문서 내 인쇄 / PDF 저장 버튼 제공 · 내부 교육자료</span></footer>
+  </main>
+
+  <script>
+    // 상단 탭의 서브 메뉴를 열고 닫습니다.
+    var navGroups = document.querySelectorAll('.nav-group');
+    function closeMenus() {
+      navGroups.forEach(function (group) {
+        group.classList.remove('open');
+        var button = group.querySelector('.tab-button');
+        if (button) button.setAttribute('aria-expanded', 'false');
+      });
+    }
+    navGroups.forEach(function (group) {
+      var button = group.querySelector('.tab-button');
+      button.addEventListener('click', function (event) {
+        event.stopPropagation();
+        var shouldOpen = !group.classList.contains('open');
+        closeMenus();
+        group.classList.toggle('open', shouldOpen);
+        button.setAttribute('aria-expanded', String(shouldOpen));
+      });
+    });
+
+    document.querySelectorAll('.submenu a[href^="#"], .brand[href^="#"]').forEach(function (link) {
+      link.addEventListener('click', function (event) {
+        var target = document.querySelector(link.getAttribute('href'));
+        if (!target) return;
+        event.preventDefault();
+        closeMenus();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+    document.addEventListener('click', closeMenus);
+  </script>
+</body>
+</html>

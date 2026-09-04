@@ -501,6 +501,31 @@
     .teacher-bubble {
       border: 3px solid #111827;
       box-shadow: 4px 5px 0 #111827;
+      right: clamp(52px, 6.5vw, 94px);
+      top: 18px;
+      max-width: 200px;
+      line-height: 1.35;
+      transform: rotate(1.2deg);
+    }
+
+    .teacher-bubble::after {
+      right: 22px;
+      bottom: -9px;
+    }
+
+    .teacher-mascot {
+      right: clamp(30px, 6vw, 88px);
+      bottom: 42px;
+      width: min(410px, 44vw);
+      height: min(410px, 44vw);
+      max-height: none;
+      object-fit: contain;
+      mix-blend-mode: lighten;
+      -webkit-mask-image: radial-gradient(ellipse at center, #000 58%, rgba(0, 0, 0, .86) 72%, transparent 100%);
+      mask-image: radial-gradient(ellipse at center, #000 58%, rgba(0, 0, 0, .86) 72%, transparent 100%);
+      mask-size: 100% 100%;
+      mask-repeat: no-repeat;
+      filter: drop-shadow(0 14px 18px rgba(0, 0, 0, .24)) drop-shadow(0 0 22px rgba(48, 126, 255, .2));
     }
 
     .section-title::before {
@@ -755,6 +780,11 @@
     }
 
     @media (max-width: 950px) {
+      .teacher-bubble {
+        right: 70px;
+        top: 24px;
+      }
+
       .comic-strip {
         grid-template-columns: repeat(4, minmax(0, 1fr));
       }
@@ -763,6 +793,20 @@
     @media (max-width: 650px) {
       .hero {
         transform: none;
+      }
+
+      .teacher-bubble {
+        top: auto;
+        right: 14px;
+        bottom: 164px;
+        max-width: 180px;
+      }
+
+      .teacher-mascot {
+        right: calc(50% - 180px);
+        bottom: 38px;
+        width: 360px;
+        height: 360px;
       }
 
       .comic-stage {

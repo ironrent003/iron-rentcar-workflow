@@ -458,8 +458,390 @@
       .mini-card { min-height: 48px; padding: 5px; font-size: 8px; }
       .mini-card strong { font-size: 8px; }
       .mini-card em { font-size: 7px; }
-      .section-break { break-before: page; }
+    .section-break { break-before: page; }
       .footer { margin-top: 15px; }
+    }
+
+    /* Comic-book learning layer: the existing content stays intact, while the
+       first read becomes a seven-panel story for new hires. */
+    :root {
+      --comic-ink: #17243a;
+      --comic-paper: #fffdf8;
+      --comic-yellow: #ffd84d;
+      --comic-coral: #ff7166;
+      --comic-sky: #73d7ed;
+      --comic-purple: #8d79ee;
+      --comic-green: #a9dc78;
+    }
+
+    body {
+      background-color: #fff8e8;
+      background-image: radial-gradient(#f0d49b 1px, transparent 1px);
+      background-size: 12px 12px;
+      color: var(--comic-ink);
+    }
+
+    .topbar {
+      background: var(--comic-ink);
+      border-bottom: 4px solid #111827;
+    }
+
+    .brand-mark {
+      border: 3px solid #111827;
+      box-shadow: 3px 3px 0 #111827;
+    }
+
+    .hero {
+      border: 4px solid #111827;
+      border-radius: 28px 14px 26px 16px;
+      box-shadow: 8px 9px 0 #111827;
+      transform: rotate(-.35deg);
+    }
+
+    .teacher-bubble {
+      border: 3px solid #111827;
+      box-shadow: 4px 5px 0 #111827;
+    }
+
+    .section-title::before {
+      width: 18px;
+      height: 18px;
+      border: 2px solid #111827;
+      border-radius: 4px;
+      background: var(--comic-yellow);
+      transform: rotate(-8deg);
+    }
+
+    .company-card,
+    .manual-card,
+    .flow-card,
+    .panel,
+    .swim,
+    .exception,
+    .delinq-panel,
+    .check,
+    .legend {
+      border: 3px solid var(--comic-ink);
+      border-radius: 16px 10px 16px 10px;
+      box-shadow: 5px 6px 0 rgba(23, 36, 58, .22);
+    }
+
+    .master-flow {
+      border: 3px solid #111827;
+      border-radius: 20px 12px 20px 12px;
+      box-shadow: 6px 7px 0 #111827;
+      background: var(--comic-paper);
+    }
+
+    .comic-story {
+      margin-top: 24px;
+    }
+
+    .comic-stage {
+      position: relative;
+      overflow: hidden;
+      padding: 20px;
+      border: 3px solid #111827;
+      border-radius: 20px 12px 22px 14px;
+      background: var(--comic-paper);
+      box-shadow: 7px 8px 0 #111827;
+    }
+
+    .comic-stage::after {
+      content: "✦";
+      position: absolute;
+      right: 20px;
+      top: 10px;
+      color: var(--comic-coral);
+      font-size: 28px;
+      transform: rotate(12deg);
+    }
+
+    .comic-caption {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 12px;
+      margin-bottom: 16px;
+      padding-right: 34px;
+    }
+
+    .comic-caption span {
+      padding: 6px 9px;
+      border: 2px solid #111827;
+      border-radius: 7px;
+      background: #111827;
+      color: var(--comic-yellow);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .12em;
+    }
+
+    .comic-caption strong {
+      font-size: clamp(16px, 2vw, 21px);
+      letter-spacing: -.03em;
+    }
+
+    .comic-caption small {
+      flex-basis: 100%;
+      color: #52627a;
+      font-size: 13px;
+    }
+
+    .comic-strip {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 10px;
+      align-items: stretch;
+    }
+
+    .comic-panel {
+      position: relative;
+      min-height: 242px;
+      overflow: hidden;
+      padding: 16px 12px 14px;
+      border: 3px solid #111827;
+      border-radius: 12px 18px 10px 16px;
+      box-shadow: 4px 5px 0 #111827;
+      transform: rotate(-.7deg);
+    }
+
+    .comic-panel:nth-child(even) {
+      transform: rotate(.7deg);
+    }
+
+    .comic-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .22;
+      background-image: radial-gradient(#111827 1px, transparent 1px);
+      background-size: 8px 8px;
+      mask-image: linear-gradient(135deg, rgba(0,0,0,.9), transparent 62%);
+    }
+
+    .panel-customer { background: #fff0a7; }
+    .panel-contract { background: #ffd3c7; }
+    .panel-vehicle { background: #c9f2fb; }
+    .panel-delivery { background: #dff3bb; }
+    .panel-manage { background: #d8d0ff; }
+    .panel-return { background: #ffe0a6; }
+    .panel-legal { background: #e8d6ff; }
+
+    .comic-number {
+      position: relative;
+      display: inline-grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      border: 2px solid #111827;
+      border-radius: 50%;
+      background: #fff;
+      color: #111827;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .comic-character {
+      position: relative;
+      display: grid;
+      place-items: center;
+      height: 58px;
+      margin: 3px auto 1px;
+      font-size: 42px;
+      line-height: 1;
+      filter: drop-shadow(2px 3px 0 rgba(17, 24, 39, .28));
+    }
+
+    .comic-sfx {
+      position: absolute;
+      right: 8px;
+      top: 13px;
+      color: #111827;
+      font-size: 11px;
+      font-style: italic;
+      font-weight: 950;
+      letter-spacing: .04em;
+      transform: rotate(8deg);
+    }
+
+    .comic-panel h3 {
+      position: relative;
+      margin: 4px 0 8px;
+      color: #111827;
+      font-size: 15px;
+      letter-spacing: -.04em;
+      text-align: center;
+    }
+
+    .comic-bubble {
+      position: relative;
+      margin: 0 0 10px;
+      padding: 9px 7px;
+      border: 2px solid #111827;
+      border-radius: 13px;
+      background: #fff;
+      box-shadow: 2px 3px 0 #111827;
+      color: #111827;
+      font-size: 12px;
+      font-weight: 900;
+      line-height: 1.35;
+      text-align: center;
+    }
+
+    .comic-bubble::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -9px;
+      width: 14px;
+      height: 14px;
+      border-right: 2px solid #111827;
+      border-bottom: 2px solid #111827;
+      background: #fff;
+      transform: translateX(-50%) rotate(45deg);
+    }
+
+    .comic-panel p {
+      position: relative;
+      margin: 0;
+      color: #35445b;
+      font-size: 12px;
+      line-height: 1.45;
+      text-align: center;
+    }
+
+    .comic-route {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 17px;
+      padding-top: 12px;
+      border-top: 3px dashed #111827;
+    }
+
+    .comic-route .route-label {
+      margin-right: 4px;
+      color: #52627a;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .comic-route strong {
+      padding: 5px 8px;
+      border: 2px solid #111827;
+      border-radius: 7px;
+      background: var(--comic-yellow);
+      color: #111827;
+      font-size: 12px;
+    }
+
+    .comic-route i {
+      color: #111827;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 900;
+    }
+
+    .scope-banner,
+    .legend,
+    .driver-check,
+    .age-legal {
+      border-width: 3px;
+      box-shadow: 4px 5px 0 rgba(23, 36, 58, .18);
+    }
+
+    @media (max-width: 950px) {
+      .comic-strip {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 650px) {
+      .hero {
+        transform: none;
+      }
+
+      .comic-stage {
+        padding: 14px;
+      }
+
+      .comic-caption {
+        display: block;
+      }
+
+      .comic-caption strong,
+      .comic-caption small {
+        display: block;
+        margin-top: 8px;
+      }
+
+      .comic-strip {
+        grid-template-columns: repeat(7, minmax(178px, 1fr));
+        overflow-x: auto;
+        padding: 5px 3px 12px;
+      }
+
+      .comic-panel {
+        min-height: 230px;
+      }
+
+      .comic-route {
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 3px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .hero,
+      .comic-stage,
+      .master-flow,
+      .company-card,
+      .manual-card,
+      .flow-card,
+      .panel,
+      .swim,
+      .exception,
+      .delinq-panel,
+      .check,
+      .legend {
+        box-shadow: none;
+        transform: none;
+      }
+
+      .comic-strip {
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        gap: 5px;
+      }
+
+      .comic-panel {
+        min-height: 175px;
+        padding: 7px;
+      }
+
+      .comic-character {
+        height: 36px;
+        font-size: 27px;
+      }
+
+      .comic-panel h3,
+      .comic-bubble,
+      .comic-panel p {
+        font-size: 8px;
+      }
+
+      .comic-bubble {
+        padding: 5px 3px;
+      }
     }
   </style>
 </head>
@@ -484,6 +866,7 @@
         <div class="submenu" role="menu">
           <a href="#overview" role="menuitem">교육 기준</a>
           <a href="#manual-baseline" role="menuitem">업무기준</a>
+          <a href="#comic-story" role="menuitem">만화형 한눈에 보기</a>
           <a href="#master-title" role="menuitem">전체 흐름</a>
           <a href="#three-flow-title" role="menuitem">고객·차량·금액 흐름</a>
           <a href="#check-title" role="menuitem">인수 체크</a>
@@ -532,6 +915,67 @@
         <div class="hero-friend"><span class="mascot cyan" aria-hidden="true">🧸</span><span>몽이<small>고객 흐름 도우미</small></span></div>
         <div class="hero-friend"><span class="mascot green" aria-hidden="true">🚙</span><span>카롱<small>차량 흐름 도우미</small></span></div>
         <div class="hero-friend"><span class="mascot amber" aria-hidden="true">💰</span><span>토리<small>금액 흐름 도우미</small></span></div>
+      </div>
+    </section>
+
+    <section id="comic-story" class="section comic-story" aria-labelledby="comic-story-title">
+      <div class="section-head">
+        <h2 id="comic-story-title" class="section-title">신규입사자 업무흐름 · 만화로 한눈에 보기</h2>
+        <p class="section-note">선생님과 함께 7컷으로 고객·차량·금액의 전체 여정을 따라갑니다.</p>
+      </div>
+      <div class="comic-stage">
+        <div class="comic-caption">
+          <span>IRON RENTCAR</span>
+          <strong>문의 한 건이 차량의 다음 여정으로 이어져요!</strong>
+          <small>교육 핵심 · 구독(중고차 한정) · 렌탈(신차·중고차) · 차량관리</small>
+        </div>
+        <div class="comic-strip" aria-label="아이언렌트카 업무흐름 7컷 만화">
+          <article class="comic-panel panel-customer">
+            <span class="comic-number">01</span><span class="comic-character" aria-hidden="true">💬</span><span class="comic-sfx">HELLO!</span>
+            <h3>문의 접수</h3>
+            <div class="comic-bubble">고객·에이전트의<br>희망 조건을 확인!</div>
+            <p>상품유형 · 예산 · 희망차량 · 출고일</p>
+          </article>
+          <article class="comic-panel panel-contract">
+            <span class="comic-number">02</span><span class="comic-character" aria-hidden="true">📝</span><span class="comic-sfx">CHECK!</span>
+            <h3>계약 심사</h3>
+            <div class="comic-bubble">면허 1년 이상?<br>연령·보험조건은?</div>
+            <p>운전자격·연령·보험 적용 여부 확인</p>
+          </article>
+          <article class="comic-panel panel-vehicle">
+            <span class="comic-number">03</span><span class="comic-character" aria-hidden="true">🚙</span><span class="comic-sfx">ZOOM!</span>
+            <h3>차량 확보·배정</h3>
+            <div class="comic-bubble">보유차량이면<br>에이전트에게 공유!</div>
+            <p>실제 사진·조건·상태값 연결</p>
+          </article>
+          <article class="comic-panel panel-delivery">
+            <span class="comic-number">04</span><span class="comic-character" aria-hidden="true">🎉</span><span class="comic-sfx">GO!</span>
+            <h3>출고·대여 시작</h3>
+            <div class="comic-bubble">보험·등록 확인 후<br>고객에게 인도해요!</div>
+            <p>차량 배정 · 인도 확인 · 대여 개시</p>
+          </article>
+          <article class="comic-panel panel-manage">
+            <span class="comic-number">05</span><span class="comic-character" aria-hidden="true">🧰</span><span class="comic-sfx">CARE!</span>
+            <h3>이용 중 관리</h3>
+            <div class="comic-bubble">납부·문의·사고·변경<br>끝까지 챙겨요!</div>
+            <p>수리·민원·연장·연체 기록</p>
+          </article>
+          <article class="comic-panel panel-return">
+            <span class="comic-number">06</span><span class="comic-character" aria-hidden="true">🔄</span><span class="comic-sfx">NEXT!</span>
+            <h3>만기·반납·정산</h3>
+            <div class="comic-bubble">연장할까?<br>반납·재대여·매각할까?</div>
+            <p>차령·수익성·상태를 함께 판단</p>
+          </article>
+          <article class="comic-panel panel-legal">
+            <span class="comic-number">07</span><span class="comic-character" aria-hidden="true">🛡️</span><span class="comic-sfx">RULE!</span>
+            <h3>연체·법무 협업</h3>
+            <div class="comic-bubble">약정 기준을 넘으면<br>정해진 조치로 연결!</div>
+            <p>시동제어·해지·회수·채권관리</p>
+          </article>
+        </div>
+        <div class="comic-route" aria-label="전체 업무 여정">
+          <span class="route-label">전체 여정</span><strong>문의</strong><i>→</i><strong>계약</strong><i>→</i><strong>차량</strong><i>→</i><strong>출고</strong><i>→</i><strong>관리</strong><i>→</i><strong>반납·정산</strong><i>→</i><strong>법무·채권</strong>
+        </div>
       </div>
     </section>
 

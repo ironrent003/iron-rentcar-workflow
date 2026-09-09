@@ -181,6 +181,7 @@
     .section-head { display: flex; align-items: end; justify-content: space-between; gap: 18px; margin-bottom: 13px; }
     .section-title { display: flex; align-items: center; gap: 10px; margin: 0; font-size: clamp(20px, 2.4vw, 28px); letter-spacing: -.05em; }
     .section-title::before { content: ""; width: 7px; height: 26px; border-radius: 99px; background: var(--blue); }
+    .section-character { width: 48px; height: 48px; flex: 0 0 auto; object-fit: contain; object-position: center bottom; filter: drop-shadow(2px 3px 0 rgba(23,36,58,.18)); }
     .section-note { margin: 0; color: var(--muted); font-size: 12px; }
 
     .mascot { position: relative; display: inline-grid; place-items: center; flex: 0 0 auto; width: 37px; height: 37px; color: var(--navy); background: #fff; border: 2px solid #fff; border-radius: 13px 13px 13px 5px; box-shadow: 0 5px 12px rgba(30,61,112,.12); font-size: 20px; line-height: 1; transform: rotate(-4deg); }
@@ -462,6 +463,7 @@
       .status, .status:first-child, .status:last-child { border-radius: 7px; }
       .status:not(:last-child)::after { display: none; }
       .checklist { grid-template-columns: 1fr; }
+      .section-character { width: 38px; height: 38px; }
     }
 
     @media print {
@@ -494,6 +496,7 @@
       .status-track.lifecycle .status span { font-size: 7px; }
     .section-break { break-before: page; }
       .footer { margin-top: 15px; }
+      .section-character { width: 31px; height: 31px; filter: none; }
     }
 
     /* Comic-book learning layer: the existing content stays intact, while the
@@ -1001,7 +1004,7 @@
 
     <section id="comic-story" class="section comic-story" aria-labelledby="comic-story-title">
       <div class="section-head">
-        <h2 id="comic-story-title" class="section-title">신규입사자 업무흐름 · 만화로 한눈에 보기</h2>
+        <h2 id="comic-story-title" class="section-title"><img class="section-character" src="assets-teacher-guide.png" alt="" aria-hidden="true" />신규입사자 업무흐름 · 만화로 한눈에 보기</h2>
         <p class="section-note">선생님과 함께 7컷으로 고객·차량·금액의 전체 여정을 따라갑니다.</p>
       </div>
       <div class="comic-stage">
@@ -1062,7 +1065,7 @@
 
     <section id="company" class="section" aria-labelledby="company-title">
       <div class="section-head">
-        <h2 id="company-title" class="section-title">회사소개서로 이해하는 아이언렌트카</h2>
+        <h2 id="company-title" class="section-title"><img class="section-character" src="assets-teacher-guide.png" alt="" aria-hidden="true" />회사소개서로 이해하는 아이언렌트카</h2>
         <p class="section-note">회사 전체 사업영역과 신규입사자 교육 범위를 구분해 확인합니다.</p>
       </div>
       <div class="scope-banner"><strong>신규입사자 교육 핵심 범위</strong><b>구독</b><b>렌탈</b><b>차량관리</b><span>장기렌터카 운영기준은 렌탈 업무의 공통·부서별 기준으로 반영했습니다. 사고대차·중고차 수출·법무·채권은 회사 및 협업 참고 영역입니다.</span></div>
@@ -1125,7 +1128,7 @@
 
     <section id="manual-baseline" class="section" aria-labelledby="manual-title">
       <div class="section-head">
-        <h2 id="manual-title" class="section-title">장기렌터카 표준 업무 운영</h2>
+        <h2 id="manual-title" class="section-title"><img class="section-character" src="assets-teacher-check.png" alt="" aria-hidden="true" />장기렌터카 표준 업무 운영</h2>
         <p class="section-note">공통·영업·CS·경영관리·채권관리 업무기준을 신규입사자 흐름에 연결합니다.</p>
       </div>
       <div class="manual-grid">
@@ -1208,7 +1211,7 @@
 
     <section id="overview" class="section">
       <div class="section-head">
-        <h2 class="section-title">회사 가치가 업무로 이어지는 3가지 기준</h2>
+        <h2 class="section-title"><img class="section-character" src="assets-teacher-guide.png" alt="" aria-hidden="true" />회사 가치가 업무로 이어지는 3가지 기준</h2>
         <p class="section-note">회사소개서의 핵심가치를 신규입사자의 실제 업무 기준으로 연결합니다.</p>
       </div>
       <div class="principles">
@@ -1220,7 +1223,7 @@
 
     <section class="section" aria-labelledby="master-title">
       <div class="section-head">
-        <h2 id="master-title" class="section-title">교육 업무 흐름 한눈에 보기</h2>
+        <h2 id="master-title" class="section-title"><img class="section-character" src="assets-teacher-guide.png" alt="" aria-hidden="true" />교육 업무 흐름 한눈에 보기</h2>
         <p class="section-note">핵심 업무는 구독·렌탈·차량관리이며, 협업부서는 참고로 연결됩니다.</p>
       </div>
       <div class="legend" aria-label="흐름 범례">
@@ -1242,7 +1245,7 @@
     </section>
 
     <section class="section" aria-labelledby="three-flow-title">
-      <div class="section-head"><h2 id="three-flow-title" class="section-title">3개의 흐름으로 읽기</h2><p class="section-note">세 흐름은 계약번호·차량번호·고객정보로 연결됩니다.</p></div>
+      <div class="section-head"><h2 id="three-flow-title" class="section-title"><img class="section-character" src="assets-teacher-guide.png" alt="" aria-hidden="true" />3개의 흐름으로 읽기</h2><p class="section-note">세 흐름은 계약번호·차량번호·고객정보로 연결됩니다.</p></div>
       <div class="flow-grid">
         <article class="flow-card customer-flow">
           <h3><span class="mascot small cyan" aria-hidden="true">🧸</span><span class="flow-icon">人</span> 고객 흐름</h3>
@@ -1275,7 +1278,7 @@
     </section>
 
     <section id="swimlane" class="section section-break" aria-labelledby="swim-title">
-      <div class="section-head"><h2 id="swim-title" class="section-title">부서별 업무흐름 · 스윔레인</h2><p class="section-note">구독·렌탈·차량관리 업무와 협업부서의 인수인계 지점을 확인합니다.</p></div>
+      <div class="section-head"><h2 id="swim-title" class="section-title"><img class="section-character" src="assets-teacher-guide.png" alt="" aria-hidden="true" />부서별 업무흐름 · 스윔레인</h2><p class="section-note">구독·렌탈·차량관리 업무와 협업부서의 인수인계 지점을 확인합니다.</p></div>
       <div class="swim-wrap">
         <div class="swim" role="table" aria-label="부서별 전사 업무흐름">
           <div class="swim-head" role="row">
@@ -1336,7 +1339,7 @@
     </section>
 
     <section class="section" aria-labelledby="handoff-title">
-      <div class="section-head"><h2 id="handoff-title" class="section-title">계약완료 후 출고 책임과 인계정보</h2><p class="section-note">출고는 한 부서의 일이 아니라, 확인자료가 다음 담당자에게 도착해야 완료됩니다.</p></div>
+      <div class="section-head"><h2 id="handoff-title" class="section-title"><img class="section-character" src="assets-teacher-check.png" alt="" aria-hidden="true" />계약완료 후 출고 책임과 인계정보</h2><p class="section-note">출고는 한 부서의 일이 아니라, 확인자료가 다음 담당자에게 도착해야 완료됩니다.</p></div>
       <div class="panel">
         <div class="handoff-flow" aria-label="출고 책임 흐름">
           <div class="handoff-step"><b>영업팀</b><strong>출고 대상 확정</strong><span>최종 견적·계약조건·차량·고객 출고일 확정</span></div>
@@ -1350,7 +1353,7 @@
     </section>
 
     <section id="vehicle" class="section" aria-labelledby="vehicle-title">
-      <div class="section-head"><h2 id="vehicle-title" class="section-title">차량 운영의 핵심 프로세스</h2><p class="section-note">즉시출고 차량은 영업기회이자, 정확한 상태관리가 필요한 자산입니다.</p></div>
+      <div class="section-head"><h2 id="vehicle-title" class="section-title"><img class="section-character" src="assets-teacher-vehicle.png" alt="" aria-hidden="true" />차량 운영의 핵심 프로세스</h2><p class="section-note">즉시출고 차량은 영업기회이자, 정확한 상태관리가 필요한 자산입니다.</p></div>
       <div class="two-col">
         <article class="panel">
           <h3 class="panel-title">에이전트 배포용 차량정보 세트 <small>실제 차량사진 + 조건 + 상태</small></h3>
@@ -1392,7 +1395,7 @@
     </section>
 
     <section class="section" aria-labelledby="age-title">
-      <div class="section-head"><h2 id="age-title" class="section-title">차령연한 도래 차량 · 연장 또는 매각</h2><p class="section-note">렌터카는 계약 만기와 별도로 차량별 차령연한을 선제적으로 확인합니다.</p></div>
+      <div class="section-head"><h2 id="age-title" class="section-title"><img class="section-character" src="assets-teacher-vehicle.png" alt="" aria-hidden="true" />차령연한 도래 차량 · 연장 또는 매각</h2><p class="section-note">렌터카는 계약 만기와 별도로 차량별 차령연한을 선제적으로 확인합니다.</p></div>
       <div class="age-legal" aria-label="법령상 렌터카 차령 기준">
         <div>
           <p class="age-legal-kicker">LAW CHECK · 여객자동차 운수사업법 시행령 제40조·별표 2</p>
@@ -1441,7 +1444,7 @@
     </section>
 
     <section id="roles" class="section section-break" aria-labelledby="roles-title">
-      <div class="section-head"><h2 id="roles-title" class="section-title">부서별 역할과 인수인계 정보</h2><p class="section-note">업무를 넘길 때는 ‘무엇을 했는지’보다 ‘다음 부서가 무엇을 해야 하는지’가 보이게 합니다.</p></div>
+      <div class="section-head"><h2 id="roles-title" class="section-title"><img class="section-character" src="assets-teacher-guide.png" alt="" aria-hidden="true" />부서별 역할과 인수인계 정보</h2><p class="section-note">업무를 넘길 때는 ‘무엇을 했는지’보다 ‘다음 부서가 무엇을 해야 하는지’가 보이게 합니다.</p></div>
       <div class="panel role-table-wrap">
         <table>
           <thead><tr><th>부서</th><th>핵심 역할</th><th>다음 부서로 공유할 정보</th><th>주요 확인 시점</th></tr></thead>
@@ -1456,7 +1459,7 @@
     </section>
 
     <section class="section" aria-labelledby="approval-title">
-      <div class="section-head"><h2 id="approval-title" class="section-title">예외·중요업무 승인체계</h2><p class="section-note">담당자가 처리할 수 있는 일과 별도 승인이 필요한 일을 구분합니다.</p></div>
+      <div class="section-head"><h2 id="approval-title" class="section-title"><img class="section-character" src="assets-teacher-check.png" alt="" aria-hidden="true" />예외·중요업무 승인체계</h2><p class="section-note">담당자가 처리할 수 있는 일과 별도 승인이 필요한 일을 구분합니다.</p></div>
       <div class="panel approval-wrap">
         <table>
           <thead><tr><th>상황</th><th>처리 담당</th><th>승인 또는 최종 확인</th><th>남겨야 할 기록</th></tr></thead>
@@ -1472,7 +1475,7 @@
     </section>
 
     <section class="section" aria-labelledby="system-title">
-      <div class="section-head"><h2 id="system-title" class="section-title">업무 시스템과 상담이력 관리 원칙</h2><p class="section-note">도구 이름보다 중요한 것은 같은 건을 같은 키와 같은 기록 규칙으로 이어가는 것입니다.</p></div>
+      <div class="section-head"><h2 id="system-title" class="section-title"><img class="section-character" src="assets-teacher-check.png" alt="" aria-hidden="true" />업무 시스템과 상담이력 관리 원칙</h2><p class="section-note">도구 이름보다 중요한 것은 같은 건을 같은 키와 같은 기록 규칙으로 이어가는 것입니다.</p></div>
       <div class="system-grid">
         <article class="system-card"><strong>🔗 연결 키</strong><p>계약번호를 중심으로 고객정보, 차량번호, 견적·계약금액, 수납·미수금, 상담이력을 연결합니다.</p></article>
         <article class="system-card"><strong>🗒️ 상담이력 필수값</strong><p>문의일시·상담유형·요청자·담당자·핵심내용·다음 조치·기한·협조부서·처리 결과를 남깁니다.</p></article>
@@ -1481,7 +1484,7 @@
     </section>
 
     <section id="exceptions" class="section" aria-labelledby="exception-title">
-      <div class="section-head"><h2 id="exception-title" class="section-title">협업 참고 · 정상 흐름에서 벗어날 때</h2><p class="section-note">연체는 약정 기준을 확인하고, 기준 초과 시 담당 협업부서로 정확히 이관합니다.</p></div>
+      <div class="section-head"><h2 id="exception-title" class="section-title"><img class="section-character" src="assets-teacher-check.png" alt="" aria-hidden="true" />협업 참고 · 정상 흐름에서 벗어날 때</h2><p class="section-note">연체는 약정 기준을 확인하고, 기준 초과 시 담당 협업부서로 정확히 이관합니다.</p></div>
       <div class="exception-grid">
         <article class="exception"><h3><span>₩</span><span class="mascot small red" aria-hidden="true">🧾</span> 연체 발생</h3><p>경영관리 수납 확인 → 약정서·계약서와 에이전트별 연체 조건 확인 → 정해진 기간 초과 여부 판단 → 초과 시 해당 조치 실행 → 연락·조치·약속일 기록</p></article>
         <article class="exception"><h3><span>↗</span><span class="mascot small amber" aria-hidden="true">🛠️</span> 사고·민원</h3><p>고객관리팀이 사실관계·사진·수리견적을 접수 → 경영관리 비용 확인 → 계약·특약·손해 범위가 쟁점이면 법무팀 자문</p></article>
@@ -1530,7 +1533,7 @@
     </section>
 
     <section class="section" aria-labelledby="check-title">
-      <div class="section-head"><h2 id="check-title" class="section-title">신규입사자 업무 인수·마감 체크</h2><p class="section-note">어떤 문의를 받든 아래 항목을 계약번호 기준으로 확인하고 기록하세요.</p></div>
+      <div class="section-head"><h2 id="check-title" class="section-title"><img class="section-character" src="assets-teacher-finish.png" alt="" aria-hidden="true" />신규입사자 업무 인수·마감 체크</h2><p class="section-note">어떤 문의를 받든 아래 항목을 계약번호 기준으로 확인하고 기록하세요.</p></div>
       <div class="checklist">
         <article class="check"><span class="check-mascot" aria-hidden="true">🧑‍🤝‍🧑</span><strong>① 누구의 건인가?</strong><p>고객·에이전트·계약번호·담당자를 확인합니다.</p></article>
         <article class="check"><span class="check-mascot" aria-hidden="true">🚘</span><strong>② 어떤 차량인가?</strong><p>차량번호·상태값·출고일·현재 위치를 확인합니다.</p></article>

@@ -808,6 +808,28 @@
       font-weight: 900;
     }
 
+    .learning-stage {
+      margin: 24px 0 18px;
+      padding: 18px 20px;
+      border: 3px solid var(--comic-ink);
+      border-radius: 16px 10px 16px 10px;
+      background: var(--comic-paper);
+      box-shadow: 5px 6px 0 rgba(23, 36, 58, .22);
+    }
+    .learning-stage.core { margin-top: 10px; background: #fff7cc; }
+    .learning-stage.detail { background: #eef4ff; }
+    .learning-stage .stage-kicker { display: inline-block; margin-bottom: 5px; padding: 5px 8px; border: 2px solid var(--comic-ink); border-radius: 7px; color: var(--comic-yellow); background: var(--comic-ink); font-size: 10px; font-weight: 900; letter-spacing: .08em; }
+    .learning-stage h2 { margin: 0 0 5px; color: var(--comic-ink); font-size: 21px; letter-spacing: -.04em; }
+    .learning-stage p { margin: 0; color: #52627a; font-size: 12px; }
+    .core-roles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; margin-top: 12px; }
+    .core-role { padding: 9px; border: 2px solid var(--comic-ink); border-radius: 9px; background: #fff; }
+    .core-role strong { display: block; margin-bottom: 3px; color: var(--comic-ink); font-size: 11px; }
+    .core-role span { color: #52627a; font-size: 10px; line-height: 1.4; }
+    .vehicle-ownership { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 12px 0; }
+    .vehicle-owner { padding: 10px; border: 2px solid var(--comic-ink); border-radius: 10px; background: #fff; }
+    .vehicle-owner strong { display: block; margin-bottom: 4px; color: var(--comic-ink); font-size: 11px; }
+    .vehicle-owner span { color: #52627a; font-size: 10px; line-height: 1.45; }
+
     .scope-banner,
     .legend,
     .driver-check,
@@ -869,6 +891,8 @@
       .comic-panel {
         min-height: 230px;
       }
+
+      .core-roles, .vehicle-ownership { grid-template-columns: 1fr; }
 
       .comic-route {
         justify-content: flex-start;
@@ -1009,9 +1033,9 @@
       </div>
       <div class="comic-stage">
         <div class="comic-caption">
-          <span>IRON RENTCAR</span>
-          <strong>문의 한 건이 차량의 다음 여정으로 이어져요!</strong>
-          <small>교육 핵심 · 구독(중고차 한정) · 렌탈(신차·중고차) · 차량관리</small>
+          <span>1단계 · 입사 첫날</span>
+          <strong>입사 첫날 핵심 흐름</strong>
+          <small>문의 → 계약 → 차량 → 출고 → 관리 → 반납 → 정산/법무</small>
         </div>
         <div class="comic-strip" aria-label="아이언렌트카 업무흐름 7컷 만화">
           <article class="comic-panel panel-customer">
@@ -1052,15 +1076,32 @@
           </article>
           <article class="comic-panel panel-legal">
             <span class="comic-number">07</span><span class="comic-character" aria-hidden="true">🛡️</span><span class="comic-sfx">RULE!</span>
-            <h3>연체·법무 협업</h3>
-            <div class="comic-bubble">약정 기준을 넘으면<br>정해진 조치로 연결!</div>
-            <p>시동제어·해지·회수·채권관리</p>
+            <h3>정산·법무 협업</h3>
+            <div class="comic-bubble">정산과 법무까지<br>기록으로 연결!</div>
+            <p>정산·채권·법무 기록</p>
           </article>
         </div>
         <div class="comic-route" aria-label="전체 업무 여정">
-          <span class="route-label">전체 여정</span><strong>문의</strong><i>→</i><strong>계약</strong><i>→</i><strong>차량</strong><i>→</i><strong>출고</strong><i>→</i><strong>관리</strong><i>→</i><strong>반납·정산</strong><i>→</i><strong>법무·채권</strong>
+          <span class="route-label">전체 여정</span><strong>문의</strong><i>→</i><strong>계약</strong><i>→</i><strong>차량</strong><i>→</i><strong>출고</strong><i>→</i><strong>관리</strong><i>→</i><strong>반납</strong><i>→</i><strong>정산/법무</strong>
+        </div>
+        <div class="learning-stage core">
+          <span class="stage-kicker">FIRST DAY · CORE</span>
+          <h2>입사 첫날에는 흐름과 4개 부서 역할만 익힙니다</h2>
+          <p>상세 기준은 다음 단계에서 확인하고, 첫날에는 누가 무엇을 넘기는지만 기억합니다.</p>
+          <div class="core-roles" aria-label="입사 첫날 4개 부서 역할">
+            <div class="core-role"><strong>영업팀</strong><span>문의·견적·계약서 작성·최종 조건 확인</span></div>
+            <div class="core-role"><strong>고객관리팀</strong><span>계약 검수·출고·이용·반납 상태 관리</span></div>
+            <div class="core-role"><strong>경영관리</strong><span>금액·수납·정산·자산 정보 확인</span></div>
+            <div class="core-role"><strong>법무팀 (법무·채권관리)</strong><span>예외·분쟁·채권·법적 절차 협업</span></div>
+          </div>
         </div>
       </div>
+    </section>
+
+    <section class="learning-stage detail" aria-labelledby="detail-stage-title">
+      <span class="stage-kicker">SECOND STAGE · PRACTICE</span>
+      <h2 id="detail-stage-title">실무 상세</h2>
+      <p>즉시출고차량, 차령연한, 승인, 연체, 시동제어, 법무, 채권, 모렌 기록은 아래 상세 기준에서 확인합니다.</p>
     </section>
 
     <section id="company" class="section" aria-labelledby="company-title">
@@ -1093,7 +1134,7 @@
             <div><dt>대표번호</dt><dd>02-568-8320</dd></div>
             <div><dt>조직</dt><dd>본사 + 강북지점 + 용인지점</dd></div>
           </dl>
-          <div class="callout"><strong>신규입사자 포인트</strong> 본사 업무는 영업·고객관리·차량관리·경영지원·법무·채권이 연결되고, 강북·용인 지점은 차량과 고객 접점을 확장합니다.</div>
+          <div class="callout"><strong>신규입사자 포인트</strong> 본사 업무는 영업팀·고객관리팀·경영관리·법무팀이 연결되고, 강북·용인 지점은 차량과 고객 접점을 확장합니다.</div>
         </article>
         <article id="business" class="company-card full">
           <p class="company-kicker">BUSINESS PORTFOLIO</p>
@@ -1107,9 +1148,9 @@
           </div>
           <div class="callout"><strong>교육 범위 구분</strong> 신규입사자가 실제로 배우고 수행할 핵심 업무는 구독·렌탈·차량관리입니다. 사고대차·중고차 수출은 회사 전체 사업 이해와 부서 협업을 위한 참고 영역으로만 표시합니다.</div>
           <div class="org-strip">
-            <div class="org-unit"><strong>🧮 경영지원·경리</strong><span>자금·수납·정산·회계·자산관리</span></div>
-            <div class="org-unit"><strong>🧸 고객관리·차량관리</strong><span>고객 접점·출고·이용관리·정비·반납</span></div>
-            <div class="org-unit"><strong>📣 영업·지점·법무</strong><span>영업1·2팀·강북·용인·소송·채권관리</span></div>
+            <div class="org-unit"><strong>🧮 경영관리</strong><span>자금·수납·정산·회계·자산관리</span></div>
+            <div class="org-unit"><strong>🧸 고객관리팀</strong><span>고객 접점·출고·이용관리·정비·반납</span></div>
+            <div class="org-unit"><strong>📣 영업팀 · 법무팀</strong><span>영업·분쟁·채권·법적 절차 협업</span></div>
           </div>
         </article>
         <article id="history" class="company-card full">
@@ -1129,7 +1170,7 @@
     <section id="manual-baseline" class="section" aria-labelledby="manual-title">
       <div class="section-head">
         <h2 id="manual-title" class="section-title"><img class="section-character" src="assets-teacher-check.png" alt="" aria-hidden="true" />장기렌터카 표준 업무 운영</h2>
-        <p class="section-note">공통·영업·CS·경영관리·채권관리 업무기준을 신규입사자 흐름에 연결합니다.</p>
+        <p class="section-note">공통·영업팀·고객관리팀·경영관리·법무팀 업무기준을 신규입사자 흐름에 연결합니다.</p>
       </div>
       <div class="manual-grid">
         <article class="manual-card common">
@@ -1143,7 +1184,7 @@
           </ul>
         </article>
         <article class="manual-card sales">
-          <span class="manual-badge">영업부 · 영업팀</span>
+          <span class="manual-badge">영업팀</span>
           <h3><span class="mascot small cyan" aria-hidden="true">📣</span>상담·견적·출고</h3>
           <p>고객 또는 에이전트의 요구를 확인하고 심사·수익성·차량 조건을 검토해 계약과 출고까지 연결합니다.</p>
           <ul>
@@ -1155,7 +1196,7 @@
           </ul>
         </article>
         <article class="manual-card cs">
-          <span class="manual-badge">CS부 · 고객관리팀</span>
+          <span class="manual-badge">고객관리팀</span>
           <h3><span class="mascot small green" aria-hidden="true">🧸</span>유지관리·연체·회수</h3>
           <p>출고 후 고객 문의와 민원을 처리하고 계약변경·연장·연체·해지·반납·회수를 관리합니다.</p>
           <ul>
@@ -1170,17 +1211,17 @@
           </ul>
         </article>
         <article class="manual-card admin">
-          <span class="manual-badge">경영관리부 · 경영관리</span>
+          <span class="manual-badge">경영관리</span>
           <h3><span class="mascot small amber" aria-hidden="true">🧮</span>자금·수납·정산</h3>
           <p>차량 구매자금과 대여료 수납을 관리하고 과태료·수수료·회계·세무 자료를 계약별로 정리합니다.</p>
           <ul>
             <li>차량 매입·등록·보험 서류와 차량별 취득원가 관리</li>
             <li>입금자·계약번호·금액·미확인 입금 대조 및 연체대장 기록</li>
-            <li>연체자료를 CS부에 전달하고 최종 정산·채권 잔액을 공유</li>
+            <li>연체자료를 고객관리팀에 전달하고 최종 정산·채권 잔액을 공유</li>
           </ul>
         </article>
         <article class="manual-card debt">
-          <span class="manual-badge">채권관리부 · 법무·채권 참고</span>
+          <span class="manual-badge">법무팀 (법무·채권관리)</span>
           <h3><span class="mascot small red" aria-hidden="true">🛡️</span>채권 확정·회수·종결</h3>
           <p>계약해지 또는 반납·회수 후에도 남은 미수금을 검수해 적법한 절차로 회수하고 종결합니다.</p>
           <ul>
@@ -1295,9 +1336,9 @@
             <div class="lane-cell"><div class="mini-card alert"><strong>미납·미반납</strong>연락·협의</div></div>
           </div>
           <div class="lane sales" role="row">
-            <div class="lane-name" role="rowheader"><i></i>영업팀<br /><small>(영업부)</small></div>
+            <div class="lane-name" role="rowheader"><i></i>영업팀</div>
             <div class="lane-cell"><div class="mini-card"><strong>리드 등록</strong>고객·에이전트 문의 접수</div></div>
-            <div class="lane-cell"><div class="mini-card"><strong>견적·계약서 작성</strong>상품구분·수익성·조건 협의<em>운전자격·연령·보험조건 확인</em><em>계약완료 후 CS 인계</em></div></div>
+            <div class="lane-cell"><div class="mini-card"><strong>견적·계약서 작성</strong>상품구분·수익성·조건 협의<em>운전자격·연령·보험조건 확인</em><em>계약완료 후 고객관리팀 인계</em></div></div>
             <div class="lane-cell"><div class="mini-card vehicle"><strong>차량 배정</strong>보유차량 우선 확인<em>에이전트 리스트 배포</em></div></div>
             <div class="lane-cell"><div class="mini-card vehicle"><strong>출고 협의</strong>일정·옵션·특약 확인</div></div>
             <div class="lane-cell"><div class="mini-card"><strong>관계 관리</strong>추가 영업·변경 요청 전달</div></div>
@@ -1305,7 +1346,7 @@
             <div class="lane-cell"><div class="mini-card alert"><strong>회수 협조</strong>고객 연락·상황 공유</div></div>
           </div>
           <div class="lane admin" role="row">
-            <div class="lane-name" role="rowheader"><i></i>경영관리<br /><small>(경영관리부)</small></div>
+            <div class="lane-name" role="rowheader"><i></i>경영관리</div>
             <div class="lane-cell"><div class="mini-card dim">자금·수익 기준 안내</div></div>
             <div class="lane-cell"><div class="mini-card money"><strong>계약금액 검토</strong>보증금·수수료·매입 필요</div></div>
             <div class="lane-cell"><div class="mini-card vehicle"><strong>매입·등록·보험</strong>자금 집행·자산 등록</div></div>
@@ -1315,7 +1356,7 @@
             <div class="lane-cell"><div class="mini-card alert"><strong>채권잔액 관리</strong>손실·충당·법무 이관</div></div>
           </div>
           <div class="lane cs" role="row">
-            <div class="lane-name" role="rowheader"><i></i>고객관리팀<br /><small>(CS부)</small></div>
+            <div class="lane-name" role="rowheader"><i></i>고객관리팀</div>
             <div class="lane-cell"><div class="mini-card"><strong>고객정보 정리</strong>상담 이력·요청사항</div></div>
             <div class="lane-cell"><div class="mini-card"><strong>계약 검수·등록</strong>영업 작성 계약서 검수·모렌 등록<em>면허 취득 1년 이상·운전자 연령·보험조건 확인</em></div></div>
             <div class="lane-cell"><div class="mini-card vehicle"><strong>배정정보 수신</strong>차량번호·출고예정일</div></div>
@@ -1325,7 +1366,7 @@
             <div class="lane-cell"><div class="mini-card alert"><strong>약정 기준 연체관리</strong>장기미납 안내문자·기준 초과 조치·이관</div></div>
           </div>
           <div class="lane legal" role="row">
-            <div class="lane-name" role="rowheader"><i></i>법무팀<br /><small>(채권관리부·협업 참고)</small></div>
+            <div class="lane-name" role="rowheader"><i></i>법무팀<br /><small>(법무·채권관리)</small></div>
             <div class="lane-cell"><div class="mini-card dim">특이계약 자문</div></div>
             <div class="lane-cell"><div class="mini-card dim">계약 리스크 검토</div></div>
             <div class="lane-cell"><div class="mini-card dim">채권보전 기준</div></div>
@@ -1389,7 +1430,12 @@
             <li>계약 또는 출고가 확정되면 즉시 상태를 변경해 다른 에이전트의 중복 영업을 막습니다.</li>
             <li>차량 반납 후에는 정비·세차·상품화와 사진 갱신을 거쳐 다시 출고가능 또는 매각대기로 분기합니다.</li>
           </ul>
-          <div class="callout"><strong>즉시출고 가능차량 공유 담당</strong> 영업팀이 회사 보유차량 현황을 정리해 각 에이전트에 정기 또는 수시로 배포합니다. 경영관리·고객관리팀은 가격·상태·계약정보가 최신인지 확인합니다.</div>
+          <div class="vehicle-ownership" aria-label="즉시출고 차량 최신화 책임">
+            <div class="vehicle-owner"><strong>고객관리팀</strong><span>고객관리팀은 반납·출고·정비완료 등 실제 차량상태를 갱신합니다.</span></div>
+            <div class="vehicle-owner"><strong>경영관리</strong><span>경영관리는 월대여료·보증금·매입원가 등 금액정보를 확인합니다.</span></div>
+            <div class="vehicle-owner"><strong>영업팀</strong><span>영업팀은 최종 확인 후 에이전트에 배포합니다.</span></div>
+          </div>
+          <div class="callout"><strong>즉시출고 차량 최신화 기준</strong> 상태·금액·사진이 모두 최신일 때만 에이전트 배포 목록에 올립니다.</div>
         </article>
       </div>
     </section>
@@ -1449,10 +1495,10 @@
         <table>
           <thead><tr><th>부서</th><th>핵심 역할</th><th>다음 부서로 공유할 정보</th><th>주요 확인 시점</th></tr></thead>
           <tbody>
-            <tr><td><span class="role-pill">영업팀<br /><small>(영업부)</small></span></td><td>고객·에이전트 상담, 견적·조건 협의, 계약서 작성, 차량 확보·발주·출고 일정 확정, 즉시출고 차량 배포 및 수수료 지급요청</td><td>고객·실제 운전자 · 면허 취득기간 · 운전자 연령 · 보험 적용조건 · 차량·계약조건 · 최종견적 · 심사결과 · 발주서 · 출고일 · 수수료 산정</td><td>상담 접수 / 견적 확정 / 계약서 작성 / 발주 전 / 출고 일정 확정 / CS 인계</td></tr>
-            <tr><td><span class="role-pill amber">경영관리<br /><small>(경영관리부)</small></span></td><td>차량구매 자금, 등록서류, 대여료 청구·수납, 연체자료, 과태료·수수료·회계·정산</td><td>발주·계약·차량매입자료 · 초기 납부금 · 입금·미수금 · 연체대장 · 과태료 · 수수료 · 채권잔액</td><td>차량대금 지급 / 월 수납 / 납부일 다음 영업일 / 월·최종 마감</td></tr>
-            <tr><td><span class="role-pill green">고객관리팀<br /><small>(CS부)</small></span></td><td>영업 작성 계약서 검수·모렌 등록, 출고·인도, 고객정보·제2운전자 관리, 이용 중 문의·연장·반납·연체·정산·수리·위탁업체 공유</td><td>검수완료 계약서·고객정보·제2운전자 · 면허 취득기간 · 운전자 연령 · 보험 적용조건 · 출고확인 · 연장여부·반납예정 · 장기미납 문자 · 위약금·청구내역 · 수리내역</td><td>계약 체결 후 / 출고 전 / 고객정보 변경 / 이용 중 이슈 / 반납·연장 예정 / 장기미납</td></tr>
-            <tr><td><span class="role-pill red">법무팀<br /><small>(채권관리부·협업)</small></span></td><td>계약 종료 후 채권 인수·검수·금액 확정, 변제협의·내용증명, 지급명령·소송·집행 및 종결 검토</td><td>계약·약관·특약 · 해지통지 · 반납·회수기록 · 최종정산 · 보증금상계 · 증빙·연락이력</td><td>해지·반납·회수 완료 / 정산 확정 / 정상 회수 곤란 / 법적 조치 검토</td></tr>
+            <tr><td><span class="role-pill">영업팀</span></td><td>고객·에이전트 상담, 견적·조건 협의, 계약서 작성, 차량 확보·발주·출고 일정 확정, 즉시출고 차량 배포 및 수수료 지급요청</td><td>고객·실제 운전자 · 면허 취득기간 · 운전자 연령 · 보험 적용조건 · 차량·계약조건 · 최종견적 · 심사결과 · 발주서 · 출고일 · 수수료 산정</td><td>상담 접수 / 견적 확정 / 계약서 작성 / 발주 전 / 출고 일정 확정 / 고객관리팀 인계</td></tr>
+            <tr><td><span class="role-pill amber">경영관리</span></td><td>차량구매 자금, 등록서류, 대여료 청구·수납, 연체자료, 과태료·수수료·회계·정산</td><td>발주·계약·차량매입자료 · 초기 납부금 · 입금·미수금 · 연체대장 · 과태료 · 수수료 · 채권잔액</td><td>차량대금 지급 / 월 수납 / 납부일 다음 영업일 / 월·최종 마감</td></tr>
+            <tr><td><span class="role-pill green">고객관리팀</span></td><td>영업 작성 계약서 검수·모렌 등록, 출고·인도, 고객정보·제2운전자 관리, 이용 중 문의·연장·반납·연체·정산·수리·위탁업체 공유</td><td>검수완료 계약서·고객정보·제2운전자 · 면허 취득기간 · 운전자 연령 · 보험 적용조건 · 출고확인 · 연장여부·반납예정 · 장기미납 문자 · 위약금·청구내역 · 수리내역</td><td>계약 체결 후 / 출고 전 / 고객정보 변경 / 이용 중 이슈 / 반납·연장 예정 / 장기미납</td></tr>
+            <tr><td><span class="role-pill red">법무팀 (법무·채권관리)</span></td><td>계약 종료 후 채권 인수·검수·금액 확정, 변제협의·내용증명, 지급명령·소송·집행 및 종결 검토</td><td>계약·약관·특약 · 해지통지 · 반납·회수기록 · 최종정산 · 보증금상계 · 증빙·연락이력</td><td>해지·반납·회수 완료 / 정산 확정 / 정상 회수 곤란 / 법적 조치 검토</td></tr>
           </tbody>
         </table>
       </div>
@@ -1488,7 +1534,7 @@
       <div class="exception-grid">
         <article class="exception"><h3><span>₩</span><span class="mascot small red" aria-hidden="true">🧾</span> 연체 발생</h3><p>경영관리 수납 확인 → 약정서·계약서와 에이전트별 연체 조건 확인 → 정해진 기간 초과 여부 판단 → 초과 시 해당 조치 실행 → 연락·조치·약속일 기록</p></article>
         <article class="exception"><h3><span>↗</span><span class="mascot small amber" aria-hidden="true">🛠️</span> 사고·민원</h3><p>고객관리팀이 사실관계·사진·수리견적을 접수 → 경영관리 비용 확인 → 계약·특약·손해 범위가 쟁점이면 법무팀 자문</p></article>
-        <article class="exception"><h3><span>↺</span><span class="mascot small purple" aria-hidden="true">🚪</span> 미반납·계약해지</h3><p>고객관리팀이 해지근거·반납기한·차량위치·회수승인을 확인 → 차량 검수·최종정산 → 미수금 발생 시 채권관리부에 해지통지·반납·회수·정산 증빙과 함께 인계</p></article>
+        <article class="exception"><h3><span>↺</span><span class="mascot small purple" aria-hidden="true">🚪</span> 미반납·계약해지</h3><p>고객관리팀이 해지근거·반납기한·차량위치·회수승인을 확인 → 차량 검수·최종정산 → 미수금 발생 시 법무팀 (법무·채권관리)에 해지통지·반납·회수·정산 증빙과 함께 인계</p></article>
       </div>
       <div id="delinquency" class="delinq-panel">
         <div class="delinq-head">

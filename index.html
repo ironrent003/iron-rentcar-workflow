@@ -716,6 +716,31 @@
       filter: drop-shadow(2px 3px 0 rgba(17, 24, 39, .28));
     }
 
+    .comic-character::after {
+      position: absolute;
+      right: 6px;
+      top: 0;
+      color: #111827;
+      font-size: 15px;
+      font-weight: 950;
+      line-height: 1;
+    }
+
+    .comic-character.pose-wave { transform: rotate(-7deg) translateY(2px); }
+    .comic-character.pose-wave::after { content: "✋"; transform: rotate(9deg); }
+    .comic-character.pose-think { transform: rotate(5deg) translateY(1px); }
+    .comic-character.pose-think::after { content: "?"; transform: rotate(8deg); }
+    .comic-character.pose-point { transform: rotate(-4deg) translateY(3px); }
+    .comic-character.pose-point::after { content: "↗"; transform: rotate(-8deg); }
+    .comic-character.pose-cheer { transform: rotate(6deg) translateY(-2px); }
+    .comic-character.pose-cheer::after { content: "✦"; transform: rotate(10deg); }
+    .comic-character.pose-fix { transform: rotate(-5deg) translateY(2px); }
+    .comic-character.pose-fix::after { content: "⚙"; transform: rotate(-12deg); }
+    .comic-character.pose-handshake { transform: rotate(4deg) translateY(2px); }
+    .comic-character.pose-handshake::after { content: "↔"; transform: rotate(-7deg); }
+    .comic-character.pose-shield { transform: rotate(-3deg) translateY(-1px); }
+    .comic-character.pose-shield::after { content: "⚖"; transform: rotate(8deg); }
+
     .comic-sfx {
       position: absolute;
       right: 8px;
@@ -1102,43 +1127,43 @@
         </div>
         <div class="comic-strip" aria-label="아이언렌트카 업무흐름 7컷 만화">
           <article class="comic-panel panel-customer">
-            <span class="comic-number">01</span><span class="comic-character" aria-hidden="true">💬</span><span class="comic-sfx">HELLO!</span>
+            <span class="comic-number">01</span><span class="comic-character pose-wave" aria-hidden="true">🙋‍♀️</span><span class="comic-sfx">HELLO!</span>
             <h3>문의 접수</h3>
             <div class="comic-bubble">고객·에이전트의<br>희망 조건을 확인!</div>
             <p>상품유형 · 예산 · 희망차량 · 출고일</p>
           </article>
           <article class="comic-panel panel-contract">
-            <span class="comic-number">02</span><span class="comic-character" aria-hidden="true">📝</span><span class="comic-sfx">CHECK!</span>
+            <span class="comic-number">02</span><span class="comic-character pose-think" aria-hidden="true">🤔</span><span class="comic-sfx">CHECK!</span>
             <h3>계약 심사</h3>
             <div class="comic-bubble">면허 1년 이상?<br>연령·보험조건은?</div>
             <p>운전자격·연령·보험 적용 여부 확인</p>
           </article>
           <article class="comic-panel panel-vehicle">
-            <span class="comic-number">03</span><span class="comic-character" aria-hidden="true">🚙</span><span class="comic-sfx">ZOOM!</span>
+            <span class="comic-number">03</span><span class="comic-character pose-point" aria-hidden="true">👉</span><span class="comic-sfx">ZOOM!</span>
             <h3>차량 확보·배정</h3>
             <div class="comic-bubble">보유차량이면<br>에이전트에게 공유!</div>
             <p>실제 사진·조건·상태값 연결</p>
           </article>
           <article class="comic-panel panel-delivery">
-            <span class="comic-number">04</span><span class="comic-character" aria-hidden="true">🎉</span><span class="comic-sfx">GO!</span>
+            <span class="comic-number">04</span><span class="comic-character pose-cheer" aria-hidden="true">🙌</span><span class="comic-sfx">GO!</span>
             <h3>출고·대여 시작</h3>
             <div class="comic-bubble">보험·등록 확인 후<br>고객에게 인도해요!</div>
             <p>차량 배정 · 인도 확인 · 대여 개시</p>
           </article>
           <article class="comic-panel panel-manage">
-            <span class="comic-number">05</span><span class="comic-character" aria-hidden="true">🧰</span><span class="comic-sfx">CARE!</span>
+            <span class="comic-number">05</span><span class="comic-character pose-fix" aria-hidden="true">🧑‍🔧</span><span class="comic-sfx">CARE!</span>
             <h3>이용 중 관리</h3>
             <div class="comic-bubble">납부·문의·사고·변경<br>끝까지 챙겨요!</div>
             <p>수리·민원·연장·연체 기록</p>
           </article>
           <article class="comic-panel panel-return">
-            <span class="comic-number">06</span><span class="comic-character" aria-hidden="true">🔄</span><span class="comic-sfx">NEXT!</span>
+            <span class="comic-number">06</span><span class="comic-character pose-handshake" aria-hidden="true">🤝</span><span class="comic-sfx">NEXT!</span>
             <h3>만기·반납·정산</h3>
             <div class="comic-bubble">연장할까?<br>반납·재대여·매각할까?</div>
             <p>차령·수익성·상태를 함께 판단</p>
           </article>
           <article class="comic-panel panel-legal">
-            <span class="comic-number">07</span><span class="comic-character" aria-hidden="true">🛡️</span><span class="comic-sfx">RULE!</span>
+            <span class="comic-number">07</span><span class="comic-character pose-shield" aria-hidden="true">🧑‍⚖️</span><span class="comic-sfx">RULE!</span>
             <h3>정산·법무 협업</h3>
             <div class="comic-bubble">정산과 법무까지<br>기록으로 연결!</div>
             <p>정산·채권·법무 기록</p>

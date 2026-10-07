@@ -854,6 +854,16 @@
     .vehicle-owner { padding: 10px; border: 2px solid var(--comic-ink); border-radius: 10px; background: #fff; }
     .vehicle-owner strong { display: block; margin-bottom: 4px; color: var(--comic-ink); font-size: 11px; }
     .vehicle-owner span { color: #52627a; font-size: 10px; line-height: 1.45; }
+    .vehicle-inspection { margin-top: 14px; }
+    .inspection-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+    .inspection-card { min-height: 142px; padding: 12px; border: 2px solid var(--comic-ink); border-radius: 10px 14px 10px 14px; background: #fff; }
+    .inspection-card:nth-child(1) { background: #fff8d8; }
+    .inspection-card:nth-child(2) { background: #eaf8ff; }
+    .inspection-card:nth-child(3) { background: #eef9e7; }
+    .inspection-card:nth-child(4) { background: #f1ecff; }
+    .inspection-card:nth-child(5) { background: #fff0eb; }
+    .inspection-card h4 { margin: 0 0 7px; color: var(--comic-ink); font-size: 14px; letter-spacing: -.04em; }
+    .inspection-card p { margin: 0; color: #52627a; font-size: 12px; line-height: 1.55; }
 
     .scope-banner,
     .legend,
@@ -871,6 +881,10 @@
 
       .comic-strip {
         grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .inspection-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
       }
     }
 
@@ -918,6 +932,7 @@
       }
 
       .core-roles, .vehicle-ownership { grid-template-columns: 1fr; }
+      .inspection-grid { grid-template-columns: 1fr; }
 
       .comic-route {
         justify-content: flex-start;
@@ -1526,6 +1541,31 @@
           <div class="callout"><strong>즉시출고 차량 최신화 기준</strong> 상태·금액·사진이 모두 최신일 때만 에이전트 배포 목록에 올립니다.</div>
         </article>
       </div>
+      <article class="panel vehicle-inspection" aria-labelledby="inspection-title">
+        <h3 id="inspection-title" class="panel-title">주요 자동차 검사 종류 <small>차량 상태·운행 적합성 확인</small></h3>
+        <div class="inspection-grid">
+          <article class="inspection-card">
+            <h4>정기검사</h4>
+            <p>신규등록 후 일정 기간마다 정기적으로 차량의 안전성과 배출가스 상태를 확인하는 의무 검사입니다.</p>
+          </article>
+          <article class="inspection-card">
+            <h4>종합검사</h4>
+            <p>대기환경 규제지역에 등록된 일정 차령 이상의 차량을 대상으로, 정기검사 항목에 더해 배출가스 정밀검사를 함께 실시합니다.</p>
+          </article>
+          <article class="inspection-card">
+            <h4>신규검사</h4>
+            <p>신규등록을 하려는 경우 차량 상태와 기준 적합 여부를 확인하기 위해 실시하는 검사입니다.</p>
+          </article>
+          <article class="inspection-card">
+            <h4>튜닝검사(구조변경검사)</h4>
+            <p>자동차의 구조 및 장치를 변경하거나 튜닝한 경우 실시하는 검사입니다.</p>
+          </article>
+          <article class="inspection-card">
+            <h4>임시검사</h4>
+            <p>법에 따른 명령이나 자동차 소유자의 신청에 따라 비정기적으로 실시하는 검사입니다.</p>
+          </article>
+        </div>
+      </article>
     </section>
 
     <section class="section" aria-labelledby="age-title">

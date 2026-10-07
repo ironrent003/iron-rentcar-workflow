@@ -864,6 +864,13 @@
     .inspection-card:nth-child(5) { background: #fff0eb; }
     .inspection-card h4 { margin: 0 0 7px; color: var(--comic-ink); font-size: 14px; letter-spacing: -.04em; }
     .inspection-card p { margin: 0; color: #52627a; font-size: 12px; line-height: 1.55; }
+    .inspection-schedule { margin-top: 12px; padding: 12px; border: 2px solid var(--comic-ink); border-radius: 12px; background: #f8fbff; }
+    .inspection-schedule h4 { margin: 0 0 8px; color: var(--comic-ink); font-size: 14px; }
+    .inspection-schedule-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .inspection-schedule-card { padding: 10px; border: 1px solid #cbd6e6; border-radius: 9px; background: #fff; }
+    .inspection-schedule-card strong { display: block; margin-bottom: 4px; color: var(--comic-ink); font-size: 13px; }
+    .inspection-schedule-card p, .inspection-schedule-note { margin: 0; color: #52627a; font-size: 12px; line-height: 1.55; }
+    .inspection-schedule-note { margin-top: 8px; }
 
     .scope-banner,
     .legend,
@@ -933,6 +940,7 @@
 
       .core-roles, .vehicle-ownership { grid-template-columns: 1fr; }
       .inspection-grid { grid-template-columns: 1fr; }
+      .inspection-schedule-grid { grid-template-columns: 1fr; }
 
       .comic-route {
         justify-content: flex-start;
@@ -1564,6 +1572,20 @@
             <h4>임시검사</h4>
             <p>법에 따른 명령이나 자동차 소유자의 신청에 따라 비정기적으로 실시하는 검사입니다.</p>
           </article>
+        </div>
+        <div class="inspection-schedule" aria-label="승용자동차 정기검사 주기">
+          <h4>정기검사 주기 (승용자동차 기준)</h4>
+          <div class="inspection-schedule-grid">
+            <article class="inspection-schedule-card">
+              <strong>사업용 승용차(렌터카)</strong>
+              <p>신차 최초 검사 2년 후, 이후 매년</p>
+            </article>
+            <article class="inspection-schedule-card">
+              <strong>비사업용 승용차</strong>
+              <p>신차 최초 5년, 이후 2년마다</p>
+            </article>
+          </div>
+          <p class="inspection-schedule-note">비사업용 승용차 최초 5년은 2025년 1월 1일 이후 신규등록 차량 기준입니다. 검사 기간은 유효기간 만료일 전 90일부터 후 31일까지이며, 차량별 검사 종류와 만료일을 확인해 예약하세요.</p>
         </div>
       </article>
     </section>
